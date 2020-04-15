@@ -1,0 +1,51 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 460px;
+  margin: 0 auto;
+  margin-top: 60px;
+  letter-spacing: 0.1px;
+}
+
+.Orders-Title {
+  font-size: larger;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.Order-Container {
+  margin-bottom: 20px;
+}
+
+.Order-maincontent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Order-id {
+  margin-right: 10px;
+}
+
+.Order-customer {
+  margin-right: 10px;
+}
+
+.Ordered-at {
+  margin-right: 10px;
+}
+
+.Order-items {
+  margin-left: 20px;
+}
+
+.OrderItem {
+  margin-bottom: 10px;
+}
+
+.paid-status-paid {
+  color: green;
+}
+
+.paid-status-unpaid {
+  color: red;
+}
