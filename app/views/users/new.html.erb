@@ -1,0 +1,34 @@
+<h1 class="Form-Title">Sign up as a new user</h1>
+<section class="UsersNew">
+  <%= form_with(url: "/users", method: "post") do %>
+   <div class="Form-Section">
+    <p class="Input-Label">
+      Name
+    </p>
+    <%= text_field_tag 'name', nil,
+                       autofocus: true,
+                       placeholder: "name",
+                       class: "Form-Input"
+    %>
+   </div>
+   <div class="Form-Section">
+    <p class="Input-Label">
+      Email
+    </p>
+    <%= email_field_tag 'email', nil,
+                        placeholder: "email",
+                        class:"Form-Input"
+    %>
+   </div>
+   <div class="Form-Section">
+    <p class="Input-Label">
+      Password
+    </p>
+    <%= password_field_tag  'password', nil,
+                            placeholder: "password",
+                            class: "Form-Input"
+    %>
+   </div>
+   <%= submit_tag ' Sign-up ', class: "Form-Submit" %>
+  <% end %>
+</section>
