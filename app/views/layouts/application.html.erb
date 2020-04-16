@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <% if @current_user %>
+     <p class="UserHeader">
+      Hello
+      <%= @current_user.name %>
+      <%= link_to "sign-out", destroy_session_path, method: "delete" %>
+     </p>
+    <% end %>
+    <% if flash[:error] %>
+     <p class="Flash-error"> <%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:success] %>
+     <p class="Flash-success"> <%= flash[:success] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
