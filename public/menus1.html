@@ -20,11 +20,13 @@
         <option value="menu4">menu4</option>
       </select>
     </div>
-    <div class="Add-menu">
-      <label for="Menu-text" class="label">new menu:</label>
-      <input type="text" class="Menu-text" placeholder="name?">
-      <input class='Add-Button' type="button" value='Add'>
-    </div>
+    <form action="/menus" method="POST">
+      <div class="Add-menu">
+        <label for="Menu-text" class="label">new menu:</label>
+        <input type="text" class="Menu-text" placeholder="name?">
+        <input class='Add-Button' type="button" value='Add'>
+      </div>
+    </form>
   </section>
   <section>
     <p class="Menuitems-title">Items in menu1</p>
