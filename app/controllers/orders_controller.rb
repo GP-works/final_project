@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    render plain: current_user.orders
+    render plain: @menu.id
   end
 
   def create
