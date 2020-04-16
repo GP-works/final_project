@@ -1,48 +1,50 @@
-body{
+body {
     font-family: sans-serif;
     max-width: 600px;
     margin: 0 auto;
     margin-top: 80px;
     background-color: white;
 }
-.PageHead{
+
+.PageHead {
     font-size: 30px;
     color: green;
     margin-bottom: 30px;
 }
-.ColumnTitle{
-   font-size: 20px;
+
+.ColumnTitle {
+    font-size: 20px;
 }
-.ItemDetails{
-   font-size: 16px;
+
+.ItemDetails {
+    font-size: 16px;
 }
-td,th{
+
+td, th {
     padding: 10px;
     text-align: center;
 }
-tr{
+
+tr {
     margin-bottom: 5px;
-    
 }
-.ItemName{
-     
-}
-.ItemQuantity{
-    
-}
-.EachItemPrice{
-    
-}
-.ItemPrice{
-     
-}
-.SubmitButton{
+
+.ItemName {}
+
+.ItemQuantity {}
+
+.EachItemPrice {}
+
+.ItemPrice {}
+
+.SubmitButton {
     float: right;
     border: 0px;
     border-radius: 5px;
     background-color: green;
 }
-.TotalPrice{
+
+.TotalPrice {
     font-size: 18px;
     text-align: center;
 }

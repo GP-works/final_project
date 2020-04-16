@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "/", to: "home#index"
-  resources :menuitems
+  resources :menus
   resources :users
   resources :menuitems
   resources :orders
