@@ -3,7 +3,11 @@ class HomeController < ApplicationController
 
   def index
     if current_user
-      redirect_to menuitems_path
+      if current_user.role == "owner"
+        redirect_to menus_path
+      else
+        redirect_to menuitems_path
+      end
     else
       render "index"
     end
