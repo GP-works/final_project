@@ -33,11 +33,13 @@
 </section>
   <ul class="Menuitems">
     <% @menu.menuitems.each do |menu_item|%>
-      <li class='MenuItem'>
+      <li class='Menuitem'>
         <div class='MenuItem-container'>
           <p class="MenuItem-name"><%= menu_item.name %></p>
           <p class="MenuItem-price">₹<%= menu_item.price %></p>
-          <img class="MenuItem-deleteIcon" src="./delete-icon.svg" alt="deleteicon">
+          <%= form_with(url:"/menuitems/#{menu_item.id}", method: "delete") do %>
+            <%= image_submit_tag(source="delete-icon.svg",class: "MenuItem-deleteIcon", alt: "deleteicon")%>
+          <% end %>
         </div>
       </li>
       <% end %>
