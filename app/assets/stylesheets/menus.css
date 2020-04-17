@@ -67,7 +67,7 @@ body {
   border-radius: 4px;
 }
 
-.MenuItem-container {
+.Menuitem {
   padding: 10px 10px;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -93,16 +93,17 @@ body {
   margin-bottom: 10px;
 }
 
-.MenuItem-container:hover {
+.Menuitem:hover {
   background-color: #F1EDF7;
 }
 
 .MenuItem-deleteIcon {
   visibility: hidden;
   text-align-last: right;
+  float: right;
 }
 
-.MenuItem-container:hover .MenuItem-deleteIcon {
+.Menuitem:hover .MenuItem-deleteIcon {
   visibility: visible;
 }
 
