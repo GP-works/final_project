@@ -6,9 +6,20 @@ body {
   letter-spacing: 0.1px;
 }
 
+.ActiveMenu {
+  display: inline-flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.ActiveMenu-name {
+  padding: 6px;
+  color: red;
+}
+
 .Menu {
   margin-bottom: 20px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -19,6 +30,12 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: lightblue;
+}
+
+.Menuselect-option {
+  padding: 5px;
+  background-color: lightgray;
+  border: 1px solid;
 }
 
 .label {

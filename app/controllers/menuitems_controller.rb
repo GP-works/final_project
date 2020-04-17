@@ -3,7 +3,7 @@ class MenuitemsController < ApplicationController
   end
 
   def create
-    active_menu.create!(name: "Idly", price: "10.4")
-    redirect_to menuitems_path
+    @menu.menuitems.create!(name: params[:name], price: params[:price])
+    redirect_to menus_path
   end
 end
