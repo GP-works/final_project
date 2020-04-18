@@ -35,17 +35,25 @@ body {
 }
 
 .Order-items {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
-.OrderItem {
+.Order-orderitem {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.paid-status-paid {
+.Orderitem-qty {
+  color: rgb(32, 10, 235);
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.delivered-status-delivered {
   color: green;
 }
 
-.paid-status-unpaid {
+.delivered-status-notdelivered {
   color: red;
 }
