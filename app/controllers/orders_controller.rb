@@ -10,18 +10,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    new_order = Order.create!(date: DateTime.now, user_id: current_user.id)
+    @new_order = Order.create!(date: DateTime.now, user_id: current_user.id)
     @menu.menuitems.each do |menuitem|
       quantity = params[menuitem.id.to_s.to_sym].to_i
       if quantity != 0
         for _ in 1..quantity
-          new_order.orderitems.create!(menu_item_name: menuitem.name,
-                                       menu_item_price: menuitem.price,
-                                       menuitem_id: menuitem.id)
+          @new_order.orderitems.create!(menu_item_name: menuitem.name,
+                                        menu_item_price: menuitem.price,
+                                        menuitem_id: menuitem.id)
         end
       end
     end
-    redirect_to orders_path
+    redirect_to bill_path
+  end
+
+  def bill
+    render :bill
   end
 
   def update

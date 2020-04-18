@@ -1,0 +1,28 @@
+<h1 class="PageHead">Welcoming you again</h1>
+<table>
+    <tr class="ColumnTitle">
+        <th class="SerialNo">SNo</th>
+        <th class="ItemName">ItemName</th>
+        <th class="ItemQuantity">ItemQuantity</th>
+        <th class="EachItemPrice">ItemPrice</th>
+        <th class="ItemPrice">Total</th>
+    </tr>
+    <% orderitems=@new_order.orderitems.getqty %>
+    <% serial_no = 1 %>
+    <%= orderitems.each do |name,quantity|%>
+        <% order_item=Orderitem.find_by(menu_item_name: name)%>
+             <tr class="ItemDetails">
+                <td class="SerialNo"><%= serial_no %>.</td>
+                <td class="ItemName"><% name %> </td>
+                <td class="ItemQuantity"><%= quantity %></td>
+                <td class="EachItemPrice"><%= order_item.menu_item_price%></td>
+                <td class="ItemPrice"><%= quantity*order_item.menu_item_price %></td>
+            </tr>
+            <% serial_no = serial_no+1 %>
+        <% end %>
+</table>
+<hr>
+<div>
+  <p class="TotalPrice"><%= @new_order.get_total_price %> </p>
+</div>
+<input type="submit" value="Pay" class="SubmitButton">
