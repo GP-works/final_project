@@ -1,22 +1,22 @@
 
  <h1 class="PageHead">Welcome :)    :)</h1>
 
-
-<ul class="MenuItemList">
-    <% Menuitem.all.each do |menuitem| %>
-
-            <li class="MenuItem">
-                <p class="MenuItemName"> <%= menuitem.name %> </p>
-                <p class="MenuItemPrice"> <%= menuitem.price %> </p>
-                <p class="MenuItemDescription"> <%= menuitem.description %> </p>
-                <select class="Count">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-            </li>
+    <%= form_with(url: "/orders", method: "post") do %>
+        <ul class="MenuItemList">
+           <% @menu.menuitems.all.each do |menuitem| %>
+                <li class="MenuItem">
+                    <p class="MenuItemName"> <%= menuitem.name %> </p>
+                    <p class="MenuItemPrice"> <%= menuitem.price %> </p>
+                    <p class="MenuItemDescription"> <%= menuitem.description %> </p>
+                    <select name='<%= menuitem.id %>' class="Count">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                 </li>
+           <% end %>
+        </ul>
+           <%= submit_tag 'submit', class: "Submit-Items" %>
     <% end %>
-</ul>
-<input type="submit" value="submit" class="Submit-Items">

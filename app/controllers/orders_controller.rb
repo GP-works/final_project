@@ -1,3 +1,5 @@
+require "date"
+
 class OrdersController < ApplicationController
   def index
     if current_user.role == "customer"
@@ -10,7 +12,17 @@ class OrdersController < ApplicationController
   end
 
   def create
-    Order.create!(date: Date.now)
+    new_order = Order.create!(date: DateTime.now, user_id: current_user.id)
+    @menu.menuitems.each do |menuitem|
+      q = params[menuitem.id].to_i
+      if q != 0
+        for quantity in 0..q
+          new_order.orderitems.create!(menu_item_name: menuitem.name,
+                                       menu_item_price: menuitem.price,
+                                       menuitem_id: menuitem.id)
+        end
+      end
+    end
     redirect_to menuitems_path
   end
 
