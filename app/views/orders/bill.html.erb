@@ -23,6 +23,6 @@
 </table>
 <hr>
 <p class="TotalPrice">TotalPrice : <%= order.get_total_price %> </p>
-<%= form_with(url: "/orders/pay", method: "get") do %>
+<%= form_with(url: "/orders/pay", method: "post") do %>
   <%= submit_tag "Pay", class: 'SubmitButton' %>
 <% end %>

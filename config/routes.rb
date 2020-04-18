@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/", to: "home#index"
   get "/orders/bill", to: "orders#bill", as: :bill
-  get "/orders/pay", to: "orders#pay"
+  post "/orders/pay", to: "orders#pay"
   resources :menus
   resources :users
   resources :menuitems
