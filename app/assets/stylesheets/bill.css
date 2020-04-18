@@ -14,6 +14,7 @@ body {
 
 .ColumnTitle {
     font-size: 20px;
+    padding-bottom: 50px;
 }
 
 .ItemDetails {
@@ -29,13 +30,30 @@ tr {
     margin-bottom: 5px;
 }
 
-.ItemName {}
+.SerialNo {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
 
-.ItemQuantity {}
+.ItemName {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
 
-.EachItemPrice {}
+.ItemQuantity {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
 
-.ItemPrice {}
+.EachItemPrice {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.ItemPrice {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
 
 .SubmitButton {
     float: right;

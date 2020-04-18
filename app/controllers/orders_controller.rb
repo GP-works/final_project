@@ -11,6 +11,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def pay
+    redirect_to orders_path
+  end
+
   def create
     @new_order = Order.create!(date: DateTime.now, user_id: current_user.id)
     @menu.menuitems.each do |menuitem|
