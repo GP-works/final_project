@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get "/", to: "home#index"
-
+  get "/orders/bill", to: "orders#bill", as: :bill
   resources :menus
   resources :users
   resources :menuitems
   resources :orders
-  get "/orders/bill", to: "orders#bill", as: :bill
+
   post "/menus/setmenu", to: "menus#set", as: :setmenu
   get "/signin", to: "sessions#new", as: :new_sessions
   post "/signin", to: "sessions#create", as: :sessions

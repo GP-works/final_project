@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
   end
 
   def bill
-    render :bill
+    render :bill, locals: { order: Order.last }
   end
 
   def update

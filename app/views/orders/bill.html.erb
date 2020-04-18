@@ -7,7 +7,7 @@
         <th class="EachItemPrice">ItemPrice</th>
         <th class="ItemPrice">Total</th>
     </tr>
-    <% orderitems=@new_order.orderitems.getqty %>
+    <% orderitems= order.orderitems.getqty %>
     <% serial_no = 1 %>
     <%= orderitems.each do |name,quantity|%>
         <% order_item=Orderitem.find_by(menu_item_name: name)%>
@@ -23,6 +23,6 @@
 </table>
 <hr>
 <div>
-  <p class="TotalPrice"><%= @new_order.get_total_price %> </p>
+  <p class="TotalPrice"><%= order.get_total_price %> </p>
 </div>
 <input type="submit" value="Pay" class="SubmitButton">
