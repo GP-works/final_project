@@ -15,10 +15,11 @@
     <p class="Input-Label">
       Role
     </p>
-    <%= text_field_tag 'role', nil,
-                       placeholder: "role:customer/owner",
-                       class: "Form-Input"
-    %>
+    <select class="Input-role" name="role">
+      <option value="customer" selected>customer</option>
+      <option value="owner" > owner </option>
+      <option value="billclerk"> clerk </option>
+    </select>
    </div>
    <div class="Form-Section">
     <p class="Input-Label">

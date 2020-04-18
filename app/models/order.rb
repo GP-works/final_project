@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   has_many :orderitems
   belongs_to :user
 
+
   def self.get_total_price
     price = 0
     orderitems = order.orderitems.getqty
@@ -10,5 +11,14 @@ class Order < ActiveRecord::Base
       price = price + quantity * order_item.menu_item_price
     end
     price
+  end
+  def self.not_delivered
+    where(delivered_at: nil).order(id: :asc)
+  end
+  def self.delivered
+    where.not(delivered_at: nil).order(id: :desc)
+  end
+  def self.today
+    where("date = ?", Date.today)
   end
 end
