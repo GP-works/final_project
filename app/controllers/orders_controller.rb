@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
   def index
     if current_user.role == "customer"
-      render :index, locals: { orders: current_user.orders,
-                               hidden_status: "hidden" }
+      render :index, locals: { all_orders: current_user.orders.all,
+                               hidden_status: true,
+                               second_title: "Previous orders" }
     else
-      render :index, locals: { orders: Order.all,
-                               hidden_status: nil }
+      render :index, locals: { all_orders: Order.all.today,
+                               hidden_status: false,
+                               second_title: "Orders delivered today" }
     end
   end
 

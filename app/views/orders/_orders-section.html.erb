@@ -1,0 +1,36 @@
+<ul>
+  <% all_orders.each do |order|%>
+    <% delivered_status=(order.delivered_at==nil)? "notdelivered" : "delivered"%>
+    <li class='Order'>
+      <div class='Order-Container'>
+        <div class='Order-maincontent'>
+          <% if hidden_status==false %>
+            <%= form_with(url:"/orders/#{order.id}", method: "put") do %>
+              <%= check_box_tag(name="delivered",value = 1,checked = !(order.delivered_at == nil),options = {onclick: "this.form.submit()"}) %>
+            <% end %>
+            <p class='Order-customer'><%= order.user.name %></p>
+          <% end %>
+          <p class="Ordered-at"><%= order.date %></p>
+          <p class="delivered-status-<%= delivered_status %>">
+              <%= delivered_status %>
+          </p>
+        </div>
+        <div class="Order-items">
+          <ul>
+            <% orderitems=order.orderitems.getqty %>
+            <% orderitems.each do |name,quantity| %>
+              <li class='Order-orderitem'>
+                <div>
+                  <%= name %>
+                </div>
+                <div class="Orderitem-qty">
+                  <%= quantity %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
