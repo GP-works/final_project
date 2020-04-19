@@ -1,3 +1,6 @@
+<h1 class="Home-title">
+  Welcome to GP Cafeteria
+</h1>
 <h1 class="Form-Title">Sign up as a new user</h1>
 <section class="UsersNew">
   <%= form_with(url: "/users", method: "post") do %>
@@ -42,3 +45,7 @@
    <%= submit_tag ' Sign-up ', class: "Form-Submit" %>
   <% end %>
 </section>
+<h2 class="Home-authenticate">
+  <p class="UserLabel">Already have an account?</p>
+  <%= link_to "Sign-in here", new_sessions_path %>
+</h2>

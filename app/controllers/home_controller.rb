@@ -9,7 +9,7 @@ class HomeController < ApplicationController
         redirect_to menuitems_path
       end
     else
-      render "index"
+      redirect_to sessions_path
     end
   end
 end
