@@ -30,6 +30,6 @@
 </form>
 <%= form_with(url: "/orders/pay", method: "patch") do %>
     <%= hidden_field_tag "id", order.id %>
-  <%= submit_tag "Pay", class: 'SubmitButton' %>
+  <%= submit_tag "Confirm&Pay", class: 'SubmitButton' %>
 <% end %>
 </div>
