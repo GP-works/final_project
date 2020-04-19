@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_ownerorclerk_logged_in
+    unless current_user.role == "owner" || current_user.role == "billclerk"
+      redirect_to "/"
+    end
+  end
+
   def current_user
     return @current_user if @current_user
 

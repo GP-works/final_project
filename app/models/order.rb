@@ -5,9 +5,11 @@ class Order < ActiveRecord::Base
   def self.not_delivered
     where(delivered_at: nil).order(id: :asc)
   end
+
   def self.delivered
     where.not(delivered_at: nil).order(id: :desc)
   end
+
   def self.today
     where("date = ?", Date.today)
   end
@@ -20,5 +22,9 @@ class Order < ActiveRecord::Base
       price = price + quantity * order_item.menu_item_price
     end
     price
+  end
+
+  def self.confirmed_orders
+    where("ordered = ?", true)
   end
 end

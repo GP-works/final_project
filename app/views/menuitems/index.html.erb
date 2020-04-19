@@ -9,7 +9,7 @@
                     <p class="MenuItemPrice"> ₹<%= menuitem.price %> </p>
                     <p class="MenuItemDescription"> <%= menuitem.description %> </p>
                     <select name='<%= menuitem.id %>' class="Count">
-                        <option value="0">qty(0)</option>
+                        <option value="0">qty</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -18,5 +18,5 @@
                  </li>
            <% end %>
         </ul>
-           <%= submit_tag 'submit', class: "Submit-Items" %>
+           <%= submit_tag 'Go to cart', class: "Submit-Items" %>
     <% end %>
