@@ -28,7 +28,7 @@
   font-size: 20px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-radius: 10px;
 }
 
@@ -36,6 +36,14 @@
   font-size: 16px;
   margin-bottom: 16px;
   color: darkred;
+}
+
+.Header-tab {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  margin-right: 20px;
 }
 
 .Flash-success {

@@ -12,28 +12,30 @@
   <body>
     <% if @current_user %>
         <% if @current_user.role == "owner" %>
-          <div>
-          <p class="PageSwap">
-          <%= link_to "home", menus_path %>
-          <%= link_to "all-orders", orders_path %>
-          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
-          </p>
+
+          <div class="PageSwap">
+            <div>
+              <%= link_to "Home", menus_path,class:"Header-tab" %>
+              <%= link_to "Orders", orders_path,class: "Header-tab" %>
+            </div>
+            <%= link_to "Sign-out", destroy_session_path,method: "delete" ,class: "Header-tab" %>
           </div>
-        <% elsif @current_user.role == "clerk"%>
-          <div>
-          <p class="PageSwap">
-          <%= link_to "home", menuitems_path %>
-          <%= link_to "all-orders", orders_path %>
-          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
-          </p>
+
+        <% elsif @current_user.role == "billclerk"%>
+          <div class="PageSwap">
+            <div>
+              <%= link_to "Home", menuitems_path ,class: "Header-tab" %>
+              <%= link_to "Orders", orders_path ,class: "Header-tab" %>
+            </div>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete",class: "Header-tab" %>
           </div>
         <% else %>
-          <div>
-          <p class="PageSwap">
-          <%= link_to "home", menuitems_path %>
-          <%= link_to "my-orders", orders_path %>
-          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
-          </p>
+          <div class="PageSwap">
+            <div>
+              <%= link_to "Home", menuitems_path ,class: "Header-tab" %>
+              <%= link_to "My-orders", orders_path ,class: "Header-tab" %>
+            </div>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete",class: "Header-tab" %>
           </div>
         <% end %>
         <div>
