@@ -9,6 +9,7 @@
               <%= check_box_tag(name="delivered",value = 1,checked = !(order.delivered_at == nil),options = {onclick: "this.form.submit()"}) %>
             <% end %>
             <p class='Order-customer'><%= order.user.name %></p>
+            <p class="Order-customer"><%= order.user.role %>
           <% end %>
           <p class="Ordered-at"><%= order.date %></p>
           <p class="delivered-status-<%= delivered_status %>">

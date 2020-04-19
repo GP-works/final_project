@@ -50,7 +50,7 @@
                       method: "post",
                       class: "Add-menuitem",
                     ) do%>
-    <%= text_field_tag( name='name',value=nil,class: "AddMenuitem-name",placeholder: "name?")  %>
+    <%= text_field_tag( name='name',value=nil,class: "AddMenuitem-name",placeholder: "new item in #{@menu.name} menu ?")  %>
     <%= text_field_tag( name='price',value=nil,class: "AddMenuitem-price",placeholder: "price?")  %>
     <%= button_tag(value='Add',class: "Add-Button")  %>
   <% end %>
