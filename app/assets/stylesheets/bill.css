@@ -56,9 +56,12 @@ tr {
 
 .SubmitButton {
     float: right;
-    border: 0px;
-    border-radius: 5px;
+    border: 0;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
     background-color: green;
+    padding: 5px 15px;
 }
 
 .TotalPrice {

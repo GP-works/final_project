@@ -1,27 +1,40 @@
-.Home-title{
+.Home-title {
   font-size: 25px;
   margin-bottom: 30px;
   color: rgb(18, 35, 41);
 }
-.Home-authenticate{
+
+.Home-authenticate {
   font-size: 16px;
   margin-bottom: 20px;
 }
-.UserHeader{
+
+.UserHeader {
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  float: inline-end;
+  border-radius: 10px;
+}
+
+.PageSwap {
   padding: 10px;
   background-color: lightgray;
   font-size: 20px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-radius: 10px;
 }
-.Flash-error{
+
+.Flash-error {
   font-size: 16px;
   margin-bottom: 16px;
   color: darkred;
 }
-.Flash-success{
+
+.Flash-success {
   font-size: 16px;
   margin-bottom: 16px;
   color: darkgreen;

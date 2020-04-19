@@ -2,10 +2,10 @@
 <table>
     <tr class="ColumnTitle">
         <th class="SerialNo">SNo</th>
-        <th class="ItemName">ItemName</th>
-        <th class="ItemQuantity">ItemQuantity</th>
-        <th class="EachItemPrice">ItemPrice</th>
-        <th class="ItemPrice">Total</th>
+        <th class="ItemName">Name</th>
+        <th class="ItemQuantity">Quantity</th>
+        <th class="EachItemPrice">Price</th>
+        <th class="ItemPrice">TotalPrice</th>
     </tr>
     <% orderitems= order.orderitems.getqty %>
     <% serial_no = 1 %>
@@ -15,14 +15,14 @@
                 <td class="SerialNo"><%= serial_no %>.</td>
                 <td class="ItemName"><%= name %> </td>
                 <td class="ItemQuantity"><%= quantity %></td>
-                <td class="EachItemPrice"><%= order_item.menu_item_price%></td>
-                <td class="ItemPrice"><%= quantity*order_item.menu_item_price %></td>
+                <td class="EachItemPrice">₹<%= order_item.menu_item_price%></td>
+                <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
             </tr>
             <% serial_no = serial_no+1 %>
     <% end %>
 </table>
 <hr>
-<p class="TotalPrice">TotalPrice : <%= order.get_total_price %> </p>
+<p class="TotalPrice">TotalPrice : ₹<%= order.get_total_price %> </p>
 <%= form_with(url: "/orders/pay", method: "post") do %>
   <%= submit_tag "Pay", class: 'SubmitButton' %>
 <% end %>

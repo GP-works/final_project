@@ -11,11 +11,37 @@
 
   <body>
     <% if @current_user %>
-     <p class="UserHeader">
-      Hello
-      <%= @current_user.name %>
-      <%= link_to "sign-out", destroy_session_path, method: "delete" %>
-     </p>
+        <% if @current_user.role == "owner" %>
+          <div>
+          <p class="PageSwap">
+          <%= link_to "home", menus_path %>
+          <%= link_to "all-orders", orders_path %>
+          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
+          </p>
+          </div>
+        <% elsif @current_user.role == "clerk"%>
+          <div>
+          <p class="PageSwap">
+          <%= link_to "home", menuitems_path %>
+          <%= link_to "all-orders", orders_path %>
+          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
+          </p>
+          </div>
+        <% else %>
+          <div>
+          <p class="PageSwap">
+          <%= link_to "home", menuitems_path %>
+          <%= link_to "my-orders", orders_path %>
+          <%= link_to "sign-out", destroy_session_path, method: "delete" %>
+          </p>
+          </div>
+        <% end %>
+        <div>
+          <p class="UserHeader">
+            signed in as
+            <%= @current_user.name %>
+          </p>
+        </div>
     <% end %>
     <% if flash[:error] %>
      <p class="Flash-error"> <%= flash[:error] %></p>
