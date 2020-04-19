@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/", to: "home#index"
   patch "/orders/pay", to: "orders#pay"
+  post "/orders/addmore", to: "orders#addmore"
   resources :menus
   resources :users
   resources :menuitems

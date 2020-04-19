@@ -45,4 +45,23 @@ class OrdersController < ApplicationController
     order.save
     redirect_to orders_path
   end
+
+  def addmore
+    order = Order.find(params[:id])
+    @menu.menuitems.each do |menuitem|
+      quantity = params[menuitem.id.to_s.to_sym].to_i
+      if quantity != 0
+        for _ in 1..quantity
+          order.orderitems.create!(menu_item_name: menuitem.name,
+                                   menu_item_price: menuitem.price,
+                                   menuitem_id: menuitem.id)
+        end
+      end
+    end
+    redirect_to action: "show", id: order
+  end
+
+  def new
+    render :new, locals: { order: Order.find(params[:id]) }
+  end
 end
