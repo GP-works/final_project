@@ -1,17 +1,20 @@
 class OrdersController < ApplicationController
   def index
     if current_user.role == "customer"
-      render :index, locals: { all_orders: current_user.orders.all,
+      render :index, locals: { all_orders: current_user.orders.all.confirmed_orders,
                                hidden_status: true,
                                second_title: "Previous orders" }
     else
-      render :index, locals: { all_orders: Order.all.today,
+      render :index, locals: { all_orders: Order.all.today.confirmed_orders,
                                hidden_status: false,
                                second_title: "Orders delivered today" }
     end
   end
 
   def pay
+    order = Order.find(params[:id])
+    order.ordered = true
+    order.save
     redirect_to orders_path
   end
 
@@ -27,14 +30,16 @@ class OrdersController < ApplicationController
         end
       end
     end
-    redirect_to bill_path
+    redirect_to action: "show", id: @new_order
   end
 
-  def bill
-    render :bill, locals: { order: Order.last }
+  def show
+    order = Order.find(params[:id])
+    render :show, locals: { order: order }
   end
 
   def update
+    ensure_ownerorclerk_logged_in
     order = Order.find(params[:id])
     order.delivered_at = (order.delivered_at == nil) ? DateTime.now : nil
     order.save
