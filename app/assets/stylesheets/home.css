@@ -52,6 +52,6 @@
   color: darkgreen;
 }
 
-.Signin-link {
+.Signup-link, .Signin-link {
   text-decoration: none;
 }

@@ -3,4 +3,11 @@ class User < ActiveRecord::Base
   has_many :orders
   validates :name, presence: true
   validates :email, presence: true
+
+  def self.customers
+    where("role = ?", "customer")
+  end
+  def self.clerks
+    where("role = ?", "billclerk")
+  end
 end

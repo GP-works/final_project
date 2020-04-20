@@ -41,3 +41,32 @@ body {
   margin-bottom: 15px;
   color: darkred;
 }
+
+.Users-Role {
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.ColumnTitle {
+  font-size: 20px;
+  padding-bottom: 50px;
+}
+
+.UserDetails {
+  font-size: 16px;
+}
+
+td, th {
+  padding: 10px;
+  text-align: center;
+}
+
+tr {
+  margin-bottom: 5px;
+}
+
+.IdNo, .UserName, .UserEmail, .OrdesQuantity {
+  padding-right: 10px;
+  padding-bottom: 10px;
+}

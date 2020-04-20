@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def new
   end
 
+  def index
+    ensure_owner_logged_in
+  end
+
   def create
     new_user = User.new(
       name: params[:name],
