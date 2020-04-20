@@ -10,11 +10,16 @@
     <% orderitems= order.orderitems.getqty %>
     <% serial_no = 1 %>
     <% orderitems.each do |name,quantity|%>
-        <% order_item=Orderitem.find_by(menu_item_name: name)%>
+        <% order_item=order.orderitems.find_by(menu_item_name: name)%>
              <tr class="ItemDetails">
                 <td class="SerialNo"><%= serial_no %>.</td>
                 <td class="ItemName"><%= name %> </td>
-                <td class="ItemQuantity"><%= quantity %></td>
+                <td class="ItemQuantity">
+                    <%= link_to "-",order_item,method: "delete",class: "minus" %>
+                    <%= quantity %>
+                    <%= link_to "+", orderitems_path(order_id: order.id ,menuitem_id: order_item.menuitem.id),method: "post",class: "plus" %>
+                </td>
+                </td>
                 <td class="EachItemPrice">₹<%= order_item.menu_item_price%></td>
                 <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
             </tr>
@@ -26,7 +31,7 @@
 <div class="Buttons-container">
 <form action="/orders/new" method="GET">
     <input type=hidden name='id' value=<%= order.id %>>
-    <input class='SubmitButton' type="submit" value='Add-more'>
+    <input class='SubmitButton' type="submit" value='Add-other-items'>
 </form>
 <%= form_with(url: "/orders/pay", method: "patch") do %>
     <%= hidden_field_tag "id", order.id %>

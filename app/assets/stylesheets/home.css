@@ -51,3 +51,7 @@
   margin-bottom: 16px;
   color: darkgreen;
 }
+
+.Signin-link {
+  text-decoration: none;
+}

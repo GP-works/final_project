@@ -30,12 +30,15 @@ class OrdersController < ApplicationController
         end
       end
     end
-    redirect_to action: "show", id: @new_order
+    redirect_to action: "bill", id: @new_order
   end
 
-  def show
+  def bill
     order = Order.find(params[:id])
-    render :show, locals: { order: order }
+    unless order.user == current_user
+      redirect_to "/"
+    end
+    render :bill, locals: { order: order }
   end
 
   def update
@@ -58,7 +61,7 @@ class OrdersController < ApplicationController
         end
       end
     end
-    redirect_to action: "show", id: order
+    redirect_to action: "bill", id: order
   end
 
   def new

@@ -74,3 +74,18 @@ tr {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.minus {
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    color: red;
+}
+
+.plus {
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    color: red;
+    padding: 1px;
+}
