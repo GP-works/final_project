@@ -109,6 +109,7 @@ body {
 .Add-menuitem {
   display: flex;
   align-items: stretch;
+  margin-bottom: 20px;
 }
 
 .AddMenuitem-name {

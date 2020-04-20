@@ -25,12 +25,20 @@
     <div>
       <%= form_with(url:"/menus", method: "post",class: "Add-menu") do %>
         <label for="Menu-text" class="label">new menu:</label>
-        <%=text_field_tag( name='name',value=nil,class: "Menu-text",placeholder: "name?")  %>
+        <%=text_field_tag( name='name',value=nil,class: "Menu-text",placeholder: "new menu?")  %>
         <%=button_tag(value='Add',class: "Add-Button")  %>
       <% end %>
     </div>
 
 </section>
+<%= form_with(url:"/menuitems",
+                      method: "post",
+                      class: "Add-menuitem",
+                    ) do%>
+    <%= text_field_tag( name='name',value=nil,class: "AddMenuitem-name",placeholder: "new item in #{@menu.name} menu ?")  %>
+    <%= text_field_tag( name='price',value=nil,class: "AddMenuitem-price",placeholder: "price?")  %>
+    <%= button_tag(value='Add',class: "Add-Button")  %>
+<% end %>
   <ul class="Menuitems">
     <% @menu.menuitems.each do |menu_item|%>
       <li class='Menuitem'>
@@ -45,12 +53,3 @@
       <% end %>
     </ul>
   </section>
-
-  <%= form_with(url:"/menuitems",
-                      method: "post",
-                      class: "Add-menuitem",
-                    ) do%>
-    <%= text_field_tag( name='name',value=nil,class: "AddMenuitem-name",placeholder: "new item in #{@menu.name} menu ?")  %>
-    <%= text_field_tag( name='price',value=nil,class: "AddMenuitem-price",placeholder: "price?")  %>
-    <%= button_tag(value='Add',class: "Add-Button")  %>
-  <% end %>

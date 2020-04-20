@@ -10,12 +10,8 @@
 }
 
 .UserHeader {
-  padding: 10px;
   font-size: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  float: inline-end;
-  border-radius: 10px;
+  float: right;
 }
 
 .UserLabel {

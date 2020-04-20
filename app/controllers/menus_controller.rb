@@ -18,7 +18,6 @@ class MenusController < ApplicationController
   def set
     Rails.cache.write("active_menu_id", params[:menu_id])
     active_menu
-    flash[:success] = "setted current menu to #{active_menu.name} successfully"
     redirect_to menus_path
   end
 end
