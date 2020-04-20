@@ -4,8 +4,13 @@ class MenuitemsController < ApplicationController
 
   def create
     ensure_owner_logged_in
-    @menu.menuitems.create!(name: params[:name], price: params[:price])
-    redirect_to menus_path
+    new_menuitem = @menu.menuitems.new(name: params[:name], price: params[:price])
+    if new_menuitem.save
+      redirect_to menus_path
+    else
+      flash[:error] = new_menuitem.errors.full_messages.join(", ")
+      redirect_to menus_path
+    end
   end
 
   def destroy
