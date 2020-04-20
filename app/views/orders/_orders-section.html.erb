@@ -11,7 +11,7 @@
             <p class='Order-customer'><%= order.user.name %></p>
             <p class="Order-customer"><%= order.user.role %>
           <% end %>
-          <p class="Ordered-at"><%= order.date %></p>
+          <p class="Ordered-at"><%= order.date.to_s(:short) %></p>
           <p class="delivered-status-<%= delivered_status %>">
               <%= delivered_status %>
           </p>
