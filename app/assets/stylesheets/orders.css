@@ -15,6 +15,10 @@ body {
   margin-bottom: 20px;
 }
 
+.Order-maincontent:hover .MenuItem-deleteIcon {
+  visibility: visible;
+}
+
 .Order-maincontent {
   display: flex;
   align-items: center;
@@ -51,8 +55,10 @@ body {
 
 .delivered-status-delivered {
   color: green;
+  margin-right: 10px;
 }
 
 .delivered-status-notdelivered {
   color: red;
+  margin-right: 10px;
 }

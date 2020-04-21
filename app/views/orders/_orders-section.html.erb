@@ -1,24 +1,35 @@
 <ul>
-  <% all_orders.each do |order|%>
-    <% delivered_status=(order.delivered_at==nil)? "notdelivered" : "delivered"%>
+  <% all_orders.each do |order| %>
+    <% delivered_status = (order.delivered_at == nil) ? "notdelivered" : "delivered" %>
     <li class='Order'>
       <div class='Order-Container'>
         <div class='Order-maincontent'>
-          <% if hidden_status==false %>
-            <%= form_with(url:"/orders/#{order.id}", method: "put") do %>
-              <%= check_box_tag(name="delivered",value = 1,checked = !(order.delivered_at == nil),options = {onclick: "this.form.submit()"}) %>
+          <% if hidden_status == false %>
+            <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
+              <%= check_box_tag(name = "delivered", value = 1,
+                                checked = !(order.delivered_at == nil),
+                                options = {onclick: "this.form.submit()"})
+              %>
             <% end %>
             <p class='Order-customer'><%= order.user.name %></p>
-            <p class="Order-customer"><%= order.user.role %>
+            <p class="Order-customer"><%= order.user.role %></p>
           <% end %>
           <p class="Ordered-at"><%= order.date.to_s(:short) %></p>
           <p class="delivered-status-<%= delivered_status %>">
               <%= delivered_status %>
           </p>
+          <% if hidden_status %>
+            <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
+              <%= image_submit_tag(source="delete-icon.svg",
+                                   class: "MenuItem-deleteIcon",
+                                   alt: "deleteicon")
+              %>
+            <% end %>
+          <% end %>
         </div>
         <div class="Order-items">
           <ul>
-            <% orderitems=order.orderitems.getqty %>
+            <% orderitems = order.orderitems.getqty %>
             <% orderitems.each do |name,quantity| %>
               <li class='Order-orderitem'>
                 <div>

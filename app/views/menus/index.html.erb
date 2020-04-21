@@ -2,54 +2,64 @@
  <p class="ActiveMenu-label">Currently active menu is</p>
  <p class="ActiveMenu-name"><%= @menu.name %>
  </div>
-
 <section class="Menu">
-    <div>
-      <%= form_with(url:"/menus/setmenu",
-                      method: "post",
-                      class: "Add-menu",
-                    ) do%>
+  <div>
+    <%= form_with(url:"/menus/setmenu", method: "post", class: "Add-menu") do%>
+        <select name="menu_id"
+                class="Menu-select"
+                onchange ='if(this.value != 0) { this.form.submit(); }'
+                autofocus>
 
-        <select name="menu_id" class="Menu-select" onchange ='if(this.value != 0) { this.form.submit(); }' autofocus>
             <option selected disabled>Choose a different menu</option>
             <%Menu.all.each do |menu|%>
-                  <option value= <%= menu.id %>
-                          class="Menuselect-option"
-                          >
-                          <%= menu.name %>
-                  </option>
+               <option value=<%= menu.id %>, class="Menuselect-option">
+                  <%= menu.name %>
+                </option>
             <% end %>
         </select>
-      <% end %>
-    </div>
-    <div>
-      <%= form_with(url:"/menus", method: "post",class: "Add-menu") do %>
-        <label for="Menu-text" class="label">new menu:</label>
-        <%=text_field_tag( name='name',value=nil,class: "Menu-text",placeholder: "new menu?")  %>
-        <%=button_tag(value='Add',class: "Add-Button")  %>
-      <% end %>
-    </div>
-
+    <% end %>
+  </div>
+  <div>
+    <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
+       <label for="Menu-text" class="label">new menu:</label>
+       <%= text_field_tag( name = 'name', value = nil,
+                           class: "Menu-text",
+                           placeholder: "new menu?")
+       %>
+       <%= button_tag(value='Add', class: "Add-Button")  %>
+    <% end %>
+  </div>
 </section>
-<%= form_with(url:"/menuitems",
-                      method: "post",
-                      class: "Add-menuitem",
-                    ) do%>
-    <%= text_field_tag( name='name',value=nil,class: "AddMenuitem-name",placeholder: "new item in #{@menu.name} menu ?")  %>
-    <%= text_field_tag( name='price',value=nil,class: "AddMenuitem-price",placeholder: "price?")  %>
-    <%= button_tag(value='Add',class: "Add-Button")  %>
-<% end %>
-  <ul class="Menuitems">
-    <% @menu.menuitems.each do |menu_item|%>
-      <li class='Menuitem'>
-        <div class='MenuItem-container'>
-          <p class="MenuItem-name"><%= menu_item.name %></p>
-          <p class="MenuItem-price">₹<%= menu_item.price %></p>
-          <%= form_with(url:"/menuitems/#{menu_item.id}", method: "delete") do %>
-            <%= image_submit_tag(source="delete-icon.svg",class: "MenuItem-deleteIcon", alt: "deleteicon")%>
-          <% end %>
-        </div>
-      </li>
+<section>
+  <div>
+    <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
+      <%= text_field_tag(name = 'name', value = nil,
+                         class: "AddMenuitem-name",
+                         placeholder: "new item in #{@menu.name} menu ?")
+      %>
+      <%= text_field_tag(name = 'price', value = nil,
+                         class: "AddMenuitem-price",
+                         placeholder: "price?")
+      %>
+      <%= button_tag(value='Add', class: "Add-Button")  %>
+    <% end %>
+  </div>
+  <div>
+    <ul class="Menuitems">
+      <% @menu.menuitems.each do |menu_item|%>
+        <li class='Menuitem'>
+          <div class='MenuItem-container'>
+            <p class="MenuItem-name"><%= menu_item.name %></p>
+            <p class="MenuItem-price">₹<%= menu_item.price %></p>
+            <%= form_with(url: "/menuitems/#{menu_item.id}", method: "delete") do %>
+              <%= image_submit_tag(source="delete-icon.svg",
+                                   class: "MenuItem-deleteIcon",
+                                   alt: "deleteicon")
+              %>
+            <% end %>
+          </div>
+        </li>
       <% end %>
     </ul>
-  </section>
+  </div>
+</section>

@@ -1,13 +1,11 @@
-
- <h1 class="PageHead">Welcome :)    :)</h1>
-
-    <%= form_with(url: "/orders/addmore", method: "post") do %>
+<h1 class="PageHead">Welcome :)    :)</h1>
+  <%= form_with(url: "/orders/addmore", method: "post") do %>
         <ul class="MenuItemList">
            <% @menu.menuitems.all.each do |menuitem| %>
                 <li class="MenuItem">
-                    <p class="MenuItemName"> <%= menuitem.name %> </p>
-                    <p class="MenuItemPrice"> ₹<%= menuitem.price %> </p>
-                    <p class="MenuItemDescription"> <%= menuitem.description %> </p>
+                    <p class="MenuItemName"><%= menuitem.name %></p>
+                    <p class="MenuItemPrice"> ₹<%= menuitem.price %></p>
+                    <p class="MenuItemDescription"><%= menuitem.description %></p>
                     <select name='<%= menuitem.id %>' class="Count">
                         <option value="0">qty</option>
                         <option value="1">1</option>
@@ -20,4 +18,4 @@
         </ul>
         <%= hidden_field_tag "id", order.id %>
         <%= submit_tag 'Go to cart', class: "Submit-Items" %>
-    <% end %>
+   <% end %>

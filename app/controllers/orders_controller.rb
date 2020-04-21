@@ -67,4 +67,11 @@ class OrdersController < ApplicationController
   def new
     render :new, locals: { order: Order.find(params[:id]) }
   end
+
+  def destroy
+    order = current_user.orders.find(params[:id])
+    order.destroy
+    params.delete(:id)
+    redirect_to action: "index"
+  end
 end
