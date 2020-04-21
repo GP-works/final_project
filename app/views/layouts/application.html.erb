@@ -14,7 +14,8 @@
         <% if @current_user.role == "owner" %>
           <div class="PageSwap">
             <div>
-              <%= link_to "Home", menus_path, class: "Header-tab" %>
+              <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= link_to "Menus", menus_path, class: "Header-tab" %>
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
               <%= link_to "Users", users_path, class: "Header-tab" %>
             </div>

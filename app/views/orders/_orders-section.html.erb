@@ -18,6 +18,14 @@
           <p class="delivered-status-<%= delivered_status %>">
               <%= delivered_status %>
           </p>
+          <% if hidden_status %>
+            <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
+              <%= image_submit_tag(source="delete-icon.svg",
+                                   class: "MenuItem-deleteIcon",
+                                   alt: "deleteicon")
+              %>
+            <% end %>
+          <% end %>
         </div>
         <div class="Order-items">
           <ul>
