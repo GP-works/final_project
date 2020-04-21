@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_044427) do
+ActiveRecord::Schema.define(version: 2020_04_21_101622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_044427) do
     t.string "menu_item_name"
     t.float "menu_item_price"
     t.bigint "order_id", null: false
-    t.bigint "menuitem_id", null: false
-    t.index ["menuitem_id"], name: "index_orderitems_on_menuitem_id"
+    t.bigint "menuitem_id"
     t.index ["order_id"], name: "index_orderitems_on_order_id"
   end
 
@@ -52,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_04_19_044427) do
   end
 
   add_foreign_key "menuitems", "menus"
-  add_foreign_key "orderitems", "menuitems"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
 end

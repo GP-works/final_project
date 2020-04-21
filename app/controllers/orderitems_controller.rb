@@ -9,10 +9,9 @@ class OrderitemsController < ApplicationController
 
   def create
     order = Order.find(params[:order_id])
-    menuitem = Menuitem.find(params[:menuitem_id])
-    order.orderitems.create(menu_item_name: menuitem.name,
-                            menu_item_price: menuitem.price,
-                            menuitem_id: menuitem.id)
+    order.orderitems.create(menu_item_name: params[menuitem_name],
+                            menu_item_price: params[menu_item_price],
+                            menuitem_id: params[:menuitem_id])
     params.delete(:order_id)
     params.delete(:menuitem_id)
     redirect_to bill_path(id: order.id)
