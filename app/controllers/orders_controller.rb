@@ -35,8 +35,9 @@ class OrdersController < ApplicationController
 
   def bill
     order = Order.find(params[:id])
-    unless order.user == current_user
-      redirect_to "/"
+    unless current_user.orders.last == order
+      render :bill, locals: { order: current_user.orders.last }
+      return
     end
     render :bill, locals: { order: order }
   end
