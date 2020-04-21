@@ -1,14 +1,14 @@
 <p class="Orders-Title">Pending orders</p>
 <section class="orders">
-<%=render partial:'orders-section',locals:{
-  all_orders: all_orders.not_delivered ,
-  hidden_status: hidden_status
-}
+<%= render partial: 'orders-section',
+    locals:{ all_orders: all_orders.not_delivered ,
+              hidden_status: hidden_status
+            }
 %>
 <p class="Orders-Title"><%= second_title %></p>
-<%=render partial:'orders-section',locals:{
-  all_orders: all_orders.delivered ,
-  hidden_status: hidden_status
-}
+<%= render partial: 'orders-section',
+    locals:{ all_orders: all_orders.delivered ,
+              hidden_status: hidden_status
+            }
 %>
 </section>

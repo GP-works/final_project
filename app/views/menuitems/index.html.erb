@@ -1,14 +1,12 @@
-
- <h1 class="PageHead">Welcome <%= @current_user.name %></h1>
-
+<h1 class="PageHead">Welcome<%= @current_user.name %></h1>
     <%= form_with(url: "/orders", method: "post") do %>
         <ul class="MenuItemList">
            <% @menu.menuitems.all.each do |menuitem| %>
                 <li class="MenuItem">
-                    <p class="MenuItemName"> <%= menuitem.name %> </p>
-                    <p class="MenuItemPrice"> ₹<%= menuitem.price %> </p>
-                    <p class="MenuItemDescription"> <%= menuitem.description %> </p>
-                    <select name='<%= menuitem.id %>' class="Count">
+                    <p class="MenuItemName"><%= menuitem.name %></p>
+                    <p class="MenuItemPrice">₹<%= menuitem.price %></p>
+                    <p class="MenuItemDescription"><%= menuitem.description %></p>
+                    <select name='<%= menuitem.id %>'class="Count">
                         <option value="0">qty</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

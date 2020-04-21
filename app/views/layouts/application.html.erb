@@ -12,31 +12,29 @@
   <body>
     <% if @current_user %>
         <% if @current_user.role == "owner" %>
-
           <div class="PageSwap">
             <div>
-              <%= link_to "Home", menus_path,class:"Header-tab" %>
-              <%= link_to "Orders", orders_path,class: "Header-tab" %>
-              <%= link_to "Users", users_path, class: "Header-tab"%>
+              <%= link_to "Home", menus_path, class: "Header-tab" %>
+              <%= link_to "Orders", orders_path, class: "Header-tab" %>
+              <%= link_to "Users", users_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path,method: "delete" ,class: "Header-tab" %>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
           </div>
-
-        <% elsif @current_user.role == "billclerk"%>
+        <% elsif @current_user.role == "billclerk" %>
           <div class="PageSwap">
             <div>
-              <%= link_to "Home", menuitems_path ,class: "Header-tab" %>
-              <%= link_to "Orders", orders_path ,class: "Header-tab" %>
+              <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= link_to "Orders", orders_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete",class: "Header-tab" %>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
           </div>
         <% else %>
           <div class="PageSwap">
             <div>
-              <%= link_to "Home", menuitems_path ,class: "Header-tab" %>
-              <%= link_to "My-orders", orders_path ,class: "Header-tab" %>
+              <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= link_to "My-orders", orders_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete",class: "Header-tab" %>
+            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
           </div>
         <% end %>
         <div>
@@ -47,10 +45,10 @@
         </div>
     <% end %>
     <% if flash[:error] %>
-     <p class="Flash-error"> <%= flash[:error] %></p>
+     <p class="Flash-error"><%= flash[:error] %></p>
     <% end %>
     <% if flash[:success] %>
-     <p class="Flash-success"> <%= flash[:success] %></p>
+     <p class="Flash-success"><%= flash[:success] %></p>
     <% end %>
     <%= yield %>
   </body>
