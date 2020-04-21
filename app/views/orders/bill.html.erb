@@ -20,7 +20,7 @@
                     <%= link_to "＋", orderitems_path(order_id: order.id ,
                                                      menuitem_id: order_item.menuitem.id,
                                                      menu_item_name: name,
-                                                     menu_item_price: order_item.price),
+                                                     menu_item_price: order_item.menu_item_price),
                                                      method: "post",
                                                      class: "plus"
                     %>

@@ -1,4 +1,4 @@
-<h1 class="PageHead">Welcome<%= @current_user.name %></h1>
+<h1 class="PageHead">Welcome  <%= @current_user.name %></h1>
     <%= form_with(url: "/orders", method: "post") do %>
         <ul class="MenuItemList">
            <% @menu.menuitems.all.each do |menuitem| %>

@@ -9,8 +9,8 @@ class OrderitemsController < ApplicationController
 
   def create
     order = Order.find(params[:order_id])
-    order.orderitems.create(menu_item_name: params[menuitem_name],
-                            menu_item_price: params[menu_item_price],
+    order.orderitems.create(menu_item_name: params[:menu_item_name],
+                            menu_item_price: params[:menu_item_price],
                             menuitem_id: params[:menuitem_id])
     params.delete(:order_id)
     params.delete(:menuitem_id)
