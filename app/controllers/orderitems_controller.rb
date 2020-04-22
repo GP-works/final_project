@@ -3,7 +3,6 @@ class OrderitemsController < ApplicationController
     orderitem = Orderitem.find(params[:id])
     order = orderitem.order
     orderitem.destroy
-    params.delete(:id)
     redirect_to bill_path(id: order.id)
   end
 
@@ -12,8 +11,6 @@ class OrderitemsController < ApplicationController
     order.orderitems.create(menu_item_name: params[:menu_item_name],
                             menu_item_price: params[:menu_item_price],
                             menuitem_id: params[:menuitem_id])
-    params.delete(:order_id)
-    params.delete(:menuitem_id)
     redirect_to bill_path(id: order.id)
   end
 end

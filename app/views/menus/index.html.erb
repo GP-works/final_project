@@ -4,7 +4,7 @@
  </div>
 <section class="Menu">
   <div>
-    <%= form_with(url:"/menus/setmenu", method: "post", class: "Add-menu") do%>
+    <%= form_with(url: "/menus/setmenu", method: "post", class: "Add-menu") do %>
         <select name="menu_id"
                 class="Menu-select"
                 onchange ='if(this.value != 0) { this.form.submit(); }'
@@ -26,7 +26,7 @@
                            class: "Menu-text",
                            placeholder: "new menu?")
        %>
-       <%= button_tag(value='Add', class: "Add-Button")  %>
+       <%= button_tag(value = 'Add', class: "Add-Button")  %>
     <% end %>
   </div>
 </section>
