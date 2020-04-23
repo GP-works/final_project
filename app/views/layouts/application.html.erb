@@ -35,7 +35,10 @@
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
               <%= link_to "My-orders", orders_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            <div>
+              <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
+              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            </div>
           </div>
         <% end %>
         <div>

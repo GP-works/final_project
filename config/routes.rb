@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "/", to: "home#index"
   patch "/orders/pay", to: "orders#pay"
   post "/orders/addmore", to: "orders#addmore"
-  get "/orders/bill", to: "orders#bill", as: :bill
+  get "/orders/cart", to: "orders#cart", as: :cart
   resources :menus
   resources :users
   resources :menuitems

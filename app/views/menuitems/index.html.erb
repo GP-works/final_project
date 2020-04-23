@@ -1,20 +1,40 @@
 <h1 class="PageHead">Welcome  <%= @current_user.name %></h1>
-    <%= form_with(url: "/orders", method: "post") do %>
+
         <ul class="MenuItemList">
            <% @menu.menuitems.all.each do |menuitem| %>
                 <li class="MenuItem">
                     <p class="MenuItemName"><%= menuitem.name %></p>
                     <p class="MenuItemPrice">₹<%= menuitem.price %></p>
                     <p class="MenuItemDescription"><%= menuitem.description %></p>
-                    <select name='<%= menuitem.id %>'class="Count">
-                        <option value="0">qty</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                    <% qty=@current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
+                    <% if qty==0 %>
+                        <%= link_to "Add", orderitems_path(
+                                                        menuitem_id: menuitem.id,
+                                                        menu_item_name: menuitem.name,
+                                                        menu_item_price: menuitem.price),
+                                                        method: "post",
+                                                        class: "Add-text"
+                        %>
+                    <% else %>
+                        <div class='MenuItem-qty'>
+                            <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
+                            <%= link_to "− ", order_item, method: "delete", class: "home-minus" %>
+                            <%= " #{qty}" %>
+                            <%= link_to "＋", orderitems_path(
+                                                            menuitem_id: menuitem.id,
+                                                            menu_item_name: menuitem.name,
+                                                            menu_item_price: menuitem.price),
+                                                            method: "post",
+                                                            class: "home-plus"
+                            %>
+                        </div>
+
+
+                    <% end %>
+
                  </li>
            <% end %>
         </ul>
-           <%= submit_tag 'Go to cart', class: "Submit-Items" %>
-    <% end %>
+    <form action="/orders/cart" method="GET">
+        <input value='Go-to-cart' type="submit" class='Submit-Items'>
+    </form>

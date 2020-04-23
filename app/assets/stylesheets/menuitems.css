@@ -23,7 +23,7 @@
 
 .MenuItemPrice {
     font-size: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: 300;
 }
 
@@ -50,4 +50,32 @@
 .Count {
     color: black;
     padding: 1px;
+}
+
+.Add-text {
+    padding-left: 2px;
+    padding-right: 2px;
+    border: 1px solid green;
+    text-decoration: none;
+    color: green;
+    font-size: large;
+}
+
+.MenuItem-qty {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    border: 1px solid green;
+}
+
+.home-minus {
+    text-decoration: none;
+    color: green;
+    margin-right: 2px;
+}
+
+.home-plus {
+    text-decoration: none;
+    color: green;
+    margin-left: 2px;
 }

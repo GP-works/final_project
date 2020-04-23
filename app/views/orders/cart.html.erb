@@ -7,6 +7,7 @@
         <th class="EachItemPrice">Price</th>
         <th class="ItemPrice">TotalPrice</th>
     </tr>
+    <% order = @current_user.orders.cart_order %>
     <% orderitems = order.orderitems.getqty %>
     <% serial_no = 1 %>
     <% orderitems.each do |name,quantity|%>
@@ -34,8 +35,7 @@
 <hr>
 <p class="TotalPrice">TotalPrice : ₹<%= order.get_total_price %> </p>
 <div class="Buttons-container">
-    <form action="/orders/new" method="GET">
-        <input type=hidden name='id' value=<%= order.id %>>
+    <form action="/menuitems" method="GET">
         <input class='SubmitButton' type="submit" value='Add-other-items'>
     </form>
     <%= form_with(url: "/orders/pay", method: "patch") do %>

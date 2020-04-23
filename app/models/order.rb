@@ -18,10 +18,18 @@ class Order < ActiveRecord::Base
     price = 0
     orderitems = self.orderitems.getqty
     orderitems.each do |name, quantity|
-      order_item = Orderitem.find_by(menu_item_name: name)
+      order_item = Orderitem.find_by("menu_item_name = ?", name)
       price = price + quantity * order_item.menu_item_price
     end
     price
+  end
+
+  def self.cart_order
+    order = find_by("status = ?", "cart")
+    if order == nil
+      order = create!(date: DateTime.now, status: "cart")
+    end
+    order
   end
 
   def self.confirmed_orders
