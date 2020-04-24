@@ -4,6 +4,12 @@
     margin-bottom: 30px;
 }
 
+.MenuItemsBody {
+    font-family: sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .MenuItemList {
     display: flex;
     flex-wrap: wrap;
@@ -17,12 +23,12 @@
 }
 
 .MenuItemDescription {
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 5px;
 }
 
 .MenuItemPrice {
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 10px;
     font-weight: 300;
 }
@@ -30,11 +36,28 @@
 .MenuItem {
     color: black;
     margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 10px;
     border-radius: 3px;
-    text-align-last: right;
-    border: 1px solid #BFB8CC;
+    border: 1px transparent #BFB8CC;
+    width: 250px;
+    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.NameAndDescriptionContainer {
+    margin-left: 35px;
+}
+
+.PriceAndQuantityContainer {
+    font-size: medium;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.MenuItemImage {
+    align-content: center;
+    margin-left: 25px;
+    border-radius: 10px;
 }
 
 .Submit-Items {
@@ -55,6 +78,7 @@
 .Add-text {
     padding-left: 2px;
     padding-right: 2px;
+    margin-right: 20px;
     border: 1px solid green;
     text-decoration: none;
     color: green;

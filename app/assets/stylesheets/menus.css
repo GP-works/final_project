@@ -1,14 +1,14 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  max-width: 460px;
-  margin: 0 auto;
-  letter-spacing: 0.1px;
-}
-
 .ActiveMenu {
   display: inline-flex;
   margin-bottom: 20px;
   align-items: center;
+  font-size: 20px;
+}
+
+.MenusBody {
+  font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .ActiveMenu-name {
@@ -119,6 +119,7 @@ body {
   color: #453C52;
   margin-right: 10px;
   padding: 6px 12px;
+  width: 140px;
 }
 
 .AddMenuitem-price {
@@ -128,5 +129,31 @@ body {
   color: #453C52;
   margin-right: 10px;
   padding: 6px 12px;
-  width: 50px;
+  width: 60px;
+}
+
+.AddMenuitem-image_url {
+  border: 1px solid #BFB8CC;
+  border-radius: 4px;
+  font-size: 14;
+  color: #453C52;
+  margin-right: 10px;
+  padding: 6px 12px;
+  width: 220px;
+}
+
+.AddMenuitem-description {
+  border: 1px solid #BFB8CC;
+  border-radius: 4px;
+  font-size: 14;
+  color: #453C52;
+  margin-right: 10px;
+  padding: 6px 12px;
+  width: 150px;
+}
+
+.AddMenuItemLabel {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: rgb(51, 116, 190);
 }

@@ -4,7 +4,10 @@ class MenuitemsController < ApplicationController
 
   def create
     ensure_owner_logged_in
-    new_menuitem = @menu.menuitems.new(name: params[:name], price: params[:price])
+    new_menuitem = @menu.menuitems.new(name: params[:name],
+                                       price: params[:price],
+                                       image_url: params[:image_url],
+                                       description: params[:description])
     if new_menuitem.save
       redirect_to menus_path
     else
