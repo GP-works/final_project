@@ -16,9 +16,9 @@ class Order < ActiveRecord::Base
 
   def get_total_price
     price = 0
-    orderitems = self.orderitems.getqty
-    orderitems.each do |name, quantity|
-      order_item = Orderitem.find_by("menu_item_name = ?", name)
+    orderitems_array = self.orderitems.getqty
+    orderitems_array.each do |name, quantity|
+      order_item = self.orderitems.find_by("menu_item_name = ?", name)
       price = price + quantity * order_item.menu_item_price
     end
     price

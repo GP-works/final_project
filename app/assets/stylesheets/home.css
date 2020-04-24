@@ -33,7 +33,28 @@
 .Flash-error {
   font-size: 16px;
   margin-bottom: 16px;
-  color: darkred;
+  color: white;
+  border: 1px solid red;
+  background-color: rgb(196, 6, 6);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  max-width: 300px;
+}
+
+.Flash-success {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: white;
+  background-color: rgb(14, 110, 5);
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 5px;
+  max-width: 300px;
 }
 
 .Header-tab {
@@ -42,12 +63,6 @@
   font-weight: 600;
   font-size: 20px;
   margin-right: 20px;
-}
-
-.Flash-success {
-  font-size: 16px;
-  margin-bottom: 16px;
-  color: darkgreen;
 }
 
 .Signup-link, .Signin-link {
