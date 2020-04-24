@@ -1,14 +1,13 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  max-width: 460px;
-  margin: 0 auto;
-  letter-spacing: 0.1px;
-}
-
 .Orders-Title {
   font-size: larger;
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+.OrdersBody {
+  font-family: sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .Order-Container {

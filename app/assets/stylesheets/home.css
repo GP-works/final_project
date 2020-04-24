@@ -12,6 +12,7 @@
 .UserHeader {
   font-size: 20px;
   float: right;
+  margin: 20px 60px;
 }
 
 .UserLabel {
@@ -22,10 +23,11 @@
   padding: 10px;
   background-color: lightgray;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin: 20px 40px;
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
+  margin-bottom: 60px;
 }
 
 .Flash-error {
