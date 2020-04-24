@@ -1,54 +1,5 @@
 <section class="MenuItemsBody">
-<h1 class="PageHead"><%= @menu.menuitems.count %> Items found</h1>
-
-        <ul class="MenuItemList">
-           <% @menu.menuitems.all.each do |menuitem| %>
-                <li class="MenuItem">
-
-                    <%= image_tag(menuitem.image_url,
-                        size: "180",
-                        class: "MenuItemImage")
-                    %>
-                    <section class="NameAndDescriptionContainer">
-                    <section class="MenuItemName"><%= menuitem.name %></section>
-                    <section class="MenuItemDescription"><%= menuitem.description %></section>
-                    </section>
-                    <section class="PriceAndQuantityContainer">
-                        <div>
-                            <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
-                        </div>
-                        <div>
-                        <% qty=@current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
-                        <% if qty==0 %>
-                            <%= link_to "Add", orderitems_path(
-                                                            menuitem_id: menuitem.id,
-                                                            menu_item_name: menuitem.name,
-                                                            menu_item_price: menuitem.price),
-                                                            method: "post",
-                                                            class: "Add-text"
-                            %>
-                        <% else %>
-                            <div class='MenuItem-qty'>
-                                <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
-                                <%= link_to "− ", order_item, method: "delete", class: "home-minus" %>
-                                <%= " #{qty}" %>
-                                <%= link_to "＋", orderitems_path(
-                                                                menuitem_id: menuitem.id,
-                                                                menu_item_name: menuitem.name,
-                                                                menu_item_price: menuitem.price),
-                                                                method: "post",
-                                                                class: "home-plus"
-                                %>
-                            </div>
-                        <% end %>
-                        </div>
-                    </section>
-
-
-
-                 </li>
-           <% end %>
-        </ul>
+    <%= render partial: 'menuitems-section',locals:{rendered_from: "home"} %>
     <form action="/orders/cart" method="GET">
         <input value='Go-to-cart' type="submit" class='Submit-Items'>
     </form>
