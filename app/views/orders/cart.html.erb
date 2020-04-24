@@ -17,12 +17,12 @@
                 <td class="SerialNo"><%= serial_no %>.</td>
                 <td class="ItemName"><%= name %></td>
                 <td class="ItemQuantity">
-                    <%= link_to "−", order_item, method: "delete", class: "minus" %>
+                    <%= link_to "−", orderitem_path(id:order_item.id,from: "cart"), method: "delete", class: "minus" %>
                     <%= quantity %>
                     <%= link_to "＋", orderitems_path(order_id: order.id ,
                                                      menuitem_id: order_item.menuitem.id,
                                                      menu_item_name: name,
-                                                     menu_item_price: order_item.menu_item_price),
+                                                     menu_item_price: order_item.menu_item_price,from: "cart",),
                                                      method: "post",
                                                      class: "plus"
                     %>

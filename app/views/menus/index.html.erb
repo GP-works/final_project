@@ -32,32 +32,23 @@
        <%= button_tag(value = 'Add', class: "Add-Button")  %>
     <% end %>
   </div>
-</section>
-<section>
-  <p class="AddMenuItemLabel">Wanna Add an item in "<%= @menu.name %>"</p>
-</section>
-<section>
   <div>
-    <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
-      <%= text_field_tag(name = 'name', value = nil,
-                         class: "AddMenuitem-name",
-                         placeholder: "name ?")
-      %>
-      <%= text_field_tag(name = 'price', value = nil,
-                         class: "AddMenuitem-price",
-                         placeholder: "price?")
-      %>
-      <%= text_field_tag(name = 'image_url', value = nil,
-                         class: "AddMenuitem-image_url",
-                         placeholder: "image url?")
-      %>
-      <%= text_field_tag(name = 'description', value = nil,
-                         class: "AddMenuitem-description",
-                         placeholder: "description?")
-      %>
-      <%= button_tag(value='Add', class: "Add-Button")  %>
+    <%= form_with(url: "/menus/edit", method: "get", class: "Add-menu") do %>
+        <select name="menu_id"
+                class="Menu-select"
+                onchange ='if(this.value != 0) { this.form.submit(); }'
+                autofocus>
+
+            <option selected disabled>edit a different menu</option>
+            <%Menu.all.each do |menu|%>
+               <option value=<%= menu.id %>, class="Menuselect-option">
+                  <%= menu.name %>
+                </option>
+            <% end %>
+        </select>
     <% end %>
   </div>
-  <%= render partial:'menuitems/menuitems-section',locals: {rendered_from: 'menus'} %>
+</section>
+<%= render partial: 'edit-menu',locals:{menu: @menu}%>
 </section>
 </section>

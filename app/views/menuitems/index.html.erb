@@ -1,5 +1,5 @@
 <section class="MenuItemsBody">
-    <%= render partial: 'menuitems-section',locals:{rendered_from: "home"} %>
+    <%= render partial: 'menuitems-section',locals:{rendered_from: "home",menu: @menu} %>
     <form action="/orders/cart" method="GET">
         <input value='Go-to-cart' type="submit" class='Submit-Items'>
     </form>

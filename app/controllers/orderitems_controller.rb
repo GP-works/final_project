@@ -3,7 +3,11 @@ class OrderitemsController < ApplicationController
     orderitem = Orderitem.find(params[:id])
     order = orderitem.order
     orderitem.destroy
-    redirect_to bill_path(id: order.id)
+    if params[:from] == "cart"
+      redirect_to cart_path(id: order.id)
+    else
+      redirect_to menuitems_path
+    end
   end
 
   def create
@@ -11,7 +15,11 @@ class OrderitemsController < ApplicationController
     order.orderitems.create!(menu_item_name: params[:menu_item_name],
                              menu_item_price: params[:menu_item_price],
                              menuitem_id: params[:menuitem_id])
-    flash[:success] = "#{params[:menu_item_name]} added to cart"
-    redirect_to menuitems_path
+    if params[:from] == "cart"
+      redirect_to cart_path(id: order.id)
+    else
+      flash[:success] = "#{params[:menu_item_name]} is added to cart successfully"
+      redirect_to menuitems_path
+    end
   end
 end
