@@ -1,47 +1,47 @@
-<section class="OrdersBody">
-<h1 class="PageHead">Have a Great Day</h1>
-<table>
-    <tr class="ColumnTitle">
-        <th class="SerialNo">SNo</th>
-        <th class="ItemName">Name</th>
-        <th class="ItemQuantity">Quantity</th>
-        <th class="EachItemPrice">Price</th>
-        <th class="ItemPrice">TotalPrice</th>
-    </tr>
-    <% order = @current_user.orders.cart_order %>
-    <% orderitems = order.orderitems.getqty %>
-    <% serial_no = 1 %>
-    <% orderitems.each do |name,quantity|%>
-        <% order_item = order.orderitems.find_by(menu_item_name: name)%>
-             <tr class="ItemDetails">
-                <td class="SerialNo"><%= serial_no %>.</td>
-                <td class="ItemName"><%= name %></td>
-                <td class="ItemQuantity">
-                    <%= link_to "−", orderitem_path(id:order_item.id,from: "cart"), method: "delete", class: "minus" %>
-                    <%= quantity %>
-                    <%= link_to "＋", orderitems_path(order_id: order.id ,
-                                                     menuitem_id: order_item.menuitem.id,
-                                                     menu_item_name: name,
-                                                     menu_item_price: order_item.menu_item_price,from: "cart",),
-                                                     method: "post",
-                                                     class: "plus"
-                    %>
-                </td>
-                <td class="EachItemPrice">₹<%= order_item.menu_item_price %></td>
-                <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
-            </tr>
-            <% serial_no = serial_no+1 %>
-    <% end %>
-</table>
-<hr>
-<p class="TotalPrice">TotalPrice : ₹<%= order.get_total_price %> </p>
-<div class="Buttons-container">
-    <form action="/menuitems" method="GET">
-        <input class='SubmitButton' type="submit" value='Add-other-items'>
-    </form>
-    <%= form_with(url: "/orders/pay", method: "patch") do %>
-        <%= hidden_field_tag "id", order.id %>
-        <%= submit_tag "Confirm&Pay", class: 'SubmitButton' %>
-    <% end %>
-</div>
+<section class="CartBody">
+    <h1 class="PageHead">Have a Great Day</h1>
+    <table>
+        <tr class="ColumnTitle">
+            <th class="SerialNo">SNo</th>
+            <th class="ItemName">Name</th>
+            <th class="ItemQuantity">Quantity</th>
+            <th class="EachItemPrice">Price</th>
+            <th class="ItemPrice">TotalPrice</th>
+        </tr>
+        <% order = @current_user.orders.cart_order %>
+        <% orderitems = order.orderitems.getqty %>
+        <% serial_no = 1 %>
+        <% orderitems.each do |name,quantity|%>
+            <% order_item = order.orderitems.find_by(menu_item_name: name)%>
+                <tr class="ItemDetails">
+                    <td class="SerialNo"><%= serial_no %>.</td>
+                    <td class="ItemName"><%= name %></td>
+                    <td class="ItemQuantity">
+                        <%= link_to "−", orderitem_path(id:order_item.id,from: "cart"), method: "delete", class: "minus" %>
+                        <%= quantity %>
+                        <%= link_to "＋", orderitems_path(order_id: order.id ,
+                                                        menuitem_id: order_item.menuitem_id,
+                                                        menu_item_name: name,
+                                                        menu_item_price: order_item.menu_item_price,from: "cart",),
+                                                        method: "post",
+                                                        class: "plus"
+                        %>
+                    </td>
+                    <td class="EachItemPrice">₹<%= order_item.menu_item_price %></td>
+                    <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
+                </tr>
+                <% serial_no = serial_no+1 %>
+        <% end %>
+    </table>
+    <hr class='line'>
+    <p class="TotalPrice">TotalPrice : ₹<%= order.get_total_price %> </p>
+    <div class="Buttons-container">
+        <form action="/menuitems" method="GET">
+            <input class='SubmitButton' type="submit" value='Add-other-items'>
+        </form>
+        <%= form_with(url: "/orders/pay", method: "patch") do %>
+            <%= hidden_field_tag "id", order.id %>
+            <%= submit_tag "Confirm&Pay", class: 'SubmitButton' %>
+        <% end %>
+    </div>
 </section>

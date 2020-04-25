@@ -1,8 +1,7 @@
 <ul class="MenuItemList">
   <% menu.menuitems.all.each do |menuitem| %>
     <li class="MenuItem">
-      <% image_url = (menuitem.image_url==nil)? 'default.jpeg' : menuitem.image_url %>
-      <%= image_tag(image_url,
+      <%= image_tag(menuitem.image_url,
                     size: "180",
                     class: "MenuItemImage")
       %>

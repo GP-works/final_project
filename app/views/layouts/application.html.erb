@@ -20,6 +20,9 @@
               <%= link_to "Users", users_path, class: "Header-tab" %>
             </div>
             <div>
+              <p class='Cafeteria-title'>Gp cafeteria</p>
+            </div>
+            <div>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
               <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
             </div>
@@ -31,6 +34,9 @@
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
             </div>
             <div>
+              <p class='Cafeteria-title'>Gp cafeteria</p>
+            </div>
+            <div>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
               <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
             </div>
@@ -40,6 +46,9 @@
             <div>
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
               <%= link_to "My-orders", orders_path, class: "Header-tab" %>
+            </div>
+            <div>
+              <p class='Cafeteria-title'>Gp cafeteria</p>
             </div>
             <div>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
@@ -55,10 +64,14 @@
         </div>
     <% end %>
     <% if flash[:error] %>
-     <p class="Flash-error"><%= flash[:error] %></p>
+     <div>
+      <p class="Flash-error"><%= flash[:error] %></p>
+     </div>
     <% end %>
     <% if flash[:success] %>
-     <p class="Flash-success"><%= flash[:success] %></p>
+      <div class="Flash-success">
+        <p class="Flash-success-text"><%= flash[:success] %></p>
+      </div>
     <% end %>
     <%= yield %>
   </body>

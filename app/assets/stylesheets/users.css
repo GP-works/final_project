@@ -1,6 +1,6 @@
 .NewUserBody, .NewSessionBody, .UsersBody {
   font-family: sans-serif;
-  max-width: 600px;
+  max-width: 50%;
   margin: 0 auto;
 }
 

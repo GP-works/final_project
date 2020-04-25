@@ -1,54 +1,54 @@
 <section class="MenusBody">
-<section>
-<div class="ActiveMenu">
- <p class="ActiveMenu-label">Currently active menu is</p>
- <p class="ActiveMenu-name"><%= @menu.name %>
- </div>
- </section>
-<section class="Menu">
-  <div>
-    <%= form_with(url: "/menus/setmenu", method: "post", class: "Add-menu") do %>
-        <select name="menu_id"
-                class="Menu-select"
-                onchange ='if(this.value != 0) { this.form.submit(); }'
-                autofocus>
+  <section>
+  <div class="ActiveMenu">
+  <p class="ActiveMenu-label">Currently active menu is</p>
+  <p class="ActiveMenu-name"><%= @menu.name %>
+  </div>
+  </section>
+  <section class="Menu">
+    <div>
+      <%= form_with(url: "/menus/setmenu", method: "post", class: "Add-menu") do %>
+          <select name="menu_id"
+                  class="Menu-select"
+                  onchange ='if(this.value != 0) { this.form.submit(); }'
+                  autofocus>
 
-            <option selected disabled>Choose a different menu</option>
-            <%Menu.all.each do |menu|%>
-               <option value=<%= menu.id %>, class="Menuselect-option">
-                  <%= menu.name %>
-                </option>
-            <% end %>
-        </select>
-    <% end %>
-  </div>
-  <div>
-    <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
-       <label for="Menu-text" class="label">new menu:</label>
-       <%= text_field_tag( name = 'name', value = nil,
-                           class: "Menu-text",
-                           placeholder: "new menu?")
-       %>
-       <%= button_tag(value = 'Add', class: "Add-Button")  %>
-    <% end %>
-  </div>
-  <div>
-    <%= form_with(url: "/menus/edit", method: "get", class: "Add-menu") do %>
-        <select name="menu_id"
-                class="Menu-select"
-                onchange ='if(this.value != 0) { this.form.submit(); }'
-                autofocus>
+              <option selected disabled>Choose a different menu</option>
+              <%Menu.all.each do |menu|%>
+                <option value=<%= menu.id %>, class="Menuselect-option">
+                    <%= menu.name %>
+                  </option>
+              <% end %>
+          </select>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
+        <label for="Menu-text" class="label">new menu:</label>
+        <%= text_field_tag( name = 'name', value = nil,
+                            class: "Menu-text",
+                            placeholder: "new menu?")
+        %>
+        <%= button_tag(value = 'Add', class: "Add-Button")  %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with(url: "/menus/edit", method: "get", class: "Add-menu") do %>
+          <select name="menu_id"
+                  class="Menu-select"
+                  onchange ='if(this.value != 0) { this.form.submit(); }'
+                  autofocus>
 
-            <option selected disabled>edit a different menu</option>
-            <%Menu.all.each do |menu|%>
-               <option value=<%= menu.id %>, class="Menuselect-option">
-                  <%= menu.name %>
-                </option>
-            <% end %>
-        </select>
-    <% end %>
-  </div>
-</section>
-<%= render partial: 'edit-menu',locals:{menu: @menu}%>
-</section>
+              <option selected disabled>edit a different menu</option>
+              <%Menu.all.each do |menu|%>
+                <option value=<%= menu.id %>, class="Menuselect-option">
+                    <%= menu.name %>
+                  </option>
+              <% end %>
+          </select>
+      <% end %>
+    </div>
+  </section>
+  <%= render partial: 'edit-menu',locals:{menu: @menu}%>
+  </section>
 </section>

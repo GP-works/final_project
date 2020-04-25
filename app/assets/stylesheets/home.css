@@ -15,24 +15,28 @@
   margin: 20px 60px;
 }
 
+.Cafeteria-title {
+  color: red;
+  font-size: 30px;
+}
+
 .UserLabel {
   margin-bottom: 5px;
 }
 
 .PageSwap {
   padding: 10px;
-  background-color: lightgray;
   font-size: 20px;
   margin: 20px 40px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .Flash-error {
   font-size: 16px;
-  margin-bottom: 16px;
   color: white;
   border: 1px solid red;
   background-color: rgb(196, 6, 6);
@@ -40,20 +44,19 @@
   padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 200px;
   max-width: 300px;
+  margin: 10px auto;
 }
 
 .Flash-success {
   font-size: 16px;
-  margin-bottom: 16px;
   color: white;
   background-color: rgb(14, 110, 5);
   border-radius: 5px;
   padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 200px;
+  margin: 10px auto;
   max-width: 300px;
 }
 
