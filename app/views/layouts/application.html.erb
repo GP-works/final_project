@@ -19,7 +19,10 @@
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
               <%= link_to "Users", users_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            <div>
+              <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
+              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            </div>
           </div>
         <% elsif @current_user.role == "billclerk" %>
           <div class="PageSwap">
@@ -27,7 +30,10 @@
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
             </div>
-            <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            <div>
+              <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
+              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+            </div>
           </div>
         <% else %>
           <div class="PageSwap">
