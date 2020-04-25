@@ -1,0 +1,27 @@
+<section>
+  <p class="AddMenuItemLabel">Wanna Add an item in "<%= menu.name %>" menu</p>
+</section>
+<section>
+  <div>
+    <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
+      <%= text_field_tag(name = 'name', value = nil,
+                         class: "AddMenuitem-name",
+                         placeholder: "name ?")
+      %>
+      <%= text_field_tag(name = 'price', value = nil,
+                         class: "AddMenuitem-price",
+                         placeholder: "price?")
+      %>
+      <%= text_field_tag(name = 'image_url', value = nil,
+                         class: "AddMenuitem-image_url",
+                         placeholder: "image url?")
+      %>
+      <%= text_field_tag(name = 'description', value = nil,
+                         class: "AddMenuitem-description",
+                         placeholder: "description?")
+      %>
+      <%= button_tag(value='Add', class: "Add-Button")  %>
+    <% end %>
+  </div>
+  <%= render partial:'menuitems/menuitems-section',locals: {rendered_from: 'menus',menu: menu} %>
+</section>

@@ -1,0 +1,54 @@
+<ul class="MenuItemList">
+  <% menu.menuitems.all.each do |menuitem| %>
+    <li class="MenuItem">
+      <% image_url = (menuitem.image_url==nil)? 'default.jpeg' : menuitem.image_url %>
+      <%= image_tag(image_url,
+                    size: "180",
+                    class: "MenuItemImage")
+      %>
+      <section class="NameAndDescriptionContainer">
+      <section class="MenuItemName"><%= menuitem.name %></section>
+      <section class="MenuItemDescription"><%= menuitem.description %></section>
+      </section>
+      <section class="PriceAndQuantityContainer">
+        <div>
+          <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
+        </div>
+        <% if rendered_from == 'home' %>
+          <div>
+            <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
+            <% if qty==0 %>
+              <%= link_to "Add", orderitems_path(menuitem_id: menuitem.id,
+                                                menu_item_name: menuitem.name,
+                                                menu_item_price: menuitem.price,
+                                                from: "menuitems"),
+                                                method: "post",
+                                                class: "Add-text"
+              %>
+            <% else %>
+              <div class='MenuItem-qty'>
+                  <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
+                  <%= link_to "− ", orderitem_path(id:order_item.id,from: "menuitems",), method: "delete", class: "home-minus" %>
+                  <%= " #{qty}" %>
+                  <%= link_to "＋", orderitems_path(menuitem_id: menuitem.id,
+                                                    menu_item_name: menuitem.name,
+                                                    menu_item_price: menuitem.price,
+                                                    from: "menuitems"),
+                                                    method: "post",
+                                                    class: "home-plus"
+                  %>
+              </div>
+            <% end %>
+          </div>
+        <% else %>
+          <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
+              <%= image_submit_tag(source="delete-icon.svg",
+                                   class: "MenuItem-deleteIcon",
+                                   alt: "deleteicon")
+              %>
+          <% end %>
+        <% end %>
+      </section>
+    </li>
+  <% end %>
+</ul>

@@ -10,6 +10,12 @@
   margin: 0 auto;
 }
 
+.CartBody {
+  font-family: sans-serif;
+  max-width: 50%;
+  margin: 0 auto;
+}
+
 .Order-Container {
   margin-bottom: 20px;
 }

@@ -1,0 +1,15 @@
+<section class="MenusBody">
+  <div class="ActiveMenu">
+    <p class="ActiveMenu-label">You are modifying</p>
+    <p class="ActiveMenu-name"><%= menu.name %>
+  </div>
+  <%= render partial: 'edit-menu',locals: {menu: menu} %>
+  <div class="Buttons-container">
+    <form action="/menus" method="GET">
+        <input class='SubmitButton' type="submit" value='exit'>
+    </form>
+    <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
+        <%= submit_tag "delete this menu", class: 'SubmitButton' %>
+    <% end %>
+</div>
+</section>

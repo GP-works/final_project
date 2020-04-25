@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     order.ordered = true
     order.status = "ordered"
     order.save
+    flash[:success] = "order placed succesfully with id #{order.id}"
     redirect_to orders_path
   end
 

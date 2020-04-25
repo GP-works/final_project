@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 
 .Flash-error {
@@ -37,10 +37,10 @@
   border: 1px solid red;
   background-color: rgb(196, 6, 6);
   border-radius: 5px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 5px;
+  margin-left: 200px;
   max-width: 300px;
 }
 
@@ -50,10 +50,10 @@
   color: white;
   background-color: rgb(14, 110, 5);
   border-radius: 5px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-top: 5px;
+  margin-left: 200px;
   max-width: 300px;
 }
 
