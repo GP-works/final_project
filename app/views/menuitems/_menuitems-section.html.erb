@@ -1,13 +1,13 @@
 <ul class="MenuItemList">
   <% menu.menuitems.all.each do |menuitem| %>
     <li class="MenuItem">
-      <%= image_tag(menuitem.image_url,
+      <%= image_tag(menuitem.image,
                     size: "180",
                     class: "MenuItemImage")
       %>
       <section class="NameAndDescriptionContainer">
-      <section class="MenuItemName"><%= menuitem.name %></section>
-      <section class="MenuItemDescription"><%= menuitem.description %></section>
+      <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
+      <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
       </section>
       <section class="PriceAndQuantityContainer">
         <div>
