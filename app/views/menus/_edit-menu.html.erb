@@ -4,6 +4,7 @@
 <section>
   <div>
     <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
+      <%= hidden_field_tag(name='id',value = menu.id)%>
       <%= text_field_tag(name = 'name', value = nil,
                          class: "AddMenuitem-name",
                          placeholder: "name ?")
