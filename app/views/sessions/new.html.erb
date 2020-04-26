@@ -1,35 +1,35 @@
 <section class="NewSessionBody">
-<h1 class="Home-title">
-  Welcome to GP Cafeteria
-</h1>
-<h1 class="Form-Title">Sign in</h1>
+  <h1 class="Home-title">
+    Welcome to GP Cafeteria
+  </h1>
+  <h1 class="Form-Title">Sign in</h1>
 
-<section class="UsersNew">
-  <%= form_with(url: sessions_path, method: "post") do %>
-   <div class="Form-Section">
-    <p class="Input-Label">
-      Email
-    </p>
-    <%= email_field_tag 'email', nil,
-                        autofocus: true,
-                        placeholder: "email",
-                        class: "Form-Input"
-    %>
-   </div>
-   <div class="Form-Section">
-    <p class="Input-Label">
-      Password
-    </p>
-    <%= password_field_tag 'password', nil,
-                           placeholder: "password",
-                           class: "Form-Input"
-    %>
-   </div>
-   <%= submit_tag 'Sign-in', class:"Form-Submit" %>
-  <% end %>
-</section>
-<h2 class="Home-authenticate">
-  <p class="UserLabel"> New User?</p>
-  <%= link_to "Sign-up here", new_user_path,class: "Signup-link" %>
-</h2>
+  <section class="UsersNew">
+    <%= form_with(url: sessions_path, method: "post") do %>
+    <div class="Form-Section">
+      <p class="Input-Label">
+        Email
+      </p>
+      <%= email_field_tag 'email', nil,
+                          autofocus: true,
+                          placeholder: "email",
+                          class: "Form-Input"
+      %>
+    </div>
+    <div class="Form-Section">
+      <p class="Input-Label">
+        Password
+      </p>
+      <%= password_field_tag 'password', nil,
+                            placeholder: "password",
+                            class: "Form-Input"
+      %>
+    </div>
+    <%= submit_tag 'Sign-in', class:"Form-Submit" %>
+    <% end %>
+  </section>
+  <h2 class="Home-authenticate">
+    <p class="UserLabel"> New User?</p>
+    <%= link_to "Sign-up here", new_user_path,class: "Signup-link" %>
+  </h2>
 </section>
