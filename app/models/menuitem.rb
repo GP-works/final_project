@@ -5,9 +5,8 @@ class Menuitem < ActiveRecord::Base
   has_many :orderitems
 
   def image
-    default_image = "default.jpeg"
-    return default_image if self.image_url == "" || self.image_url == nil
-    self.image_url
+    default_image = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/awurei8ypqkafoqay9ym"
+    self.image_url.presence || default_image
   end
 
   def description_method
