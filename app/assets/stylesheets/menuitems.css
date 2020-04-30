@@ -1,3 +1,13 @@
+.edit-Button {
+    background-color: rgb(218, 241, 9);
+    font-size: 14px;
+    color: black;
+    border: 1px solid transparent;
+    padding: 6px 22px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
 .PageHead {
     font-size: 30px;
     color: red;
@@ -42,6 +52,7 @@
     height: 250px;
     max-width: 250px;
     max-height: 250px;
+    padding: 5px;
 }
 
 .NameAndDescriptionContainer {
@@ -103,4 +114,66 @@
     text-decoration: none;
     color: green;
     margin-left: 2px;
+}
+
+.edit-container {
+    display: flex;
+    align-items: center;
+}
+
+.edit-menuitem-container {
+    max-width: 25%;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: white;
+}
+
+.Add-menuitem {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 20px;
+}
+
+.EditMenuitem-name {
+    border: 1px solid #BFB8CC;
+    border-radius: 4px;
+    font-size: 14;
+    color: #453C52;
+    margin-right: 10px;
+    padding: 6px 12px;
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+.EditMenuitem-price {
+    border: 1px solid #BFB8CC;
+    border-radius: 4px;
+    font-size: 14;
+    color: #453C52;
+    margin-right: 10px;
+    width: 60px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.EditMenuitem-image_url {
+    border: 1px solid #BFB8CC;
+    border-radius: 4px;
+    font-size: 14;
+    color: #453C52;
+    margin-right: 10px;
+    padding: 6px 12px;
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+.EditMenuitem-description {
+    border: 1px solid #BFB8CC;
+    border-radius: 4px;
+    font-size: 14;
+    color: #453C52;
+    margin-right: 10px;
+    padding: 6px 12px;
+    width: 150px;
+    margin-bottom: 20px;
 }

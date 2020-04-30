@@ -1,0 +1,22 @@
+<div class='edit-menuitem-container'>
+    <%= form_with(url: "/menuitems/#{menuitem.id}", method: "patch", ) do %>
+      <%= text_field_tag(name = 'name', value = nil,
+                         class: "EditMenuitem-name",
+                         placeholder: menuitem.name )
+      %>
+      <%= text_field_tag(name = 'price', value = nil,
+                         class: "EditMenuitem-price",
+                         placeholder:  "price:#{menuitem.price}" )
+      %>
+      <%= text_field_tag(name = 'image_url',
+                         value = nil,
+                         class: "EditMenuitem-image_url",
+                         placeholder:  menuitem.image_url.presence||'add url' )
+      %>
+      <%= text_field_tag(name = 'description', value = nil,
+                         class: "EditMenuitem-description",
+                         placeholder:  menuitem.description.presence||'add description' )
+      %>
+      <%= button_tag(value='update', class: "Add-Button")  %>
+    <% end %>
+</div>

@@ -93,18 +93,10 @@
   margin-bottom: 10px;
 }
 
-.MenuItem:hover {
-  background-color: #F1EDF7;
-}
-
 .MenuItem-deleteIcon {
   visibility: visible;
   text-align-last: right;
   float: right;
-}
-
-.MenuItem:hover .MenuItem-deleteIcon {
-  visibility: visible;
 }
 
 .Add-menuitem {

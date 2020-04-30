@@ -41,12 +41,18 @@
             <% end %>
           </div>
         <% else %>
+        <div class='edit-container' >
+          <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
+            <input type='submit' value='edit' class='edit-Button'>
+          </form>
           <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
               <%= image_submit_tag(source="delete-icon.svg",
                                    class: "MenuItem-deleteIcon",
                                    alt: "deleteicon")
               %>
           <% end %>
+        </div>
+
         <% end %>
       </section>
     </li>
