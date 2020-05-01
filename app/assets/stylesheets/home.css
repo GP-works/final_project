@@ -24,6 +24,12 @@
   margin-bottom: 5px;
 }
 
+.cart-and-logout {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
 .PageSwap {
   padding: 10px;
   font-size: 20px;
@@ -68,6 +74,15 @@
   margin-right: 20px;
 }
 
+.Header-tab:hover {
+  color: blue;
+}
+
 .Signup-link, .Signin-link {
   text-decoration: none;
+}
+
+.temp {
+  color: blue;
+  margin-right: 5px;
 }
