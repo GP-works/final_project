@@ -40,4 +40,23 @@ class MenuitemsController < ApplicationController
       redirect_to menus_edit_path(menu_id: menu.id)
     end
   end
+
+  def edit
+    menuitem = Menuitem.find(params[:id])
+    render :edit, locals: { menuitem: menuitem }
+  end
+
+  def update
+    menuitem = Menuitem.find(params[:id])
+    menuitem.name = params[:name].presence || menuitem.name
+    menuitem.price = params[:price].presence || menuitem.price
+    menuitem.image_url = params[:image_url].presence || menuitem.image_url
+    menuitem.description = params[:description].presence || menuitem.description
+    menuitem.save
+    if @menu == menuitem.menu
+      redirect_to menus_path
+    else
+      redirect_to menus_edit_path(menu_id: menu.id)
+    end
+  end
 end

@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     else
       render :index, locals: { all_orders: Order.all.confirmed_orders,
                                hidden_status: false,
-                               second_title: "Orders delivered today" }
+                               second_title: "Previous Orders" }
     end
   end
 
