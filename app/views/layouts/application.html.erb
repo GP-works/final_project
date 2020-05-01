@@ -14,54 +14,93 @@
         <% if @current_user.role == "owner" %>
           <div class="PageSwap">
             <div>
+              <%= image_tag "home.png"%>
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= image_tag "menu.png"%>
               <%= link_to "Menus", menus_path, class: "Header-tab" %>
+              <%= image_tag "order.png"%>
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
+              <%= image_tag "user.png"%>
               <%= link_to "Users", users_path, class: "Header-tab" %>
             </div>
             <div>
               <p class='Cafeteria-title'>Gp cafeteria</p>
             </div>
-            <div>
+            <div class="cart-and-logout">
+              <%= image_tag "cart.png", class: 'temp' %>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
-              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+              <%= image_tag "user_me.png"%>
+                 <%= form_with(url: destroy_session_path, class: "Header-tab",method: "delete") do %>
+                      <select
+                              class="Menu-select-logout"
+                              onchange ='if(this.value == "log-out") { this.form.submit(); }'
+                              >
+                          <option class="Menuselect-option"><%= @current_user.name %></option>
+                          <option class="Menuselect-option", value="log-out">
+                            log-out
+                          </option>
+                      </select>
+                 <% end %>
             </div>
           </div>
+
         <% elsif @current_user.role == "billclerk" %>
           <div class="PageSwap">
             <div>
+              <%= image_tag "home.png"%>
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= image_tag "order.png"%>
               <%= link_to "Orders", orders_path, class: "Header-tab" %>
             </div>
             <div>
               <p class='Cafeteria-title'>Gp cafeteria</p>
             </div>
-            <div>
+            <div class="cart-and-logout">
+              <%= image_tag "cart.png", class: 'temp' %>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
-              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+              <%= image_tag "user_me.png"%>
+              <%= form_with(url: destroy_session_path, class: "Header-tab",method: "delete") do %>
+                      <select
+                              class="Menu-select-logout"
+                              onchange ='if(this.value == "log-out") { this.form.submit(); }'
+                              >
+                          <option class="Menuselect-option"><%= @current_user.name %></option>
+                          <option class="Menuselect-option", value="log-out">
+                            log-out
+                          </option>
+                      </select>
+                 <% end %>
             </div>
           </div>
         <% else %>
           <div class="PageSwap">
             <div>
+              <%= image_tag "home.png"%>
               <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <%= image_tag "order.png"%>
               <%= link_to "My-orders", orders_path, class: "Header-tab" %>
             </div>
             <div>
               <p class='Cafeteria-title'>Gp cafeteria</p>
             </div>
-            <div>
+            <div class="cart-and-logout">
+              <%= image_tag "cart.png", class: 'temp' %>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
-              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab" %>
+              <%= image_tag "user_me.png"%>
+              <%= form_with(url: destroy_session_path, class: "Header-tab",method: "delete") do %>
+                      <select
+                              class="Menu-select-logout"
+                              onchange ='if(this.value == "log-out") { this.form.submit(); }'
+                              >
+                          <option class="Menuselect-option"><%= @current_user.name %></option>
+                          <option class="Menuselect-option", value="log-out">
+                            log-out
+                          </option>
+                      </select>
+                 <% end %>
             </div>
           </div>
         <% end %>
-        <div>
-          <p class="UserHeader">
-            signed in as
-            <%= @current_user.name %>
-          </p>
-        </div>
     <% end %>
     <% if flash[:error] %>
      <div>
