@@ -34,17 +34,7 @@
               <%= image_tag "cart.png", class: 'temp' %>
               <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
               <%= image_tag "user_me.png"%>
-                 <%= form_with(url: destroy_session_path, class: "Header-tab",method: "delete") do %>
-                      <select
-                              class="Menu-select-logout"
-                              onchange ='if(this.value == "log-out") { this.form.submit(); }'
-                              >
-                          <option class="Menuselect-option"><%= @current_user.name %></option>
-                          <option class="Menuselect-option", value="log-out">
-                            log-out
-                          </option>
-                      </select>
-                 <% end %>
+              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab"%>
             </div>
           </div>
     <% end %>
