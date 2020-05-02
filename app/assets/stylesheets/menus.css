@@ -104,7 +104,7 @@
 }
 
 .MenuItem-deleteIcon {
-  visibility: visible;
+  visibility: hidden;
   text-align-last: right;
   float: right;
 }

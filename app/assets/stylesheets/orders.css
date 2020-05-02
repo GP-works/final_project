@@ -16,11 +16,18 @@
   margin: 0 auto;
 }
 
+.Order-Id {
+  font-weight: 550;
+  color: darkorchid;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
 .Order-Container {
   margin-bottom: 20px;
 }
 
-.Order-maincontent:hover .MenuItem-deleteIcon {
+.Order-Container:hover .MenuItem-deleteIcon {
   visibility: visible;
 }
 
@@ -28,6 +35,13 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.Order-maincontent-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 30px;
 }
 
 .Order-id {
@@ -43,7 +57,7 @@
 }
 
 .Order-items {
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
 .Order-orderitem {
