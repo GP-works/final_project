@@ -1,51 +1,33 @@
-<ul>
-  <% all_orders.each do |order| %>
-    <% delivered_status = (order.delivered_at == nil) ? "notdelivered" : "delivered" %>
-    <li class='Order'>
-      <div class='Order-Container'>
-        <div class='Order-maincontent'>
-          <% if hidden_status == false %>
-            <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
-              <%= check_box_tag(name = "delivered", value = 1,
-                                checked = !(order.delivered_at == nil),
-                                options = {onclick: "this.form.submit()"})
-              %>
+<table>
+            <tr class="ColumnTitle">
+                <th class="SerialNo">SNo</th>
+                <th class="SerialNo">Order Id</th>
+                <th class="ItemName">Name</th>
+                <th class="ItemName">Order type</th>
+                <th class="ItemName">Total Price</th>
+                <% if hidden_status == false %>
+                  <th class="ItemName">Delivered status</th>
+                <% end %>
+            </tr>
+
+            <% serial_no = 1 %>
+            <% all_orders.each do |order| %>
+                    <% delivered_status = (order.delivered_at == nil) ? "notdelivered" : "delivered" %>
+                    <tr class="ItemDetails">
+                        <td class="SerialNo"><%= serial_no %></td>
+                        <td class="SerialNo"><%= link_to  'order_'+order.id.to_s, cart_path(order_id: order.id, from: 'orders_page'), class: "ExpandOrder" %></td>
+                        <td class="ItemName"><%= order.user.name %></td>
+                        <td class="ItemName"><%= order.user.role == 'customer' ? 'delivery' : 'walkin' %></td>
+                        <td class="ItemName"><%= order.get_total_price %></td>
+                        <td>
+                          <% status_display = delivered_status == "notdelivered" ? "mark as Delivered" : "Delivered"%>
+                          <% if hidden_status == false %>
+                            <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
+                              <%= submit_tag status_display, class: 'SubmitButton' %>
+                            <% end %>
+                          <% end %>
+                        </td>
+                    </tr>
+                    <% serial_no = serial_no+1 %>
             <% end %>
-          <% end %>
-          <p class='Order-Id'>Order-Id : <%= order.id %></p>
-        </div>
-        <div class='Order-maincontent-details'>
-            <p class='Order-customer'><%= order.user.name %></p>
-            <p class="Order-customer"><%= order.user.role %></p>
-            <p class="Ordered-at"><%= order.date.to_s(:short) %></p>
-            <p class="delivered-status-<%= delivered_status %>">
-              <%= delivered_status %>
-            </p>
-            <% if hidden_status %>
-             <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
-              <%= image_submit_tag(source="delete-icon.svg",
-                                   class: "MenuItem-deleteIcon",
-                                   alt: "deleteicon")
-              %>
-             <% end %>
-            <% end %>
-        </div>
-        <div class="Order-items">
-          <ul>
-            <% orderitems = order.orderitems.getqty %>
-            <% orderitems.each do |name,quantity| %>
-              <li class='Order-orderitem'>
-                <div>
-                  <%= name %>
-                </div>
-                <div class="Orderitem-qty">
-                  <%= quantity %>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+</table>
