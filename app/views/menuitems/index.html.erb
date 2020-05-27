@@ -1,7 +1,7 @@
 <section class="MenuItemsBody">
     <%= render partial: 'menuitems-section',locals:{rendered_from: "home",menu: @menu} %>
     <form action="/orders/cart" method="GET">
-        <input value='Go-to-cart' type="submit" class='Submit-Items'>
+        <input value='Go-to-cart' type="submit" class='Submit-Items' data-disable-with="">
     </form>
 
 </section>
