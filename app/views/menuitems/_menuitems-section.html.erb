@@ -29,7 +29,7 @@
               <div class='MenuItem-qty'>
                   <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
                   <%= link_to "− ", orderitem_path(id:order_item.id,from: "menuitems",), method: "delete", class: "home-minus" %>
-                  <%= " #{qty}" %>
+                  <p class="Count"><%= " #{qty}" %></p>
                   <%= link_to "＋", orderitems_path(menuitem_id: menuitem.id,
                                                     menu_item_name: menuitem.name,
                                                     menu_item_price: menuitem.price,

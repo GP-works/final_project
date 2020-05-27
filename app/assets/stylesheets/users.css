@@ -1,7 +1,6 @@
-.NewUserBody, .NewSessionBody, .UsersBody {
+.NewUserBody, .NewSessionBody {
   font-family: sans-serif;
-  max-width: 50%;
-  margin: 0 auto;
+  margin-top: 50px;
 }
 
 .Form-Title {
