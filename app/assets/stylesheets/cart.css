@@ -4,12 +4,6 @@
     margin-bottom: 30px;
 }
 
-.OrdersBody {
-    font-family: sans-serif;
-    max-width: 60%;
-    margin: 0 auto;
-}
-
 .ColumnTitle {
     font-size: 20px;
     padding-bottom: 50px;
@@ -68,6 +62,8 @@ tr {
     background-color: green;
     padding: 5px 15px;
     margin-left: 30px;
+    margin-bottom: 2px;
+    float: right;
 }
 
 .TotalPrice {
