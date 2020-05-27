@@ -75,3 +75,14 @@
   color: red;
   margin-right: 10px;
 }
+
+.info {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.ExpandOrder {
+  font-size: medium;
+  text-decoration: none;
+}

@@ -1,0 +1,75 @@
+<% orderitems = order.orderitems.getqty %>
+<% if orderitems.count==0%>
+    <img src=<%=image_path("empty.png")%>
+            height="400"
+            width="400"
+            class= "CartEmptyImage"
+    >
+    <div>
+        <p class="CartEmptyMessage">No Items in cart</p>
+        <form action="/menuitems" method="GET">
+                <input class='CartEmptyLink' type="submit" value='Add-From-Menu'>
+        </form>
+
+    </div>
+
+<%else%>
+    <section class="CartBody">
+        <% if hidden_status == false %>
+          <p class="ItemName">Order Id : <%= order.id %></p>
+          <p class="ItemName">Placed Date : <%= order.date.to_s(:short) %></p>
+          <% if @current_user.role != 'customer'%>
+             <p class="ItemName">Name of customer : <%= @current_user.name %></p>
+          <% end %>
+        <% end %>
+        <table>
+            <tr class="ColumnTitle">
+                <th class="SerialNo">SNo</th>
+                <th class="ItemName">Name</th>
+                <th class="ItemQuantity">Quantity</th>
+                <th class="EachItemPrice">Price</th>
+                <th class="ItemPrice">TotalPrice</th>
+            </tr>
+
+            <% serial_no = 1 %>
+            <% orderitems.each do |name,quantity|%>
+                <% order_item = order.orderitems.find_by(menu_item_name: name)%>
+                    <tr class="ItemDetails">
+                        <td class="SerialNo"><%= serial_no %>.</td>
+                        <td class="ItemName"><%= name %></td>
+                        <td class="ItemQuantity">
+                          <% if hidden_status %>
+                            <%= link_to "−", orderitem_path(id:order_item.id,from: "cart"), method: "delete", class: "minus" %>
+                          <% end %>
+                            <%= quantity %>
+                          <% if hidden_status %>
+                            <%= link_to "＋", orderitems_path(order_id: order.id ,
+                                                            menuitem_id: order_item.menuitem_id,
+                                                            menu_item_name: name,
+                                                            menu_item_price: order_item.menu_item_price,from: "cart",),
+                                                            method: "post",
+                                                            class: "plus"
+                            %>
+                          <% end %>
+                        </td>
+                        <td class="EachItemPrice">₹<%= order_item.menu_item_price %></td>
+                        <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
+                    </tr>
+                    <% serial_no = serial_no+1 %>
+            <% end %>
+        </table>
+        <hr class='line'>
+        <p class="TotalPrice">TotalPrice : ₹<%= order.get_total_price %> </p>
+        <% if hidden_status %>
+          <div class="Buttons-container">
+            <form action="/menuitems" method="GET">
+                <input class='SubmitButton' type="submit" value='Add-other-items'>
+            </form>
+            <%= form_with(url: "/orders/pay", method: "patch") do %>
+                <%= hidden_field_tag "id", order.id %>
+                <%= submit_tag "Confirm&Pay", class: 'SubmitButton' %>
+            <% end %>
+          </div>
+        <% end %>
+    </section>
+    <%end%>
