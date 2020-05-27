@@ -76,7 +76,7 @@
 .Submit-Items {
     float: right;
     border-radius: 5px;
-    color: black;
+    color: white;
     font-size: 20px;
     background-color: green;
     padding: 5px 15px;
@@ -85,19 +85,29 @@
     margin-bottom: 20px;
 }
 
+.Submit-Items:hover {
+    background-color: rgb(2, 68, 2);
+}
+
 .Count {
     color: black;
     padding: 0px 5px;
 }
 
 .Add-text {
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 5px 10px;
+    font-size: medium;
     margin-right: 20px;
     border: 1px solid green;
     text-decoration: none;
     color: green;
     font-size: large;
+}
+
+.Add-text:hover {
+    color: white;
+    background-color: green;
+    font-size: larger;
 }
 
 .MenuItem-qty {
@@ -107,16 +117,17 @@
     border: 1px solid green;
 }
 
-.home-minus {
+.home-minus, .home-plus {
     text-decoration: none;
     color: green;
     margin-right: 2px;
+    font-size: medium;
+    padding: 5px;
 }
 
-.home-plus {
-    text-decoration: none;
-    color: green;
-    margin-left: 2px;
+.home-plus:hover, .home-minus:hover {
+    color: red;
+    font-size: large;
 }
 
 .edit-container {
