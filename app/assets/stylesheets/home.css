@@ -78,7 +78,7 @@ body {
   margin-right: 20px;
 }
 
-.Header-tab:hover {
+.Header-tab:hover, .Navbar-Item:hover {
   color: blue;
 }
 
@@ -89,6 +89,16 @@ body {
 .temp {
   color: blue;
   margin-right: 5px;
+}
+
+.Navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.Navbar-Item {
+  display: flex;
+  align-items: center;
 }
 
 .OrdersBody, .edit-menuitem-container, .CartBody, .NewSessionBody, .UsersBody, .NewUserBody {

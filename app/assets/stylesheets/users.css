@@ -30,10 +30,14 @@
 .Form-Submit {
   border: 0;
   border-radius: 5px;
-  color: black;
+  color: white;
   font-size: 20px;
-  background-color: rgb(73, 214, 73);
+  background-color: green;
   padding: 5px 10px;
+}
+
+.Form-Submit:hover {
+  background-color: rgb(2, 68, 2);
 }
 
 .Input-role {
