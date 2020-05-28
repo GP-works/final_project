@@ -34,10 +34,12 @@
   font-size: 20px;
   background-color: green;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .Form-Submit:hover {
   background-color: rgb(2, 68, 2);
+  cursor: pointer;
 }
 
 .Input-role {

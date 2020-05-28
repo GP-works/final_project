@@ -10,42 +10,44 @@
 
   <body>
     <% if @current_user %>
-          <div class="PageSwap">
+          <div class="NavBar">
             <div class='Navbar-left'>
-              <div class='Navbar-Item'>
-                <%= image_tag "home.png"%>
-                <%= link_to "Home", menuitems_path, class: "Header-tab" %>
+              <div class="Navbar-Item">
+                <%= link_to menuitems_path ,class:"Navbar-Item" do %>
+                  <%= show_svg('home.svg') %>
+                  <p class="Header-tab">Home</p>
+                <% end %>
               </div>
               <% if @current_user.role == "owner" %>
-                <div class='Navbar-Item'>
-                  <%= image_tag "menu.png"%>
-                  <%= link_to "Menus", menus_path, class: "Header-tab" %>
-                </div>
+                <%= link_to menus_path ,class:"Navbar-Item" do %>
+                  <%= show_svg('menu.svg') %>
+                  <p class="Header-tab">Menus</p>
+                <% end %>
               <% end %>
-              <div class='Navbar-Item'>
-                <%= image_tag "order.png"%>
-                <% orders_title = @current_user.role == "customer" ? "My-Orders" : "Orders" %>
-                <%= link_to orders_title, orders_path, class: "Header-tab" %>
-              </div>
+              <%= link_to orders_path ,class:"Navbar-Item" do %>
+                <%= show_svg('order.svg') %>
+                <p class="Header-tab">Orders</p>
+              <% end %>
+
               <% if @current_user.role == "owner" %>
-                <div class='Navbar-Item'>
-                  <%= image_tag "user.png"%>
-                  <%= link_to "Users", users_path, class: "Header-tab" %>
-                </div>
+                <%= link_to users_path ,class:"Navbar-Item" do %>
+                  <%= show_svg('group.svg') %>
+                  <p class="Header-tab">Users</p>
+                <% end %>
               <% end %>
             </div>
             <div >
               <p class='Cafeteria-title'>Gp cafeteria</p>
             </div>
             <div class="cart-and-logout">
-              <div class='Navbar-Item'>
-                <%= image_tag "cart.png", class: 'temp' %>
-                <%= link_to "Cart", cart_path, method: "get", class: "Header-tab" %>
-              </div>
-              <div class='Navbar-Item'>
-                <%= image_tag "user_me.png"%>
-                <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "Header-tab"%>
-              </div>
+              <%= link_to cart_path ,class:"Navbar-Item" do %>
+                  <%= show_svg('cart.svg') %>
+                  <p class="Header-tab">Cart</p>
+                <% end %>
+              <%= link_to destroy_session_path,method: "delete",class:"Navbar-Item" do %>
+                  <%= show_svg('signout.svg') %>
+                  <p class="Header-tab">Logout</p>
+              <% end %>
             </div>
           </div>
     <% end %>

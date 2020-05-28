@@ -1,11 +1,17 @@
 .edit-Button {
     background-color: rgb(218, 241, 9);
-    font-size: 14px;
+    font-size: 17px;
     color: black;
     border: 1px solid transparent;
-    padding: 6px 22px;
+    padding: 6px 15px;
     border-radius: 4px;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-Button:hover {
+    background-color: goldenrod;
+    color: white;
 }
 
 .PageHead {
@@ -83,10 +89,12 @@
     margin-right: 50px;
     border: 1px solid transparent;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .Submit-Items:hover {
     background-color: rgb(2, 68, 2);
+    cursor: pointer;
 }
 
 .Count {
