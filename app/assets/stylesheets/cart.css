@@ -13,6 +13,10 @@
     font-size: 16px;
 }
 
+td {
+    vertical-align: middle!important;
+}
+
 td, th {
     padding: 10px;
     text-align: center;
@@ -64,6 +68,7 @@ tr {
     margin-left: 30px;
     margin-bottom: 2px;
     float: right;
+    cursor: pointer;
 }
 
 .TotalPrice {
@@ -94,4 +99,37 @@ tr {
 
 .plus:hover, .minus:hover {
     color: red;
+}
+
+.CartEmptyBody {
+    margin: 0 auto;
+    max-width: 30%;
+    margin-top: 50px;
+}
+
+.CartEmptyMessage {
+    font-size: 30px;
+    font-weight: 400;
+    color: blueviolet;
+    margin: 30px 50px;
+}
+
+.CartEmptyLink {
+    margin-top: 50px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.CartEmptyLink:hover .Add-Items {
+    color: green;
+}
+
+.Add-Items {
+    color: rgb(130, 24, 175);
+    border: 0px;
+    background-color: whitesmoke;
 }

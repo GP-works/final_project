@@ -34,10 +34,9 @@ body {
   font-weight: 600;
 }
 
-.PageSwap {
-  padding: 10px;
+.NavBar {
+  padding: 20px;
   font-size: 20px;
-  margin: 20px 40px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -78,8 +77,12 @@ body {
   margin-right: 20px;
 }
 
-.Header-tab:hover, .Navbar-Item:hover {
+.Navbar-Item:hover, .Header-tab:hover {
   color: blue;
+}
+
+.Home-Icon:hover {
+  fill: blue;
 }
 
 .Signup-link, .Signin-link {
@@ -99,6 +102,15 @@ body {
 .Navbar-Item {
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.Navbar-Item:hover svg {
+  fill: blue!important;
+}
+
+.Navbar-Item:hover .Header-tab {
+  color: blue;
 }
 
 .OrdersBody, .edit-menuitem-container, .CartBody, .NewSessionBody, .UsersBody, .NewUserBody {

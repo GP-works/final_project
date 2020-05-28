@@ -1,18 +1,22 @@
 <% orderitems = order.orderitems.getqty %>
 <% if orderitems.count==0%>
+<div class="CartEmptyBody">
+    <p class="CartEmptyMessage">No Items in cart</p>
     <img src=<%=image_path("empty.png")%>
-            height="400"
-            width="400"
+            height="300"
+            width="300"
             class= "CartEmptyImage"
     >
     <div>
-        <p class="CartEmptyMessage">No Items in cart</p>
         <form action="/menuitems" method="GET">
-                <input class='CartEmptyLink' type="submit" value='Add-From-Menu'>
+                <div class= "CartEmptyLink">
+                  <%= image_submit_tag(source="additems.png", alt: "addicon")%>
+                  <input class="Add-Items" value="Add" type="submit">
+                </div>
         </form>
 
     </div>
-
+</div>
 <%else%>
     <section class="CartBody">
         <% if hidden_status == false %>
