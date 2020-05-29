@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_121451) do
+ActiveRecord::Schema.define(version: 2020_05_29_080827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 2020_04_24_121451) do
     t.float "price"
     t.bigint "menu_id", null: false
     t.string "image_url"
+    t.bigint "submenu_id", null: false
     t.index ["menu_id"], name: "index_menuitems_on_menu_id"
+    t.index ["submenu_id"], name: "index_menuitems_on_submenu_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -45,6 +47,14 @@ ActiveRecord::Schema.define(version: 2020_04_24_121451) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "submenus", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "menu_id", null: false
+    t.index ["menu_id"], name: "index_submenus_on_menu_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "role"
@@ -53,6 +63,8 @@ ActiveRecord::Schema.define(version: 2020_04_24_121451) do
   end
 
   add_foreign_key "menuitems", "menus"
+  add_foreign_key "menuitems", "submenus"
   add_foreign_key "orderitems", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "submenus", "menus"
 end

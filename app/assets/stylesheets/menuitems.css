@@ -9,6 +9,12 @@
     cursor: pointer;
 }
 
+.Submenus-Title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
 .edit-Button:hover {
     background-color: goldenrod;
     color: white;
@@ -151,12 +157,6 @@
     background-color: white;
 }
 
-.Add-menuitem {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 20px;
-}
-
 .EditMenuitem-name {
     border: 1px solid #BFB8CC;
     border-radius: 4px;
@@ -199,4 +199,16 @@
     padding: 6px 12px;
     width: 150px;
     margin-bottom: 20px;
+}
+
+.Add-item-link {
+    text-decoration: none;
+    font-size: larger;
+    margin-left: 20px;
+    color: blue;
+}
+
+.AddItemSubmenu {
+    display: flex;
+    align-items: baseline;
 }

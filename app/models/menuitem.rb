@@ -2,6 +2,7 @@ class Menuitem < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
   belongs_to :menu
+  belongs_to :submenu
   has_many :orderitems
 
   def image

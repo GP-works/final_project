@@ -1,0 +1,23 @@
+.split {
+  position: absolute;
+  z-index: auto;
+  width: 65%;
+}
+
+.left {
+  left: 10%;
+}
+
+.right {
+  right: 1%;
+  padding-right: 150px;
+  margin-left: 30px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

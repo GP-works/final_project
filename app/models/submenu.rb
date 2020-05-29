@@ -1,5 +1,5 @@
-class Menu < ActiveRecord::Base
+class Submenu < ApplicationRecord
+  belongs_to :menu
   has_many :menuitems
-  has_many :submenus
   validates :name, presence: true
 end
