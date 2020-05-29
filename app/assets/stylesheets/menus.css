@@ -116,8 +116,6 @@
 }
 
 .Add-menuitem {
-  display: flex;
-  align-items: stretch;
   margin-bottom: 20px;
 }
 
@@ -129,6 +127,7 @@
   margin-right: 10px;
   padding: 6px 12px;
   width: 140px;
+  margin-bottom: 10px;
 }
 
 .AddMenuitem-price {
@@ -138,6 +137,7 @@
   color: #453C52;
   margin-right: 10px;
   width: 60px;
+  margin-bottom: 10px;
   padding: 5px;
 }
 
@@ -148,6 +148,7 @@
   color: #453C52;
   margin-right: 10px;
   padding: 6px 12px;
+  margin-bottom: 10px;
   width: 220px;
 }
 
@@ -156,6 +157,7 @@
   border-radius: 4px;
   font-size: 14;
   color: #453C52;
+  margin-bottom: 10px;
   margin-right: 10px;
   padding: 6px 12px;
   width: 150px;

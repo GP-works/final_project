@@ -151,12 +151,6 @@
     background-color: white;
 }
 
-.Add-menuitem {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 20px;
-}
-
 .EditMenuitem-name {
     border: 1px solid #BFB8CC;
     border-radius: 4px;
