@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :menuitems
   resources :orders
   resources :orderitems
+  resources :submenus
   post "/menus/setmenu", to: "menus#set", as: :setmenu
   get "/signin", to: "sessions#new", as: :new_sessions
   post "/signin", to: "sessions#create", as: :sessions

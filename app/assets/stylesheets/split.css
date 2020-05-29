@@ -1,21 +1,17 @@
 .split {
-  position: fixed;
-  z-index: 1;
-  width: 40%;
+  position: absolute;
+  z-index: auto;
+  width: 65%;
 }
 
 .left {
-  left: 0;
-  padding-left: 150px;
-  padding-right: 30px;
-  width: 60%;
+  left: 10%;
 }
 
 .right {
-  right: 0;
+  right: 1%;
   padding-right: 150px;
   margin-left: 30px;
-  width: 20%;
 }
 
 .centered {

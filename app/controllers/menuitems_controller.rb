@@ -8,7 +8,8 @@ class MenuitemsController < ApplicationController
     new_menuitem = menu.menuitems.new(name: params[:name],
                                       price: params[:price],
                                       image_url: params[:image_url],
-                                      description: params[:description])
+                                      description: params[:description],
+                                      submenu_id: params[:submenu_id])
     if new_menuitem.save
       flash[:success] = "#{params[:name]} added to #{menu.name} menu"
       if @menu == menu
@@ -39,6 +40,9 @@ class MenuitemsController < ApplicationController
     else
       redirect_to menus_edit_path(menu_id: menu.id)
     end
+  end
+
+  def new
   end
 
   def edit
