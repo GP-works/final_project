@@ -5,7 +5,8 @@
   <p class="ActiveMenu-name"><%= @menu.name %>
   </div>
   </section>
-  <div class="split left">
+  <div class="split">
+  <div class="left">
   <section class="Menu">
     <div>
       <%= form_with(url: "/menus/setmenu", method: "post", class: "Set-menu") do %>
@@ -41,7 +42,7 @@
     </div>
   </section>
   </div>
-  <div class="split right">
+  <div class="right">
     <div>
       <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
         <label for="Menu-text" class="label">new menu:</label>
@@ -64,6 +65,7 @@
       <% end %>
     </div>
     <%= render partial:'menuitems/menuitems-section',locals: {rendered_from: 'menus',menu: @menu} %>
+  </div>
   </div>
   </section>
 </section>
