@@ -13,11 +13,3 @@
   padding-right: 150px;
   margin-left: 30px;
 }
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}

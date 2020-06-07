@@ -88,6 +88,10 @@
   background-color: green;
 }
 
+.MenuItem:hover .MenuItem-deleteIcon {
+  visibility: visible;
+}
+
 .Menuitem {
   padding: 10px 10px;
   margin-right: 20px;
