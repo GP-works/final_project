@@ -63,13 +63,17 @@
     border-radius: 3px;
     border: 1px transparent #BFB8CC;
     width: 250px;
-    height: 250px;
+    height: 260px;
     max-width: 250px;
-    max-height: 250px;
+    max-height: 270px;
     padding: 20px 5px;
-    margin-right: 10px;
+    margin-right: 25px;
     background-color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.MenuItem:hover {
+    transform: scale(1.02);
 }
 
 .NameAndDescriptionContainer {
@@ -219,7 +223,7 @@
     align-items: baseline;
 }
 
-.switch {
+.outer-switch {
     position: relative;
     display: inline-block;
     width: 40px;
@@ -228,10 +232,10 @@
     border-radius: 20px;
     transition: all 0.3s;
     cursor: pointer;
+    border-width: 0px;
 }
 
-.switch::after {
-    content: '';
+.outer-switch>.switch {
     position: absolute;
     width: 18px;
     height: 18px;
@@ -240,16 +244,29 @@
     top: 1px;
     left: 1px;
     transition: all 0.3s;
+    border-width: 0px;
 }
 
-.checkbox:checked+.switch::after {
-    left: 20px;
-}
-
-.checkbox:checked+.switch {
+.outer-switch-active {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
     background-color: green;
+    border-radius: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border-width: 0px;
 }
 
-.checkbox {
-    display: none;
+.outer-switch-active>.switch {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    left: 20px;
+    top: 1px;
+    transition: all 0.3s;
+    border-width: 0px;
 }

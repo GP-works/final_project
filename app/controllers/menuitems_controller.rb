@@ -68,6 +68,8 @@ class MenuitemsController < ApplicationController
     menuitem = Menuitem.find(params[:id])
     menuitem.available = params[:available]
     menuitem.save
+    menuitem_status = menuitem.available ? "made available" : "made not available"
+    flash[:success] = "Menuitem #{menuitem.name} is #{menuitem_status}"
     if @menu == menuitem.menu
       redirect_to menus_path
     else

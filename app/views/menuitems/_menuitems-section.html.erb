@@ -7,7 +7,7 @@
       <% end %>
   </div>
 <ul class="MenuItemList">
-  <% submenu.menuitems.all.each do |menuitem| %>
+  <% submenu.menuitems.all.order('id').each do |menuitem| %>
     <li class="MenuItem">
       <img src=<%= menuitem.image %>
                     height="180"
@@ -21,12 +21,14 @@
           <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
         </div>
         <% if rendered_from == 'menus'%>
-        <div>
+          <% class_name = menuitem.available ? "outer-switch-active" : "outer-switch" %>
+          <% value= menuitem.available ? "0" : "1" %>
           <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
-            <%=check_box_tag(name="available",value = "1",checked = menuitem.available,options = {onclick: "this.form.submit()",class:"checkbox",id:"toggle"})%>
-            <label for="toggle" class="switch" onclick = "this.form.submit()"></span>
+            <input type="hidden" value=<%= value %> name="available">
+            <button type='submit' class=<%= class_name %>>
+              <span class="switch " ></span>
+            </div>
           <% end %>
-        </div>
         <% end %>
       </div>
 
