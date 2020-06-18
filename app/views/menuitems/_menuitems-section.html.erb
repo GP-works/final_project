@@ -1,13 +1,14 @@
 <div>
   <% menu.submenus.all.each do |submenu| %>
     <div class="AddItemSubmenu">
-        <section class="Submenus-Title"> <%= submenu.name %> </section>
+        <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>
         <% if rendered_from == 'menus' %>
           <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
         <% end %>
     </div>
     <ul class="MenuItemList">
-      <% submenu.menuitems.all.order('id').each do |menuitem| %>
+        <% submenuitems = rendered_from=='home' ? submenu.menuitems.available : submenu.menuitems.all %>
+        <% submenuitems.all.order('id').each do |menuitem| %>
         <li class="MenuItem">
           <img src=<%= menuitem.image %>
                         height="180"
