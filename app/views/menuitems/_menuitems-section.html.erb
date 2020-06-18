@@ -14,10 +14,22 @@
                     width="180"
                     class= "MenuItemImage"
       >
-      <section class="NameAndDescriptionContainer">
-        <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
-        <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
-      </section>
+
+      <div class="NameAndDescriptionContainer">
+        <div>
+          <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
+          <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
+        </div>
+        <% if rendered_from == 'menus'%>
+        <div class="switch">
+          <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
+            <%=check_box_tag(name="available",value = "1",checked = menuitem.available,options = {onclick: "this.form.submit()"})%>
+            <span class="slider round" onclick = "this.form.submit()"></span>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+
       <section class="PriceAndQuantityContainer">
         <div>
           <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
@@ -53,18 +65,17 @@
             <% end %>
           </div>
         <% else %>
-        <div class='edit-container' >
-          <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
+          <div class='edit-container' >
+           <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
             <input type='submit' value='Edit' class='edit-Button'>
-          </form>
-          <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
-              <%= image_submit_tag(source="delete-icon.svg",
+            </form>
+            <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
+                <%= image_submit_tag(source="delete-icon.svg",
                                    class: "MenuItem-deleteIcon",
                                    alt: "deleteicon")
-              %>
-          <% end %>
-        </div>
-
+                %>
+            <% end %>
+          </div>
         <% end %>
       </section>
     </li>
