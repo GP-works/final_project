@@ -17,8 +17,9 @@
 }
 
 .Menu {
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   align-items: center;
+  display: ruby-base;
   justify-content: space-between;
 }
 
