@@ -5,8 +5,8 @@
       <p class="ActiveMenu-name"><%= @menu.name %>
     </div>
   </section>
-  <div class="split">
-    <div class="left">
+  <div class="split-">
+    <div class="left-">
       <section class="Menu">
         <div>
           <%= form_with(url: "/menus/setmenu", method: "post", class: "Set-menu") do %>
@@ -40,25 +40,25 @@
             </select>
           <% end %>
         </div>
-      </section>
-    </div>
-    <div class="right">
-      <div>
+        <div>
         <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
-          <label for="Menu-text" class="label">new menu:</label>
+          <label for="Menu-text" class="label">New Menu:</label>
           <%= text_field_tag( name = 'name', value = nil,
                               class: "Menu-text",
-                              placeholder: "new menu?")
+                              placeholder: "New Menu?")
           %>
           <%= button_tag(value = 'Add', class: "Add-Button")  %>
         <% end %>
       </div>
+      </section>
+    </div>
+    <div class="right-">
       <div>
         <%= form_with(url: "/submenus", method: "post", class: "Add-menu") do %>
-         <label for="Menu-text" class="label">new submenu:</label>
+         <label for="Menu-text" class="label">New Submenu:</label>
          <%= text_field_tag( name = 'name', value = nil,
                              class: "Menu-text",
-                             placeholder: "new submenu?")
+                             placeholder: "New Submenu?")
          %>
          <%= hidden_field_tag 'menu_id', @menu.id %>
          <%= button_tag(value = 'Add', class: "Add-Button")  %>

@@ -23,7 +23,7 @@
           <p class="ItemName">Order Id : <%= order.id %></p>
           <p class="ItemName">Placed Date : <%= order.date.to_s(:short) %></p>
           <% if @current_user.role != 'customer'%>
-             <p class="ItemName">Name of customer : <%= @current_user.name %></p>
+             <p class="ItemName">Name of customer : <%= order.user.name %></p>
           <% end %>
         <% end %>
         <table>
