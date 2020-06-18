@@ -21,10 +21,10 @@
           <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
         </div>
         <% if rendered_from == 'menus'%>
-        <div class="switch">
+        <div>
           <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
-            <%=check_box_tag(name="available",value = "1",checked = menuitem.available,options = {onclick: "this.form.submit()"})%>
-            <span class="slider round" onclick = "this.form.submit()"></span>
+            <%=check_box_tag(name="available",value = "1",checked = menuitem.available,options = {onclick: "this.form.submit()",class:"checkbox",id:"toggle"})%>
+            <label for="toggle" class="switch" onclick = "this.form.submit()"></span>
           <% end %>
         </div>
         <% end %>
