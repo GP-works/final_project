@@ -60,7 +60,18 @@ class MenuitemsController < ApplicationController
     if @menu == menuitem.menu
       redirect_to menus_path
     else
-      redirect_to menus_edit_path(menu_id: menu.id)
+      redirect_to menus_edit_path(menu_id: menuitem.menu.id)
+    end
+  end
+
+  def available
+    menuitem = Menuitem.find(params[:id])
+    menuitem.available = params[:available]
+    menuitem.save
+    if @menu == menuitem.menu
+      redirect_to menus_path
+    else
+      redirect_to menus_edit_path(menu_id: menuitem.menu.id)
     end
   end
 end
