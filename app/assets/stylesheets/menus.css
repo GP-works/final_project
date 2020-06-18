@@ -17,10 +17,16 @@
 }
 
 .Menu {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: first baseline;
+  align-items: baseline;
+}
+
+.Menu-main {
+  display: flex;
   align-items: center;
-  display: ruby-base;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .Menu-select {

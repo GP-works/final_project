@@ -5,66 +5,66 @@
       <p class="ActiveMenu-name"><%= @menu.name %>
     </div>
   </section>
-  <div class="split-">
-    <div class="left-">
+  <div>
+    <div>
       <section class="Menu">
-        <div>
-          <%= form_with(url: "/menus/setmenu", method: "post", class: "Set-menu") do %>
-            <select name="menu_id"
-                    class="Menu-select"
-                    onchange ='if(this.value != 0) { this.form.submit(); }'
-                    autofocus>
+        <div class="Menu-main">
+          <div>
+            <%= form_with(url: "/menus/setmenu", method: "post", class: "Set-menu") do %>
+              <select name="menu_id"
+                      class="Menu-select"
+                      onchange ='if(this.value != 0) { this.form.submit(); }'
+                      autofocus>
 
-              <option selected disabled>Select a different menu</option>
-              <%Menu.all.each do |menu|%>
-                 <option value=<%= menu.id %>, class="Menuselect-option">
-                     <%= menu.name %>
-                 </option>
-              <% end %>
-            </select>
-          <% end %>
+                <option selected disabled>Select a different menu</option>
+                <%Menu.all.each do |menu|%>
+                  <option value=<%= menu.id %>, class="Menuselect-option">
+                      <%= menu.name %>
+                  </option>
+                <% end %>
+              </select>
+            <% end %>
+          </div>
+          <div>
+            <%= form_with(url: "/menus/edit", method: "get", class: "Edit-menu") do %>
+              <select name="menu_id"
+                      class="Menu-select"
+                      onchange ='if(this.value != 0) { this.form.submit(); }'
+                      autofocus>
+
+                <option selected disabled>Edit a different menu  </option>
+                <%Menu.all.each do |menu|%>
+                  <option value=<%= menu.id %>, class="Menuselect-option">
+                      <%= menu.name %>
+                  </option>
+                <% end %>
+              </select>
+            <% end %>
+          </div>
         </div>
         <div>
-          <%= form_with(url: "/menus/edit", method: "get", class: "Edit-menu") do %>
-            <select name="menu_id"
-                    class="Menu-select"
-                    onchange ='if(this.value != 0) { this.form.submit(); }'
-                    autofocus>
-
-              <option selected disabled>Edit a different menu  </option>
-              <%Menu.all.each do |menu|%>
-                <option value=<%= menu.id %>, class="Menuselect-option">
-                    <%= menu.name %>
-                </option>
-              <% end %>
-            </select>
+          <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
+            <label for="Menu-text" class="label">New Menu:</label>
+            <%= text_field_tag( name = 'name', value = nil,
+                                class: "Menu-text",
+                                placeholder: "New Menu?")
+            %>
+            <%= button_tag(value = 'Add', class: "Add-Button")  %>
           <% end %>
         </div>
-        <div>
-        <%= form_with(url: "/menus", method: "post", class: "Add-menu") do %>
-          <label for="Menu-text" class="label">New Menu:</label>
-          <%= text_field_tag( name = 'name', value = nil,
-                              class: "Menu-text",
-                              placeholder: "New Menu?")
-          %>
-          <%= button_tag(value = 'Add', class: "Add-Button")  %>
-        <% end %>
-      </div>
       </section>
     </div>
-    <div class="right-">
-      <div>
-        <%= form_with(url: "/submenus", method: "post", class: "Add-menu") do %>
-         <label for="Menu-text" class="label">New Submenu:</label>
-         <%= text_field_tag( name = 'name', value = nil,
-                             class: "Menu-text",
-                             placeholder: "New Submenu?")
-         %>
-         <%= hidden_field_tag 'menu_id', @menu.id %>
-         <%= button_tag(value = 'Add', class: "Add-Button")  %>
-        <% end %>
-      </div>
-      <%= render partial:'menuitems/menuitems-section',locals: {rendered_from: 'menus',menu: @menu} %>
+    <div>
+      <%= form_with(url: "/submenus", method: "post", class: "Add-menu") do %>
+        <label for="Menu-text" class="label">New Submenu:</label>
+        <%= text_field_tag( name = 'name', value = nil,
+                            class: "Menu-text",
+                            placeholder: "New Submenu?")
+        %>
+        <%= hidden_field_tag 'menu_id', @menu.id %>
+        <%= button_tag(value = 'Add', class: "Add-Button")  %>
+      <% end %>
     </div>
+    <%= render partial:'menuitems/menuitems-section',locals: {rendered_from: 'menus',menu: @menu} %>
   </div>
 </section>
