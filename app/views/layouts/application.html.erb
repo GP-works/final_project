@@ -45,7 +45,7 @@
                   <%= show_svg('cart.svg') %>
                   <p class="Header-tab">Cart</p>
               <% end %>
-              <% if @current_user.role != 'clerk' %>
+              <% if @current_user.role != 'billclerk' %>
                 <%= link_to edit_user_path(@current_user), class:"Navbar-Item", method: 'get' do %>
                     <p class="Header-tab">My Profile</p>
                 <% end %>

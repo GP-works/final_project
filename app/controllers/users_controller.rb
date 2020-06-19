@@ -17,6 +17,15 @@ class UsersController < ApplicationController
     render :edit, locals: { user: user }
   end
 
+  def change_role
+    user = User.find(params[:id])
+    user.role = params[:role]
+    if user.save
+      flash[:success] = "role is changed as requested"
+      redirect_to users_path
+    end
+  end
+
   def update
     user = User.find(params[:id])
     user.name = params[:name].presence || user.name

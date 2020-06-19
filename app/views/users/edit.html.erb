@@ -1,4 +1,23 @@
 <div class='edit-menuitem-container'>
+  <div class='role-change'>
+    <% if @current_user.role == 'owner'%>
+      <% if user.role != 'billclerk' %>
+        <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'billclerk' %>
+          <%= button_tag(value='make him clerk', class: "Add-Button")  %>
+        <% end %>
+      <% else %>
+          <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+            <%= hidden_field_tag 'role', 'customer' %>
+            <%= button_tag(value='remove as clerk', class: "Add-Button")  %>
+          <% end %>
+      <% end %>
+        <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'owner' %>
+          <%= button_tag(value='make him admin', class: "Add-Button")  %>
+        <% end %>
+    <% end %>
+  </div>
     <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
       <p class="Input-Label">
         Name
