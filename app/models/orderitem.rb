@@ -10,4 +10,8 @@ class Orderitem < ActiveRecord::Base
   def self.item(id)
     find_by("menuitem_id = ?", id)
   end
+  def self.notexist
+    notavailable_elements = all.select { |orderitem| (Menuitem.available.exists?(orderitem.menuitem_id) == false) }
+                               .map { |orderitem| orderitem.menu_item_name }.uniq
+  end
 end

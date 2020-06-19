@@ -9,10 +9,10 @@
     >
     <div>
         <form action="/menuitems" method="GET">
-                <div class= "CartEmptyLink">
-                  <%= image_submit_tag(source="additems.png", alt: "addicon")%>
-                  <input class="Add-Items" value="Add" type="submit">
-                </div>
+                <button class= "CartEmptyLink" type=submit>
+                  <img src=<%=image_path("additems.png")%> alt= "addicon" >
+                  <label class="Add-Items" >Add</label>
+                </button>
         </form>
 
     </div>
