@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   patch "/orders/pay", to: "orders#pay"
   post "/orders/addmore", to: "orders#addmore"
   get "/orders/cart", to: "orders#cart", as: :cart
+  post "/orders/:id", to: "orders#reorder", as: :reorder
   get "/menus/edit", to: "menus#edit", as: :menus_edit
   resources :menus
   resources :users

@@ -46,4 +46,29 @@ class OrdersController < ApplicationController
     params.delete(:id)
     redirect_to action: "index"
   end
+
+  def show
+    order = Order.find(params[:id])
+    user = order.user
+    unless current_user.role == "owner" || current_user.role == "billclerk" || current_user == user
+      flash[:error] = "order not found"
+      redirect_to "/" and return
+    end
+    render :show
+  end
+
+  def reorder
+    old_order = Order.find(params[:id])
+    new_order = current_user.orders.cart_order
+    old_order.orderitems.available.each do |orderitem|
+      new_order_item = orderitem.dup
+      new_order_item.order_id = new_order.id
+      new_order_item.save!
+    end
+    not_existed_entries = old_order.orderitems.notexist
+    not_existed_entries.each do |entry_name|
+      flash[:error] = "The Item #{entry_name} is not available,so not added"
+    end
+    redirect_to cart_path
+  end
 end

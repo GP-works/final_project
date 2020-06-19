@@ -1,13 +1,5 @@
-<% if(params[:from] == 'orders_page') %>
-    <%= render partial: 'show-order',
-        locals:{ order: Order.find(params[:order_id]) ,
-                  hidden_status: false
-                }
-    %>
-<% else %>
-    <%= render partial: 'show-order',
-        locals:{ order: @current_user.orders.cart_order ,
-                  hidden_status: true
-                }
-    %>
-<% end %>
+<%= render partial: 'show-order',
+    locals:{ order: @current_user.orders.cart_order ,
+                hidden_status: true
+            }
+%>

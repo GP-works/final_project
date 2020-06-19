@@ -83,6 +83,33 @@
 }
 
 .ExpandOrder {
-  font-size: medium;
+  font-size: 20px;
   text-decoration: none;
+  padding: 3px;
+}
+
+.ExpandOrder:hover {
+  background-color: lightblue;
+  border-radius: 4px;
+}
+
+.Order-top {
+  display: flex;
+  align-items: unset;
+  justify-content: space-between;
+}
+
+.Order-right {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.Red {
+  background-color: red;
+}
+
+.Order-exit {
+  float: left;
+  margin-bottom: 10px;
 }

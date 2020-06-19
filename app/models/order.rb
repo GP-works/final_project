@@ -6,6 +6,10 @@ class Order < ActiveRecord::Base
     where(delivered_at: nil).order(id: :asc)
   end
 
+  def not_delivered
+    delivered_at == nil
+  end
+
   def self.delivered
     where.not(delivered_at: nil).order(id: :desc)
   end
