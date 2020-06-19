@@ -46,4 +46,14 @@ class OrdersController < ApplicationController
     params.delete(:id)
     redirect_to action: "index"
   end
+
+  def show
+    order = Order.find(params[:id])
+    user = order.user
+    unless current_user.role == "owner" || current_user.role == "billclerk" || current_user == user
+      flash[:error] = "order not found"
+      redirect_to "/" and return
+    end
+    render :show
+  end
 end

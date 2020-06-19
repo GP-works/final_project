@@ -19,7 +19,7 @@
                     <% status_display = (order.delivered_at == nil) ? "Mark as Delivered" : "Delivered" %>
                     <tr class="ItemDetails">
                         <td class="SerialNo"><%= serial_no %></td>
-                        <td class="SerialNo"><%= link_to  'order_'+order.id.to_s, cart_path(order_id: order.id, from: 'orders_page'), class: "ExpandOrder" %></td>
+                        <td class="SerialNo"><%= link_to  'order_'+order.id.to_s, order_path(id: order.id), class: "ExpandOrder" %></td>
                         <td class="ItemName"><%= order.user.name %></td>
                         <td class="ItemName"><%= order.user.role == 'customer' ? 'delivery' : 'walkin' %></td>
                         <td class="ItemName"><%= order.get_total_price %></td>

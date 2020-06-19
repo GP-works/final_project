@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_correct_user_logged_in(user)
+    unless current_user.role == "owner" || current_user.role == "billclerk" || current_user == user
+      redirect_to "/" and return
+    end
+  end
+
   def current_user
     return @current_user if @current_user
 
