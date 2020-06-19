@@ -5,10 +5,12 @@
                 <th class="ItemName">Name</th>
                 <th class="ItemName">Order type</th>
                 <th class="ItemName">Total Price</th>
-                <% if hidden_status == false and delivered_status %>
-                  <th class="ItemName">Delivered status</th>
-                <% else %>
-                  <th class="ItemName">Delivery on (Date)</th>
+                <% if hidden_status == false%>
+                  <% if delivered_status == false %>
+                    <th class="ItemName">Delivered status</th>
+                  <% else %>
+                    <th class="ItemName">Delivery on (Date)</th>
+                  <% end %>
                 <% end %>
             </tr>
 
@@ -22,13 +24,15 @@
                         <td class="ItemName"><%= order.user.role == 'customer' ? 'delivery' : 'walkin' %></td>
                         <td class="ItemName"><%= order.get_total_price %></td>
                         <td>
-                          <% if hidden_status == false and delivered_status %>
+                        <% if hidden_status == false %>
+                          <% if delivered_status == false %>
                             <%= form_with(url: "/orders/#{order.id}", method: "put") do %>
                               <%= submit_tag status_display, class: 'SubmitButton' %>
                             <% end %>
                           <% else %>
                             <p class="ItemName"><%= order.delivered_at.to_formatted_s(:short) %></p>
                           <% end %>
+                        <% end %>
                         </td>
                     </tr>
                     <% serial_no = serial_no+1 %>
