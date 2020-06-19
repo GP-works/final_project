@@ -9,7 +9,7 @@
     <% users.all.each do |user| %>
     <tr class="UserDetails">
         <td class="IdNo"><%= user.id %></td>
-        <td class="UserName"><%= user.name %></td>
+        <td class="UserName"><%= link_to  user.name, edit_user_path(id: user.id), class: "ExpandOrder" %></td>
         <td class="UserEmail"><%= user.email %></td>
         <td class="OrdersQuantity"><%= user.orders.count %></th>
     </tr>

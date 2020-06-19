@@ -1,0 +1,51 @@
+<div class='edit-menuitem-container'>
+  <div class='role-change'>
+    <% if @current_user.role == 'owner'%>
+      <% if user.role != 'billclerk' %>
+        <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'billclerk' %>
+          <%= button_tag(value='make him clerk', class: "Add-Button")  %>
+        <% end %>
+      <% else %>
+          <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+            <%= hidden_field_tag 'role', 'customer' %>
+            <%= button_tag(value='remove as clerk', class: "Add-Button")  %>
+          <% end %>
+      <% end %>
+        <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'owner' %>
+          <%= button_tag(value='make him admin', class: "Add-Button")  %>
+        <% end %>
+    <% end %>
+    <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+        <%= submit_tag "delete this account", class: 'Add-Button' %>
+    <% end %>
+  </div>
+    <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
+      <p class="Input-Label">
+        Name
+      </p>
+      <%= text_field_tag(name = 'name', value = nil,
+                         class: "EditMenuitem-name",
+                         placeholder: user.name )
+      %>
+      <p class="Input-Label">
+        Email
+      </p>
+      <%= text_field_tag(name = 'email',
+                         value = nil,
+                         class: "EditMenuitem-image_url",
+                         placeholder:  user.email )
+      %>
+      <p class="Input-Label">
+        New Password
+      </p>
+      <%= text_field_tag(name = 'password', value = nil,
+                         class: "EditMenuitem-description",
+                         placeholder:  'New password' )
+      %>
+      <p>
+      <%= button_tag(value='update', class: "Add-Button")  %>
+      </p>
+    <% end %>
+</div>
