@@ -1,0 +1,29 @@
+<div class='edit-menuitem-container'>
+    <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
+      <p class="Input-Label">
+        Name
+      </p>
+      <%= text_field_tag(name = 'name', value = nil,
+                         class: "EditMenuitem-name",
+                         placeholder: user.name )
+      %>
+      <p class="Input-Label">
+        Email
+      </p>
+      <%= text_field_tag(name = 'email',
+                         value = nil,
+                         class: "EditMenuitem-image_url",
+                         placeholder:  user.email )
+      %>
+      <p class="Input-Label">
+        New Password
+      </p>
+      <%= text_field_tag(name = 'password', value = nil,
+                         class: "EditMenuitem-description",
+                         placeholder:  'New password' )
+      %>
+      <p>
+      <%= button_tag(value='update', class: "Add-Button")  %>
+      </p>
+    <% end %>
+</div>

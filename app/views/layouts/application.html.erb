@@ -44,7 +44,12 @@
               <%= link_to cart_path ,class:"Navbar-Item" do %>
                   <%= show_svg('cart.svg') %>
                   <p class="Header-tab">Cart</p>
+              <% end %>
+              <% if @current_user.role != 'clerk' %>
+                <%= link_to edit_user_path(@current_user), class:"Navbar-Item", method: 'get' do %>
+                    <p class="Header-tab">My Profile</p>
                 <% end %>
+              <% end %>
               <%= link_to destroy_session_path,method: "delete",class:"Navbar-Item" do %>
                   <%= show_svg('signout.svg') %>
                   <p class="Header-tab">Logout</p>
