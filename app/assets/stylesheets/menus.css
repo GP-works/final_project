@@ -19,8 +19,8 @@
 .Menu {
   margin-bottom: 60px;
   align-items: center;
-  display: ruby-base;
-  justify-content: space-between;
+  display: flex;
+  justify-content: start;
 }
 
 .Menu-select {
