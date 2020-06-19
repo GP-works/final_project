@@ -20,14 +20,32 @@
 <%else%>
     <section class="CartBody">
         <% if hidden_status == false %>
-          <p class="ItemName">Order Id : <%= order.id %></p>
-          <p class="ItemName">Placed Date : <%= order.date.to_s(:short) %></p>
-          <% if order.delivered_at %>
-            <p class="ItemName">Delivered Date : <%= order.delivered_at.to_s(:short) %></p>
-          <% end %>
-          <% if @current_user.role != 'customer'%>
-             <p class="ItemName">Name of customer : <%= order.user.name %></p>
-          <% end %>
+          <div class="Order-top">
+            <div>
+              <p class="ItemName">Order Id : <%= order.id %></p>
+              <p class="ItemName">Placed Date : <%= order.date.to_s(:short) %></p>
+              <% if order.delivered_at %>
+                <p class="ItemName">Delivered Date : <%= order.delivered_at.to_s(:short) %></p>
+              <% end %>
+              <% if @current_user.role != 'customer'%>
+                <p class="ItemName">Name of customer : <%= order.user.name %></p>
+              <% end %>
+            </div>
+            <div class="Order-right">
+              <div>
+                <%= form_with(url: "/orders/#{order.id}", method: "post") do %>
+                    <%= submit_tag "Reorder", class: 'SubmitButton' %>
+                <% end %>
+              </div>
+              <div>
+                <% if order.not_delivered %>
+                  <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
+                      <%= submit_tag "Cancel", class: 'SubmitButton Red' %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
         <% end %>
         <table>
             <tr class="ColumnTitle">
@@ -77,6 +95,12 @@
                 <%= submit_tag "Confirm&Pay", class: 'SubmitButton' %>
             <% end %>
           </div>
+        <% else %>
+          <div class="exit-container">
+          <form action="/orders" method="GET">
+            <input class='SubmitButton Order-exit' type="submit" value='Exit'>
+         </form>
+         </div>
         <% end %>
     </section>
     <%end%>

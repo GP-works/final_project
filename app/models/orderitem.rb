@@ -14,4 +14,8 @@ class Orderitem < ActiveRecord::Base
     notavailable_elements = all.select { |orderitem| (Menuitem.available.exists?(orderitem.menuitem_id) == false) }
                                .map { |orderitem| orderitem.menu_item_name }.uniq
   end
+  def self.available
+    all.select { |orderitem| (Menuitem.available.exists?(orderitem.menuitem_id) == true) }
+      .map { |orderitem| orderitem }
+  end
 end
