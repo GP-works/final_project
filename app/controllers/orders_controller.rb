@@ -13,11 +13,19 @@ class OrdersController < ApplicationController
 
   def pay
     order = Order.find(params[:id])
-    order.ordered = true
-    order.status = "ordered"
-    order.save
-    flash[:success] = "order placed succesfully with id #{order.id}"
-    redirect_to orders_path
+    if order.orderitems.notexist.count != 0
+      not_existed_entries = order.orderitems.notexist
+      not_existed_entries.each do |entry_name|
+        flash[:error] = "The Item #{entry_name} is not available,remove to continue"
+      end
+      redirect_to cart_path
+    else
+      order.ordered = true
+      order.status = "ordered"
+      order.save
+      flash[:success] = "order placed succesfully with id #{order.id}"
+      redirect_to orders_path
+    end
   end
 
   def cart

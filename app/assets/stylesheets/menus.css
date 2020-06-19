@@ -17,29 +17,29 @@
 }
 
 .Menu {
-  margin-bottom: 60px;
-  align-items: center;
+  margin-bottom: 10px;
   display: flex;
-  justify-content: start;
+  justify-content: first baseline;
+  align-items: baseline;
+}
+
+.Menu-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .Menu-select {
   margin-right: 20px;
-  padding: 2px;
+  padding: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: lightblue;
   cursor: pointer;
 }
 
-.Menu-select-logout {
-  color: black;
-  font-weight: 600;
-  margin-right: 20px;
-  padding: 2px;
-  border: none;
-  text-decoration: none;
-  background-color: white;
+.Menu-select:hover {
+  background-color: rgb(209, 224, 230);
 }
 
 .Menuselect-option {

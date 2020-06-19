@@ -14,4 +14,8 @@ class Menuitem < ActiveRecord::Base
     return "tasty #{self.name}" if self.description == "" || self.description == nil
     self.description
   end
+
+  def self.available
+    where("available=?", true)
+  end
 end

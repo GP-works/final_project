@@ -122,14 +122,14 @@ tr {
     display: flex;
     align-items: center;
     cursor: pointer;
+    border-width: 0px;
 }
 
-.CartEmptyLink:hover .Add-Items {
-    color: green;
+.CartEmptyLink:hover {
+    background-color: lightblue;
 }
 
 .Add-Items {
     color: rgb(130, 24, 175);
     border: 0px;
-    background-color: whitesmoke;
 }
