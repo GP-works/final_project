@@ -17,6 +17,9 @@
           <%= button_tag(value='make him admin', class: "Add-Button")  %>
         <% end %>
     <% end %>
+    <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+        <%= submit_tag "delete this account", class: 'Add-Button' %>
+    <% end %>
   </div>
     <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
       <p class="Input-Label">

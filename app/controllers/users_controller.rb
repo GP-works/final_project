@@ -8,6 +8,16 @@ class UsersController < ApplicationController
     ensure_owner_logged_in
   end
 
+  def destroy
+    user = User.find(params[:id])
+    unless current_user.role != "owner" || user != current_user
+      flash[:error] = "you do not have authority"
+      redirect_to "/" and return
+    end
+    user.destroy
+    redirect_to users_path
+  end
+
   def edit
     user = User.find(params[:id])
     unless current_user.role == "owner" || current_user == user
