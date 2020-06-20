@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.request_status = params[:role]
     if user.save
-      flash[:success] = "role request/changes successfully"
+      flash[:success] = "role requested successfully"
       redirect_to users_path
     end
   end

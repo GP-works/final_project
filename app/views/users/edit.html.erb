@@ -20,7 +20,7 @@
       <% if @current_user.request_status != 'owner' %>
         <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
           <%= hidden_field_tag 'role', 'owner' %>
-          <%= button_tag(value='request as admin', class: "Add-Button")  %>
+          <%= button_tag(value='admin request', class: "Add-Button")  %>
         <% end %>
       <% else %>
         <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
@@ -40,9 +40,7 @@
         <% end %>
       <% end %>
     <% end %>
-      <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
-        <%= submit_tag "delete this account", class: 'Add-Button' %>
-      <% end %>
+
   </div>
     <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
       <p class="Input-Label">
@@ -71,4 +69,7 @@
       <%= button_tag(value='update', class: "Add-Button")  %>
       </p>
     <% end %>
+    <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+        <%= submit_tag "delete this account", class: 'Add-Button Red' %>
+      <% end %>
 </div>
