@@ -82,7 +82,7 @@ body {
 }
 
 .Home-Icon:hover {
-  fill: blue;
+  fill: blue !important;
 }
 
 .Signup-link, .Signin-link {

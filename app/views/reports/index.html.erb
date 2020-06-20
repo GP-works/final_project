@@ -15,22 +15,37 @@
      <tr class="ColumnTitle">
         <th class="SerialNo">SNo</th>
           <th class="ItemName">Name</th>
+          <th class="ItemQuantity">Quantity</th>
+          <th class="Percentage">Percentage(Quantity)</th>
           <th class="TotalPrice">TotalPrice</th>
-          <th class="Percentage">Percentage</th>
+          <th class="Percentage">Percentage(Price)</th>
       </tr>
       <% serial_no = 1 %>
+      <% price = 0 %>
+      <% qty = 0 %>
       <% reports=Orderitem.getreports(from_date,end_date) %>
       <% reports.each_key do |menu_item_name|%>
         <tr class="ItemDetails">
           <td class="SerialNo"><%= serial_no %>.</td>
           <td class="ItemName"><%= menu_item_name %></td>
+          <td class="ItemQuantity"><%= reports[menu_item_name.to_sym][:qty] %></td>
+          <td class="Percentage"><%= reports[menu_item_name.to_sym][:percent_qty].round(2) %>%</td>
           <td class="TotalPrice"><%= reports[menu_item_name.to_sym][:sum]%></td>
-          <td class="Percentage"><%= reports[menu_item_name.to_sym][:percent].round(2)%></td>
+          <td class="Percentage"><%= reports[menu_item_name.to_sym][:percent_price].round(2)%>%</td>
         </tr>
         <% serial_no=serial_no+1%>
+        <% price= price+reports[menu_item_name.to_sym][:sum] %>
+        <% qty = qty+reports[menu_item_name.to_sym][:qty] %>
       <% end %>
-
-
+      <hr>
+       <tr class="ItemDetails">
+          <td class="SerialNo"></td>
+          <td class="ItemName"></td>
+          <td class="ItemQuantity"><%= qty %></td>
+          <td class="Percentage"></td>
+          <td class="TotalPrice"><%= price %></td>
+          <td class="Percentage"></td>
+        </tr>
   </table>
 
 </div>

@@ -36,6 +36,12 @@
                   <p class="Header-tab">Users</p>
                 <% end %>
               <% end %>
+              <% if @current_user.role == "owner" %>
+                <%= link_to reports_path ,class:"Navbar-Item" do %>
+                  <%= show_svg('chart.svg') %>
+                  <p class="Header-tab">Reports</p>
+                <% end %>
+              <% end %>
             </div>
             <div >
               <p class='Cafeteria-title'>Gp cafeteria</p>
@@ -47,7 +53,8 @@
               <% end %>
               <% if @current_user.role != 'billclerk' %>
                 <%= link_to edit_user_path(@current_user), class:"Navbar-Item", method: 'get' do %>
-                    <p class="Header-tab">My Profile</p>
+                    <%= show_svg('user.svg') %>
+                    <p class="Header-tab">Profile</p>
                 <% end %>
               <% end %>
               <%= link_to destroy_session_path,method: "delete",class:"Navbar-Item" do %>

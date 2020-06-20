@@ -26,6 +26,7 @@
 
 .SubmitButton:hover {
   cursor: pointer;
+  background-color: seagreen;
 }
 
 .Report-container {
@@ -33,6 +34,7 @@
   margin: 0 auto;
   background-color: white;
   padding: 20px 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .reports-table {

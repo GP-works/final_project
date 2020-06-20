@@ -8,14 +8,18 @@ class Orderitem < ActiveRecord::Base
     all.where("created_at >= ? AND created_at <= ? ", from_date, to_date)
       .select(:menu_item_name)
       .group(:menu_item_name)
-      .sum(:menu_item_price)
+      .pluck("menu_item_name,sum(menu_item_price),count(*)")
   end
   def self.getreports(from_date, to_date)
-    sum_hash = all.getsum(from_date, to_date)
-    total_sum = sum_hash.sum { |menu_item, menu_item_price| menu_item_price }
+    sum_array = all.getsum(from_date, to_date)
+    total_sum = sum_array.sum { |menu_item, menu_item_price, qty| menu_item_price }
+    total_qty = sum_array.sum { |menu_item, menu_item_price, qty| qty }
     percent_hash = {}
-    sum_hash.each { |menu_item_name, menu_item_price|
-      percent_hash[menu_item_name.to_sym] = { sum: menu_item_price, percent: ((menu_item_price * 100) / total_sum) }
+    sum_array.each { |menu_item_name, menu_item_price, qty|
+      percent_hash[menu_item_name.to_sym] = { sum: menu_item_price,
+                                              percent_price: ((menu_item_price * 100) / total_sum),
+                                              qty: qty,
+                                              percent_qty: ((qty * 100) / total_qty) }
     }
     percent_hash
   end
