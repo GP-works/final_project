@@ -1,6 +1,6 @@
 <div class='edit-menuitem-container'>
   <div class='role-change'>
-    <% if @current_user.role == 'owner'%>
+    <% if @current_user.role == 'owner' and user != @current_user %>
       <% if user.role != 'billclerk' %>
         <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
           <%= hidden_field_tag 'role', 'billclerk' %>
@@ -16,10 +16,33 @@
           <%= hidden_field_tag 'role', 'owner' %>
           <%= button_tag(value='make him admin', class: "Add-Button")  %>
         <% end %>
+    <% elsif @current_user.role == 'customer' %>
+      <% if @current_user.request_status != 'owner' %>
+        <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'owner' %>
+          <%= button_tag(value='request as admin', class: "Add-Button")  %>
+        <% end %>
+      <% else %>
+        <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'nil' %>
+          <%= button_tag(value='cancel admin request', class: "Add-Button")  %>
+        <% end %>
+      <% end %>
+      <% if @current_user.request_status != 'billclerk' %>
+        <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'billclerk' %>
+          <%= button_tag(value='request as clerk', class: "Add-Button")  %>
+        <% end %>
+      <% else %>
+        <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'nil' %>
+          <%= button_tag(value='cancel clerk request', class: "Add-Button")  %>
+        <% end %>
+      <% end %>
     <% end %>
-    <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+      <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
         <%= submit_tag "delete this account", class: 'Add-Button' %>
-    <% end %>
+      <% end %>
   </div>
     <%= form_with(url: "/users/#{user.id}", method: "patch", ) do %>
       <p class="Input-Label">

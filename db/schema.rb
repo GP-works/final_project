@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_095922) do
+ActiveRecord::Schema.define(version: 2020_06_20_054828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_06_18_095922) do
     t.string "role"
     t.string "email"
     t.string "password_digest"
+    t.string "request_status"
   end
 
   add_foreign_key "menuitems", "menus"
