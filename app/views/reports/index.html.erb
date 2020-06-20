@@ -1,8 +1,36 @@
-<div class='Date-period'>
-<form action=''>
-  <div class="From-date">
-  </div>
-  <div class="From-date">
-  </div>
-</form>
+<div class='Report-container'>
+  <form action="/reports/" method= "GET" class= "Date-period">
+    <div class="Date">
+      <label class='date-label'>From date:</label>
+      <input type="date" name="from_date" class="From-Date">
+    </div>
+    <div class="Date">
+      <label class='date-label'>To date:</label>
+      <input type="date" name="end_date" class="From-Date">
+    </div>
+    <button class="SubmitButton" type="submit">fetch</button>
+  </form>
+  <p class="Dateperiod-Indicator"><%= "Showing reports from #{from_date.to_date()} to #{end_date.to_date()}"%></p>
+  <table class='reports-table'>
+     <tr class="ColumnTitle">
+        <th class="SerialNo">SNo</th>
+          <th class="ItemName">Name</th>
+          <th class="TotalPrice">TotalPrice</th>
+          <th class="Percentage">Percentage</th>
+      </tr>
+      <% serial_no = 1 %>
+      <% reports=Orderitem.getreports(from_date,end_date) %>
+      <% reports.each_key do |menu_item_name|%>
+        <tr class="ItemDetails">
+          <td class="SerialNo"><%= serial_no %>.</td>
+          <td class="ItemName"><%= menu_item_name %></td>
+          <td class="TotalPrice"><%= reports[menu_item_name.to_sym][:sum]%></td>
+          <td class="Percentage"><%= reports[menu_item_name.to_sym][:percent].round(2)%></td>
+        </tr>
+        <% serial_no=serial_no+1%>
+      <% end %>
+
+
+  </table>
+
 </div>
