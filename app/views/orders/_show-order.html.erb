@@ -1,22 +1,22 @@
 <% orderitems = order.orderitems.getqty %>
 <% if orderitems.count==0%>
-<div class="CartEmptyBody">
-    <p class="CartEmptyMessage">No Items in cart</p>
-    <img src=<%=image_path("empty.png")%>
-            height="300"
-            width="300"
-            class= "CartEmptyImage"
-    >
-    <div>
-        <form action="/menuitems" method="GET">
-                <button class= "CartEmptyLink" type=submit>
-                  <img src=<%=image_path("additems.png")%> alt= "addicon" >
-                  <label class="Add-Items" >Add</label>
-                </button>
-        </form>
+  <div class="CartEmptyBody">
+      <p class="CartEmptyMessage">No Items in cart</p>
+      <img src=<%=image_path("empty.png")%>
+              height="300"
+              width="300"
+              class= "CartEmptyImage"
+      >
+      <div>
+          <form action="/menuitems" method="GET">
+                  <button class= "CartEmptyLink" type=submit>
+                    <img src=<%=image_path("additems.png")%> alt= "addicon" >
+                    <label class="Add-Items" >Add</label>
+                  </button>
+          </form>
 
-    </div>
-</div>
+      </div>
+  </div>
 <%else%>
     <section class="CartBody">
         <% if hidden_status == false %>
@@ -47,7 +47,8 @@
             </div>
           </div>
         <% end %>
-        <table>
+        <% class_name= hidden_status ? "Left-margin": "" %>
+        <table class=<%=class_name%>>
             <tr class="ColumnTitle">
                 <th class="SerialNo">SNo</th>
                 <th class="ItemName">Name</th>
@@ -96,11 +97,9 @@
             <% end %>
           </div>
         <% else %>
-          <div class="exit-container">
           <form action="/orders" method="GET">
-            <input class='SubmitButton Order-exit' type="submit" value='Exit'>
+            <button class='Order-exit' type="submit" >Exit</button>
          </form>
-         </div>
         <% end %>
     </section>
-    <%end%>
+<%end%>

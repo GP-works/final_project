@@ -4,6 +4,17 @@ class Orderitem < ActiveRecord::Base
   def self.getqty
     select(:menu_item_name).group(:menu_item_name).having("count(*) >= 1").size
   end
+  def self.getsum(from_date, to_date)
+    all.where("created_at >= ? AND created_at <= ? ", from_date, to_date)
+      .select(:menu_item_name)
+      .group(:menu_item_name)
+      .sum(:menu_item_price)
+  end
+  def self.getreports(from_date, to_date)
+    sum_hash = all.getsum(from_date, to_date)
+    total_sum = sum_hash.sum { |menu_item, menu_item_price| menu_item_price }
+    percent_hash = sum_hash.map { |menu_item, menu_item_price| }
+  end
   def self.qty(id)
     where("menuitem_id = ?", id).count
   end

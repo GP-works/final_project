@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_20_054828) do
 
   # These are extensions that must be enabled in order to support this database
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_06_20_054828) do
     t.float "menu_item_price"
     t.bigint "order_id", null: false
     t.bigint "menuitem_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["order_id"], name: "index_orderitems_on_order_id"
   end
 
