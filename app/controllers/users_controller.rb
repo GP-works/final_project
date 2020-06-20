@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   def create
     new_user = User.new(
       name: params[:name],
-      role: params[:role],
+      role: "customer",
       email: params[:email],
       request_status: nil,
       password: params[:password],

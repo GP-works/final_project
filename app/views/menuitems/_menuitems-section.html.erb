@@ -1,3 +1,16 @@
+<% if rendered_from == 'menus' %>
+  <div>
+      <%= form_with(url: "/submenus", method: "post", class: "Add-menu") do %>
+        <label for="Menu-text" class="label">New Submenu:</label>
+        <%= text_field_tag( name = 'name', value = nil,
+                            class: "Menu-text",
+                            placeholder: "New Submenu?")
+        %>
+        <%= hidden_field_tag 'menu_id', @menu.id %>
+        <%= button_tag(value = 'Add', class: "Add-Button")  %>
+      <% end %>
+    </div>
+<% end %>
 <div>
   <% menu.submenus.all.each do |submenu| %>
     <div class="AddItemSubmenu">
