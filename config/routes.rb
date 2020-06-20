@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :orderitems
   resources :submenus
+  resources :reports
   post "/menus/setmenu", to: "menus#set", as: :setmenu
   get "/signin", to: "sessions#new", as: :new_sessions
   post "/signin", to: "sessions#create", as: :sessions

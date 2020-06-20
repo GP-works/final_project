@@ -110,6 +110,20 @@
 }
 
 .Order-exit {
-  float: left;
   margin-bottom: 10px;
+  padding: 5px 15px;
+  background-color: green;
+  border-radius: 4px;
+  border-width: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.Order-exit:hover {
+  background-color: rgb(1, 102, 1);
+  cursor: pointer;
+}
+
+.Left-margin {
+  margin-left: 70px;
 }
