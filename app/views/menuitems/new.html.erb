@@ -1,8 +1,8 @@
 <section class="Menus-Body">
-  <p class="AddMenuItemLabel">You are adding  an item in "<%= @menu.name %>" menu</p>
+  <p class="AddMenuItemLabel">You are adding  an item in "<%= menu.name %>" menu</p>
     <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
-      <%= hidden_field_tag(name='id',value = @menu.id)%>
-      <%= hidden_field_tag(name='submenu_id',value = params[:submenu_id])%>
+      <%= hidden_field_tag(name='id',value = menu.id)%>
+      <%= hidden_field_tag(name='submenu_id',value = submenu.id)%>
       <section class='LabelAndInput'>
       <p class="Input-Label">
       Name

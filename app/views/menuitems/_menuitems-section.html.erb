@@ -6,94 +6,96 @@
                             class: "Menu-text",
                             placeholder: "New Submenu?")
         %>
-        <%= hidden_field_tag 'menu_id', @menu.id %>
+        <%= hidden_field_tag 'menu_id', menu.id %>
         <%= button_tag(value = 'Add', class: "Add-Button")  %>
       <% end %>
     </div>
 <% end %>
 <div>
   <% menu.submenus.all.each do |submenu| %>
-    <div class="AddItemSubmenu">
-        <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>
-        <% if rendered_from == 'menus' %>
-          <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
-        <% end %>
-    </div>
-    <ul class="MenuItemList">
-        <% submenuitems = rendered_from=='home' ? submenu.menuitems.available : submenu.menuitems.all %>
-        <% submenuitems.all.order('id').each do |menuitem| %>
-        <li class="MenuItem">
-          <img src=<%= menuitem.image %>
-                        height="180"
-                        width="180"
-                        class= "MenuItemImage"
-          >
+    <% if submenu.menuitems.available.count>0 || rendered_from == 'menus'%>
+      <div class="AddItemSubmenu">
+          <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>
+          <% if rendered_from == 'menus' %>
+            <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
+          <% end %>
+      </div>
+      <ul class="MenuItemList">
+          <% submenuitems = rendered_from=='home' ? submenu.menuitems.available : submenu.menuitems.all %>
+          <% submenuitems.all.order('id').each do |menuitem| %>
+          <li class="MenuItem">
+            <img src=<%= menuitem.image %>
+                          height="180"
+                          width="180"
+                          class= "MenuItemImage"
+            >
 
-          <div class="NameAndDescriptionContainer">
-            <div>
-              <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
-              <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
-            </div>
-            <% if rendered_from == 'menus'%>
-              <% class_name = menuitem.available ? "outer-switch-active" : "outer-switch" %>
-              <% value= menuitem.available ? "0" : "1" %>
-              <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
-                <input type="hidden" value=<%= value %> name="available">
-                <button type='submit' class=<%= class_name %>>
-                  <span class="switch" ></span>
-                </button>
-              <% end %>
-            <% end %>
-          </div>
-
-          <section class="PriceAndQuantityContainer">
-            <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
-            <% if rendered_from == 'home' %>
+            <div class="NameAndDescriptionContainer">
               <div>
-                <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
-                <% if qty==0 %>
-                  <%= link_to "Add", orderitems_path(menuitem_id: menuitem.id,
-                                                    menu_item_name: menuitem.name,
-                                                    menu_item_price: menuitem.price,
-                                                    from: "menuitems"),
-                                                    method: "post",
-                                                    class: "Add-text",
-                                                    disable_with: "Adding"
-                  %>
-                <% else %>
-                  <div class='MenuItem-qty'>
-                      <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
-                      <%= link_to "− ", orderitem_path(id:order_item.id,from: "menuitems",),
-                                                      method: "delete", class: "home-minus",
-                                                      diable_with: "Processing.." %>
-                      <p class="Count"><%= " #{qty}" %></p>
-                      <%= link_to "＋", orderitems_path(menuitem_id: menuitem.id,
-                                                        menu_item_name: menuitem.name,
-                                                        menu_item_price: menuitem.price,
-                                                        from: "menuitems"),
-                                                        method: "post",
-                                                        class: "home-plus",
-                                                        disable_with: "Adding..."
-                      %>
-                  </div>
-                <% end %>
+                <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
+                <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
               </div>
-            <% else %>
-              <div class='edit-container' >
-                <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
-                  <input type='submit' value='Edit' class='edit-Button'>
-                </form>
-                <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
-                    <%= image_submit_tag(source="delete-icon.svg",
-                                        class: "MenuItem-deleteIcon",
-                                        alt: "deleteicon")
+              <% if rendered_from == 'menus'%>
+                <% class_name = menuitem.available ? "outer-switch-active" : "outer-switch" %>
+                <% value= menuitem.available ? "0" : "1" %>
+                <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
+                  <input type="hidden" value=<%= value %> name="available">
+                  <button type='submit' class=<%= class_name %>>
+                    <span class="switch" ></span>
+                  </button>
+                <% end %>
+              <% end %>
+            </div>
+
+            <section class="PriceAndQuantityContainer">
+              <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
+              <% if rendered_from == 'home' %>
+                <div>
+                  <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
+                  <% if qty==0 %>
+                    <%= link_to "Add", orderitems_path(menuitem_id: menuitem.id,
+                                                      menu_item_name: menuitem.name,
+                                                      menu_item_price: menuitem.price,
+                                                      from: "menuitems"),
+                                                      method: "post",
+                                                      class: "Add-text",
+                                                      disable_with: "Adding"
                     %>
-                <% end %>
-              </div>
-            <% end %>
-          </section>
-        </li>
-      <% end %>
-    </ul>
+                  <% else %>
+                    <div class='MenuItem-qty'>
+                        <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
+                        <%= link_to "− ", orderitem_path(id:order_item.id,from: "menuitems",),
+                                                        method: "delete", class: "home-minus",
+                                                        diable_with: "Processing.." %>
+                        <p class="Count"><%= " #{qty}" %></p>
+                        <%= link_to "＋", orderitems_path(menuitem_id: menuitem.id,
+                                                          menu_item_name: menuitem.name,
+                                                          menu_item_price: menuitem.price,
+                                                          from: "menuitems"),
+                                                          method: "post",
+                                                          class: "home-plus",
+                                                          disable_with: "Adding..."
+                        %>
+                    </div>
+                  <% end %>
+                </div>
+              <% else %>
+                <div class='edit-container' >
+                  <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
+                    <input type='submit' value='Edit' class='edit-Button'>
+                  </form>
+                  <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
+                      <%= image_submit_tag(source="delete-icon.svg",
+                                          class: "MenuItem-deleteIcon",
+                                          alt: "deleteicon")
+                      %>
+                  <% end %>
+                </div>
+              <% end %>
+            </section>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 </div>

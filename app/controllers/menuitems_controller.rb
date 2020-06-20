@@ -43,6 +43,8 @@ class MenuitemsController < ApplicationController
   end
 
   def new
+    submenu = Submenu.find(params[:submenu_id])
+    render :new, locals: { menu: submenu.menu, submenu: submenu }
   end
 
   def edit
