@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy", as: :destroy_session
   put "/menuitems/available/:id", to: "menuitems#available", as: :available_path
   put "/users/change_role/:id", to: "users#change_role", as: :change_role
+  put "/users/role_request/:id", to: "users#role_request", as: :role_request
 end

@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   def self.customers
     where("role = ?", "customer")
   end
+  def self.admin_requests
+    where("request_status = ? ", "owner")
+  end
+  def self.clerk_requests
+    where("request_status = ? ", "billclerk")
+  end
   def self.clerks
     where("role = ?", "billclerk")
   end

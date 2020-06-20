@@ -1,15 +1,37 @@
 <section class="UsersBody">
 <div>
+  <p class="Users-Role">Clerk Post Requests</p>
+  <%= render partial:'user-section',
+             locals:{  users: User.clerk_requests,
+                       display_status: true
+                      }
+  %>
+</div>
+<hr>
+<div>
+  <p class="Users-Role">Owner Post Requests</p>
+  <%= render partial:'user-section',
+             locals:{  users: User.admin_requests,
+                       display_status: true
+                       }
+  %>
+</div>
+<hr>
+<div>
   <p class="Users-Role">Clerks</p>
   <%= render partial:'user-section',
-             locals:{  users: User.clerks }
+             locals:{  users: User.clerks,
+                       display_status: false
+                    }
   %>
 </div>
 <hr>
 <div class="users">
   <p class="Users-Role">Customers</p>
   <%= render partial:'user-section',
-             locals:{ users: User.customers }
+             locals:{ users: User.customers,
+                      display_status: false
+                     }
   %>
 </div>
 </section>

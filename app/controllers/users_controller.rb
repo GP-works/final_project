@@ -10,12 +10,16 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    unless current_user.role != "owner" || user != current_user
+    if current_user.role == "owner" || user == current_user
+      user.destroy
+      if user == current_user
+        session[:current_user_id] = nil
+      end
+      redirect_to "/"
+    else
       flash[:error] = "you do not have authority"
       redirect_to "/" and return
     end
-    user.destroy
-    redirect_to users_path
   end
 
   def edit
@@ -30,6 +34,7 @@ class UsersController < ApplicationController
   def change_role
     user = User.find(params[:id])
     user.role = params[:role]
+    user.request_status = nil
     if user.save
       flash[:success] = "role is changed as requested"
       redirect_to users_path
@@ -49,11 +54,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def role_request
+    user = User.find(params[:id])
+    user.request_status = params[:role]
+    if user.save
+      flash[:success] = "role request/changes successfully"
+      redirect_to users_path
+    end
+  end
+
   def create
     new_user = User.new(
       name: params[:name],
       role: params[:role],
       email: params[:email],
+      request_status: nil,
       password: params[:password],
     )
     if new_user.save
