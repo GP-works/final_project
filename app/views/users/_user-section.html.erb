@@ -4,14 +4,38 @@
         <th class="IdNo">IdNo.</th>
         <th class="UserName">Name</th>
         <th class="UserEmail">Email</th>
-        <th class="OrdersQuantity">OrdersPlaced</th>
+        <% if display_status %>
+            <th class="OrdersQuantity">Accept</th>
+            <th class="OrdersQuantity">Delete</th>
+        <% else %>
+            <th class="OrdersQuantity">OrdersPlaced</th>
+        <% end %>
     </tr>
     <% users.all.each do |user| %>
     <tr class="UserDetails">
         <td class="IdNo"><%= user.id %></td>
-        <td class="UserName"><%= user.name %></td>
+        <td class="UserName"><%= link_to  user.name, edit_user_path(id: user.id), class: "ExpandOrder" %></td>
         <td class="UserEmail"><%= user.email %></td>
-        <td class="OrdersQuantity"><%= user.orders.count %></th>
+        <% if display_status %>
+            <td class="UserName"><%= link_to  'Accept',
+                                              change_role_path(id: user.id,
+                                                               role: user.request_status
+                                                               ),
+                                              method: 'put',
+                                              class: "ExpandOrder"
+                                %>
+            </td>
+            <td class="UserName"><%= link_to  'Delete',
+                                              role_request_path(id: user.id,
+                                                               role: nil
+                                                               ),
+                                              method: 'put',
+                                              class: "ExpandOrder"
+                                %>
+            </td>
+        <% else %>
+            <td class="OrdersQuantity"><%= user.orders.count %></td>
+        <% end %>
     </tr>
     <% end %>
 </table>
