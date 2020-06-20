@@ -13,7 +13,11 @@ class Orderitem < ActiveRecord::Base
   def self.getreports(from_date, to_date)
     sum_hash = all.getsum(from_date, to_date)
     total_sum = sum_hash.sum { |menu_item, menu_item_price| menu_item_price }
-    percent_hash = sum_hash.map { |menu_item, menu_item_price| }
+    percent_hash = {}
+    sum_hash.each { |menu_item_name, menu_item_price|
+      percent_hash[menu_item_name.to_sym] = { sum: menu_item_price, percent: ((menu_item_price * 100) / total_sum) }
+    }
+    percent_hash
   end
   def self.qty(id)
     where("menuitem_id = ?", id).count
