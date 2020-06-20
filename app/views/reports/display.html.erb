@@ -1,0 +1,23 @@
+<div class='Report-container'>
+<%= link_to "fetch-itemwise-report", reports_path, class: "ExpandOrder"%>
+  <form action="/reports/orders/" method= "get" class= "Date-period">
+    <div class="Date">
+      <label class='date-label'>From date:</label>
+      <input type="date" name="from_date" class="From-Date">
+    </div>
+    <div class="Date">
+      <label class='date-label'>To date:</label>
+      <input type="date" name="end_date" class="From-Date">
+    </div>
+    <button class="SubmitButton" type="submit">fetch orders</button>
+  </form>
+  <p class="Dateperiod-Indicator">
+    <%= "Showing Orders from #{from_date.to_date()} to #{end_date.to_date()}"%>
+  </p>
+  <%= render partial: 'orders/orders-section',
+        locals:{ all_orders: Order.get_orders(from_date, end_date) ,
+                  hidden_status: true,
+                  delivered_status: true
+                }
+    %>
+</div>

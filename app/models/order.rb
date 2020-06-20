@@ -39,4 +39,8 @@ class Order < ActiveRecord::Base
   def self.confirmed_orders
     where("ordered = ?", true)
   end
+
+  def self.get_orders(from_date, to_date)
+    all.where("date >= ? AND date <= ? ", from_date, to_date)
+  end
 end

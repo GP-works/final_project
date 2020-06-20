@@ -86,6 +86,7 @@
   font-size: 20px;
   text-decoration: none;
   padding: 3px;
+  padding-bottom: 10px;
 }
 
 .ExpandOrder:hover {
