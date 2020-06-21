@@ -20,4 +20,28 @@ class SubmenusController < ApplicationController
       end
     end
   end
+
+  def edit
+    submenu = Submenu.find(params[:id])
+    render :edit, locals: { submenu: submenu }
+  end
+
+  def update
+    submenu = Submenu.find(params[:id])
+    submenu.name = params[:name].presence || submenu.name
+    submenu.save
+    redirect_to "/submenus/#{submenu.id}/edit"
+  end
+
+  def destroy
+    submenu = Submenu.find(params[:id])
+    menu = submenu.menu
+    flash[:success] = "submenu #{submenu.name} deleted successfully"
+    submenu.destroy
+    if @menu == menu
+      redirect_to menus_path
+    else
+      redirect_to menus_edit_path(menu_id: menu.id)
+    end
+  end
 end

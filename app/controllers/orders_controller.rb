@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    order = current_user.orders.find(params[:id])
+    order = Order.find(params[:id])
     order.destroy
     params.delete(:id)
     redirect_to action: "index"

@@ -1,0 +1,21 @@
+<div class=Submenu-Edit-Container>
+  <p class="Submenu-Edit-Title"> <%= submenu.name.capitalize %> </p>
+  <div class="Form-container">
+    <%= form_with(url: "/submenus/#{submenu.id}", method: "put", class: "Submenu-Edit") do %>
+      <label class="SubmenuChange-Label">Change name of submenu:</label>
+      <%= text_field_tag(name = 'name', value = nil,
+                        class: "EditMenuitem-name",
+                          placeholder: submenu.name )
+            %>
+      <%= button_tag(value = 'Change', class: "Add-Button")  %>
+    <% end %>
+    <%= form_with(url: "/submenus/#{submenu.id}", method: "delete") do %>
+        <%= submit_tag "delete this submenu", class: 'SubmitButton Red' %>
+    <% end %>
+  </div>
+  <div class="Submenu-Edit">
+    <p class="SubMenu-Edit-Add">SubMenu Items</p>
+    <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
+  </div>
+  <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: 'menus',submenu: submenu,menu: submenu.menu} %>
+</div>
