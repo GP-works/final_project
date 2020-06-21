@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  before_action :ensure_owner_logged_in
+
   def index
     from_date = params[:from_date].presence || DateTime.now - 30
     end_date = params[:end_date].presence || DateTime.now

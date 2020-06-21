@@ -88,7 +88,9 @@
       <%= button_tag(value='update', class: "Add-Button")  %>
       </p>
     <% end %>
-    <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
-        <%= submit_tag "delete this account", class: 'Add-Button Red Right', data: {confirm: "are you sure to delete user named #{user.name}"} %>
+    <% if @current_user.role == 'customer' || @current_user.role == 'billclerk'%>
+      <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
+          <%= submit_tag "delete this account", class: 'Add-Button Red Right', data: {confirm: "are you sure to delete user named #{user.name}"} %>
       <% end %>
+    <% end %>
 </div>

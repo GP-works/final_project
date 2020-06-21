@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    if current_user.role == "owner" || user == current_user
+    if current_user.role == "owner" || (user == current_user && user.role != owner)
       user.destroy
       if user == current_user
         session[:current_user_id] = nil
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
       end
       redirect_to users_path
     else
+      if user.role == "owner"
+        flash[:error] = "Can't delete owner"
+      end
       flash[:error] = "you do not have authority"
       redirect_to "/" and return
     end

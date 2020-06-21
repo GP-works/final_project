@@ -41,3 +41,23 @@
 .reports-table {
   margin: 0 auto;
 }
+
+.Report-head {
+  font-size: 25px;
+  color: red;
+  font-weight: 600;
+  margin-left: 250px;
+  margin-top: 20px;
+}
+
+.Report-link {
+  font-size: 20px;
+  padding: 3px;
+  padding-bottom: 10px;
+  margin-right: 25px;
+}
+
+.Report-link:hover {
+  background-color: lightblue;
+  border-radius: 4px;
+}
