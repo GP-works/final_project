@@ -34,7 +34,7 @@
                                 %>
             </td>
         <% else %>
-            <td class="OrdersQuantity"><%= user.orders.count %></td>
+            <td class="OrdersQuantity"><%= user.orders.confirmed_orders.count %></td>
         <% end %>
     </tr>
     <% end %>

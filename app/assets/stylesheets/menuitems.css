@@ -12,8 +12,6 @@
 .Submenus-Title {
     font-size: 30px;
     font-weight: 600;
-    margin-top: -10px;
-    margin-bottom: 15px;
 }
 
 .edit-Button:hover {
@@ -67,8 +65,8 @@
     max-width: 250px;
     max-height: 270px;
     padding: 20px 5px;
-    margin-top: -15px;
     margin-right: -5px;
+    margin-bottom: -5px;
     background-color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     transform: scale(0.9);
@@ -216,14 +214,20 @@
 
 .Add-item-link {
     text-decoration: none;
-    font-size: larger;
+    font-size: 20px;
     margin-left: 20px;
     color: blue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Add-item-link:hover {
+    background-color: lightblue;
 }
 
 .AddItemSubmenu {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
 .outer-switch {
@@ -276,12 +280,22 @@
 
 .Edit-Icon {
     fill: red;
+    color: red;
     text-decoration: none;
     margin-left: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
 }
 
 .Edit-Icon:hover {
     fill: blue;
+    color: blue;
+    cursor: pointer;
+}
+
+.Edit-Icon>label:hover {
+    cursor: pointer;
 }
 
 .Submenu-Edit-Container {

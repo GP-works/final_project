@@ -18,4 +18,15 @@
     <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id,rendered_from:'submenu'),class: "Add-item-link" %>
   </div>
   <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: 'submenu',submenu: submenu,menu: submenu.menu} %>
+  <% if @menu == submenu.menu %>
+    <form action="/menus" method="GET">
+        <button class='Order-exit' type="submit" >Exit</button>
+    </form>
+  <% else %>
+    <form action= "/menus/edit" method="GET">
+      <input type="hidden" name="menu_id" value=<%= submenu.menu.id %>>
+      <button class='Order-exit' type="submit" >Exit</button>
+    </form>
+  <% end %>
+
 </div>
