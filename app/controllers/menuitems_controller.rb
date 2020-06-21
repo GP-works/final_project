@@ -9,7 +9,8 @@ class MenuitemsController < ApplicationController
                                       price: params[:price],
                                       image_url: params[:image_url],
                                       description: params[:description],
-                                      submenu_id: params[:submenu_id])
+                                      submenu_id: params[:submenu_id],
+                                      available: true)
     if new_menuitem.save
       flash[:success] = "#{params[:name]} added to #{menu.name} menu"
       if @menu == menu
