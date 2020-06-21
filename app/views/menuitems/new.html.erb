@@ -2,6 +2,7 @@
   <p class="AddMenuItemLabel">You are adding  an item in "<%= menu.name %>" menu</p>
     <%= form_with(url: "/menuitems", method: "post", class: "Add-menuitem") do %>
       <%= hidden_field_tag(name='id',value = menu.id)%>
+      <input type="hidden" value=<%= rendered_from %> name="rendered_from" >
       <%= hidden_field_tag(name='submenu_id',value = submenu.id)%>
       <section class='LabelAndInput'>
       <p class="Input-Label">

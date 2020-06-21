@@ -15,7 +15,7 @@
   </div>
   <div class="Submenu-Edit">
     <p class="SubMenu-Edit-Add">SubMenu Items</p>
-    <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
+    <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id,rendered_from:'submenu'),class: "Add-item-link" %>
   </div>
-  <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: 'menus',submenu: submenu,menu: submenu.menu} %>
+  <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: 'submenu',submenu: submenu,menu: submenu.menu} %>
 </div>
