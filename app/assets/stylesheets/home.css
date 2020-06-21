@@ -113,7 +113,7 @@ body {
   color: blue;
 }
 
-.OrdersBody, .edit-menuitem-container, .Menus-Body, .CartBody, .NewSessionBody, .UsersBody, .NewUserBody {
+.OrdersBody, .Report-container .edit-menuitem-container, .Menus-Body, .CartBody, .NewSessionBody, .UsersBody, .NewUserBody {
   font-family: sans-serif;
   max-width: fit-content;
   max-width: -moz-max-content;

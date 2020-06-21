@@ -1,21 +1,38 @@
 <div class='edit-menuitem-container'>
   <div class='role-change'>
     <% if @current_user.role == 'owner' and user != @current_user %>
-      <% if user.role != 'billclerk' %>
+      <% if user.role == 'owner' %>
+        <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
+          <%= hidden_field_tag 'role', 'customer' %>
+          <%= button_tag(value='remove as admin',
+                         class: "Add-Button",
+                         data: {confirm: "are you sure to remove #{user.name} as admin"})  %>
+        <% end %>
+      <% elsif user.role != 'billclerk' %>
         <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
           <%= hidden_field_tag 'role', 'billclerk' %>
-          <%= button_tag(value='make him clerk', class: "Add-Button")  %>
+          <%= button_tag(value='make him clerk',
+                         class: "Add-Button",
+                         data: {confirm: "are you sure to appoint #{user.name} as clerk"})
+          %>
         <% end %>
       <% else %>
           <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
             <%= hidden_field_tag 'role', 'customer' %>
-            <%= button_tag(value='remove as clerk', class: "Add-Button")  %>
+            <%= button_tag(value='remove as clerk',
+                           class: "Add-Button",
+                           data: {confirm: "are you sure to remove #{user.name} as clerk"})
+            %>
           <% end %>
       <% end %>
+       <% if user.role != 'owner' %>
         <%= form_with(url:"/users/change_role/#{user.id}", method: "put") do %>
           <%= hidden_field_tag 'role', 'owner' %>
-          <%= button_tag(value='make him admin', class: "Add-Button")  %>
+          <%= button_tag(value='make him admin',
+                         class: "Add-Button",
+                         data: {confirm: "are you sure to appoint #{user.name} as admin"})  %>
         <% end %>
+       <% end %>
     <% elsif @current_user.role == 'customer' || @current_user.role == 'billclerk'%>
       <% if @current_user.request_status != 'owner' %>
         <%= form_with(url:"/users/role_request/#{user.id}", method: "put") do %>
@@ -72,6 +89,6 @@
       </p>
     <% end %>
     <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
-        <%= submit_tag "delete this account", class: 'Add-Button Red' %>
+        <%= submit_tag "delete this account", class: 'Add-Button Red', data: {confirm: "are you sure to delete user named #{user.name}"} %>
       <% end %>
 </div>

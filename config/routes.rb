@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/orders/:id", to: "orders#reorder", as: :reorder
   get "/menus/edit", to: "menus#edit", as: :menus_edit
   get "reports/orders", to: "reports#display_orders", as: :display_orders
+  get "reports/users", to: "reports#display_users", as: :display_users
   resources :menus
   resources :users
   resources :menuitems

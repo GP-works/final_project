@@ -16,4 +16,7 @@ class User < ActiveRecord::Base
   def self.clerks
     where("role = ?", "billclerk")
   end
+  def self.owners(user_id)
+    where("role = ? and id != ?", "owner", user_id)
+  end
 end
