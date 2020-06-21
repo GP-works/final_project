@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .Dateperiod-Indicator {
@@ -38,5 +39,5 @@
 }
 
 .reports-table {
-  margin-left: 50px;
+  margin: 0 auto;
 }
