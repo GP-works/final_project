@@ -1,0 +1,44 @@
+<div class='Report-container'>
+  <%= link_to "fetch-itemwise-report", reports_path,method: 'get', class: "ExpandOrder"%>
+  <%= link_to "fetch-orders-reports", display_orders_path, method: 'get', class: "ExpandOrder"%>
+  <form action="/reports/orders/" method= "get" class= "Date-period">
+    <div class="Date">
+      <label class='date-label'>From date:</label>
+      <input type="date" name="from_date" class="From-Date">
+    </div>
+    <div class="Date">
+      <label class='date-label'>To date:</label>
+      <input type="date" name="end_date" class="From-Date">
+    </div>
+    <button class="SubmitButton" type="submit">fetch user based reports</button>
+  </form>
+  <p class="Dateperiod-Indicator">
+    <%= "Showing Orders from #{from_date.to_date()} to #{end_date.to_date()}"%>
+  </p>
+  <div class='users'>
+    <p class="Users-Role">Clerks</p>
+    <%= render partial:'users/user-section',
+               locals:{  users: User.clerks,
+                         display_status: false
+                      }
+    %>
+  </div>
+  <hr>
+  <div class="users">
+    <p class="Users-Role">Customers</p>
+    <%= render partial:'users/user-section',
+               locals:{ users: User.customers,
+                      display_status: false
+                     }
+    %>
+  </div>
+  <hr>
+  <div class="users">
+    <p class="Users-Role">Other Admins</p>
+    <%= render partial:'users/user-section',
+              locals:{ users: User.owners(@current_user.id),
+                       display_status: false
+                      }
+    %>
+  </div>
+</div>

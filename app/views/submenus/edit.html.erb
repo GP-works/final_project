@@ -10,7 +10,7 @@
       <%= button_tag(value = 'Change', class: "Add-Button")  %>
     <% end %>
     <%= form_with(url: "/submenus/#{submenu.id}", method: "delete") do %>
-        <%= submit_tag "delete this submenu", class: 'SubmitButton Red' %>
+        <%= submit_tag "delete this submenu", class: 'SubmitButton Red', data: {confirm: "Are you sure to delete submenu named #{submenu.name}"} %>
     <% end %>
   </div>
   <div class="Submenu-Edit">

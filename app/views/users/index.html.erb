@@ -34,4 +34,13 @@
                      }
   %>
 </div>
+<hr>
+<div class="users">
+  <p class="Users-Role">Other Admins</p>
+  <%= render partial:'user-section',
+             locals:{ users: User.owners(@current_user.id),
+                      display_status: false
+                     }
+  %>
+</div>
 </section>

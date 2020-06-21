@@ -40,7 +40,7 @@
               <div>
                 <% if order.not_delivered %>
                   <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
-                      <%= submit_tag "Cancel order", class: 'SubmitButton Red' %>
+                      <%= submit_tag "Cancel order", class: 'SubmitButton Red', data: {confirm: "Are you sure to delete tis order"} %>
                   <% end %>
                 <% end %>
               </div>

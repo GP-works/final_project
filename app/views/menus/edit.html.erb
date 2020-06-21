@@ -9,7 +9,7 @@
         <input class='SubmitButton ' type="submit" value='Exit'>
     </form>
     <%= form_with(url: "/menus/#{menu.id}", method: "delete") do %>
-        <%= submit_tag "delete this menu", class: 'SubmitButton Red' %>
+        <%= submit_tag "delete this menu", class: 'SubmitButton Red', data: {confirm: "Are you sure to delete menu named #{menu.name}"} %>
     <% end %>
 </div>
 </section>
