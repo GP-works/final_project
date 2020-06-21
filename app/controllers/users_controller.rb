@@ -38,6 +38,9 @@ class UsersController < ApplicationController
     if user.save
       flash[:success] = "role is changed as requested"
       redirect_to users_path
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
+      redirect_to users_path
     end
   end
 
@@ -59,6 +62,9 @@ class UsersController < ApplicationController
     user.request_status = params[:role]
     if user.save
       flash[:success] = "role requested successfully"
+      redirect_to users_path
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
       redirect_to users_path
     end
   end
