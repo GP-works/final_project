@@ -14,33 +14,20 @@ class MenuitemsController < ApplicationController
                                       available: true)
     if new_menuitem.save
       flash[:success] = "#{params[:name]} added to #{menu.name} menu"
-      if @menu == menu
-        if params[:rendered_from] == "submenu"
-          redirect_to "/submenus/#{submenu.id}/edit"
-        else
-          redirect_to menus_path
-        end
-      else
-        if params[:rendered_from] == "submenu"
-          redirect_to "/submenus/#{submenu.id}/edit"
-        else
-          redirect_to menus_edit_path(menu_id: menu.id)
-        end
-      end
     else
       flash[:error] = new_menuitem.errors.full_messages.join(", ")
-      if @menu == menu
-        if params[:rendered_from] == "submenu"
-          redirect_to "/submenus/#{submenu.id}/edit"
-        else
-          redirect_to menus_path
-        end
+    end
+    if @menu == menu
+      if params[:rendered_from] == "submenu"
+        redirect_to "/submenus/#{submenu.id}/edit"
       else
-        if params[:rendered_from] == "submenu"
-          redirect_to "/submenus/#{submenu.id}/edit"
-        else
-          redirect_to menus_edit_path(menu_id: menu.id)
-        end
+        redirect_to menus_path
+      end
+    else
+      if params[:rendered_from] == "submenu"
+        redirect_to "/submenus/#{submenu.id}/edit"
+      else
+        redirect_to menus_edit_path(menu_id: menu.id)
       end
     end
   end
@@ -85,8 +72,13 @@ class MenuitemsController < ApplicationController
     menuitem.price = params[:price].presence || menuitem.price
     menuitem.image_url = params[:image_url].presence || menuitem.image_url
     menuitem.description = params[:description].presence || menuitem.description
-    menuitem.save
     submenu = menuitem.submenu
+    menuitem.save
+    if menuitem.save
+      flash[:success] = "Menuitem #{Menuitem.name} edited succesfully"
+    else
+      flash[:error] = menuitem.errors.full_messages.join(", ")
+    end
     if @menu == menuitem.menu
       if params[:rendered_from] == "submenu"
         redirect_to "/submenus/#{submenu.id}/edit"

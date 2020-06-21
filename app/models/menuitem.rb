@@ -1,6 +1,7 @@
 class Menuitem < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
+  validates :description, length: { maximum: 33 }
   belongs_to :menu
   belongs_to :submenu
   has_many :orderitems

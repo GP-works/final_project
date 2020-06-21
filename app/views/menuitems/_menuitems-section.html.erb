@@ -19,6 +19,7 @@
           <% if rendered_from == 'menus' %>
             <%= link_to edit_submenu_path(submenu), class:"Edit-Icon", method: 'get' do %>
                     <%= show_svg('edit.svg') %>
+                    <label >Edit</label>
             <% end %>
             <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id,rendered_from: 'menus'),class: "Add-item-link" %>
           <% end %>

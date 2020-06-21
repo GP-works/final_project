@@ -89,6 +89,6 @@
       </p>
     <% end %>
     <%= form_with(url: "/users/#{user.id}", method: "delete") do %>
-        <%= submit_tag "delete this account", class: 'Add-Button Red', data: {confirm: "are you sure to delete user named #{user.name}"} %>
+        <%= submit_tag "delete this account", class: 'Add-Button Red Right', data: {confirm: "are you sure to delete user named #{user.name}"} %>
       <% end %>
 </div>

@@ -14,8 +14,9 @@ class UsersController < ApplicationController
       user.destroy
       if user == current_user
         session[:current_user_id] = nil
+        redirect_to "/" and return
       end
-      redirect_to "/"
+      redirect_to users_path
     else
       flash[:error] = "you do not have authority"
       redirect_to "/" and return
