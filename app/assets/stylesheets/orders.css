@@ -107,7 +107,11 @@
 }
 
 .Red {
-  background-color: red;
+  background-color: rgb(211, 25, 25);
+}
+
+.Red:hover {
+  background-color: red!important;
 }
 
 .Order-exit {

@@ -12,8 +12,8 @@
 .Submenus-Title {
     font-size: 30px;
     font-weight: 600;
-    margin-top: -30px;
-    margin-bottom: 10px;
+    margin-top: -10px;
+    margin-bottom: 15px;
 }
 
 .edit-Button:hover {
@@ -272,4 +272,49 @@
     top: 1px;
     transition: all 0.3s;
     border-width: 0px;
+}
+
+.Edit-Icon {
+    fill: red;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.Edit-Icon:hover {
+    fill: blue;
+}
+
+.Submenu-Edit-Container {
+    margin: 0 auto;
+    max-width: 80%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.Submenu-Edit {
+    display: flex;
+    align-items: baseline;
+}
+
+.SubmenuChange-Label {
+    margin-right: 10px;
+    font-size: 20px;
+    color: rgb(245, 35, 35);
+}
+
+.Form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Submenu-Edit-Title {
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.SubMenu-Edit-Add {
+    font-size: 30px;
+    margin-bottom: 15px;
 }
