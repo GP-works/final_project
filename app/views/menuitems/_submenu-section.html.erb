@@ -14,10 +14,11 @@
                 <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
                 <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
               </div>
-              <% if rendered_from == 'menus'%>
+              <% if rendered_from != 'home'%>
                 <% class_name = menuitem.available ? "outer-switch-active" : "outer-switch" %>
                 <% value= menuitem.available ? "0" : "1" %>
                 <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
+                  <input type="hidden" value=<%= rendered_from %> name="rendered_from">
                   <input type="hidden" value=<%= value %> name="available">
                   <button type='submit' class=<%= class_name %>>
                     <span class="switch" ></span>
@@ -61,9 +62,11 @@
               <% else %>
                 <div class='edit-container' >
                   <form action="/menuitems/<%= menuitem.id %>/edit" method=get>
+                    <input type="hidden" value=<%= rendered_from %> name="rendered_from" >
                     <input type='submit' value='Edit' class='edit-Button'>
                   </form>
                   <%= form_with(url: "/menuitems/#{menuitem.id}", method: "delete") do %>
+                      <input type="hidden" value=<%= rendered_from %> name="rendered_from">
                       <%= image_submit_tag(source="delete-icon.svg",
                                           class: "MenuItem-deleteIcon",
                                           alt: "deleteicon")

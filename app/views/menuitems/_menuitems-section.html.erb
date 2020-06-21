@@ -20,7 +20,7 @@
             <%= link_to edit_submenu_path(submenu), class:"Edit-Icon", method: 'get' do %>
                     <%= show_svg('edit.svg') %>
             <% end %>
-            <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id),class: "Add-item-link" %>
+            <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id,rendered_from: 'menus'),class: "Add-item-link" %>
           <% end %>
       </div>
     <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: rendered_from,submenu: submenu,menu: menu} %>
