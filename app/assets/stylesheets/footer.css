@@ -1,0 +1,40 @@
+.footer {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  background-color: #e0e8f0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.svg {
+  margin-right: 20px;
+  fill: black;
+}
+
+.footer-flex {
+  display: flex;
+  margin: 20px;
+  justify-content: start;
+}
+
+.footerpart {
+  margin: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.AddressHead {
+  margin: 5px;
+  font-size: 20px;
+  padding-bottom: 10px;
+  font-weight: 600;
+}
+
+.support {
+  margin-bottom: 20px;
+}
+
+.main-content {
+  min-height: calc(100vh - 200px);
+}
