@@ -12,7 +12,7 @@
     </div>
 <% end %>
 <div>
-  <% menu.submenus.all.each do |submenu| %>
+  <% menu.submenus.all.order('id').each do |submenu| %>
     <% if submenu.menuitems.available.count>0 || rendered_from == 'menus'%>
       <div class="AddItemSubmenu">
           <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>

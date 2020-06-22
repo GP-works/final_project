@@ -98,7 +98,7 @@
           </div>
         <% else %>
           <form action="/orders" method="GET">
-            <button class='Order-exit' type="submit" >Exit</button>
+            <input type="button" value="Exit" class='Order-exit' onClick="javascript:history.go(-1)" />
          </form>
         <% end %>
     </section>

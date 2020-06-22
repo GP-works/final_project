@@ -75,7 +75,7 @@ class MenuitemsController < ApplicationController
     submenu = menuitem.submenu
     menuitem.save
     if menuitem.save
-      flash[:success] = "Menuitem #{Menuitem.name} edited succesfully"
+      flash[:success] = "Menuitem #{menuitem.name} updated succesfully"
     else
       flash[:error] = menuitem.errors.full_messages.join(", ")
     end

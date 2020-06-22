@@ -4,7 +4,8 @@
     <%= render partial: 'orders-section',
         locals:{ all_orders: all_orders.not_delivered ,
                   hidden_status: hidden_status,
-                  delivered_status: false
+                  delivered_status: false,
+
                 }
     %>
     <p class="Orders-Title"><%= second_title %></p>
@@ -12,6 +13,7 @@
         locals:{ all_orders: all_orders.delivered ,
                   hidden_status: hidden_status,
                   delivered_status: true
+
                 }
     %>
   </section>

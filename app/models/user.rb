@@ -19,4 +19,7 @@ class User < ActiveRecord::Base
   def self.owners(user_id)
     where("role = ? and id != ?", "owner", user_id)
   end
+  def self.owners_all
+    where("role = ?", "owner")
+  end
 end

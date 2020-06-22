@@ -18,7 +18,10 @@
     <p class="Users-Role">Clerks</p>
     <%= render partial:'users/user-section',
                locals:{  users: User.clerks,
-                         display_status: false
+                         display_status: false,
+                         rendered_from: "reports",
+                         from_date: from_date,
+                         end_date: end_date
                       }
     %>
   </div>
@@ -27,7 +30,10 @@
     <p class="Users-Role">Customers</p>
     <%= render partial:'users/user-section',
                locals:{ users: User.customers,
-                      display_status: false
+                      display_status: false,
+                      rendered_from: "reports",
+                      from_date: from_date,
+                      end_date: end_date
                      }
     %>
   </div>
@@ -35,8 +41,11 @@
   <div class="users">
     <p class="Users-Role">Other Admins</p>
     <%= render partial:'users/user-section',
-              locals:{ users: User.owners(@current_user.id),
-                       display_status: false
+              locals:{ users: User.owners_all,
+                       display_status: false,
+                       rendered_from: "reports",
+                       from_date: from_date,
+                       end_date: end_date
                       }
     %>
   </div>

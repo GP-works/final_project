@@ -122,6 +122,7 @@
   border-width: 0;
   font-size: 20px;
   color: white;
+  text-decoration: none;
 }
 
 .Order-exit:hover {
