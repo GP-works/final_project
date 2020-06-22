@@ -10,6 +10,7 @@
   </head>
 
   <body>
+   <div class='main-content'>
     <% if @current_user %>
           <div class="NavBar">
             <div class='Navbar-left'>
@@ -73,5 +74,44 @@
       </div>
     <% end %>
     <%= yield %>
+  </div>
+    <div class='footer'>
+        <div class='footerpart'>
+           <p class='AddressHead'>
+            GP Cafe
+           </p>
+           <div class='footerpart'>
+            <a href='#' class="Navbar-Item footerpart">About</a>
+            <a href='#' class="Navbar-Item footerpart">Team</a>
+            <a href='#' class="Navbar-Item footerpart">Story</a>
+           </div>
+        </div>
+        <div class='footerpart'>
+          <p class='AddressHead support'>
+            SUPPORT
+          </p>
+          <%= mail_to "thisisprashanth02@gmail.com", "Contact Us", class:"footerpart Navbar-Item"%>
+        </div>
+        <div class='footerpart'>
+           <p class='AddressHead'>
+            SOCIAL
+           </p>
+           <div class='footer-flex'>
+            <a href='https://instagram.com/echo_prudhvi' class="Navbar-Item svg"><%= show_svg('instagram.svg') %></a>
+            <a href='https://twitter.com/echo_prudhvi' class="Navbar-Item svg"><%= show_svg('twitter.svg') %></a>
+            <a href='https://github.com/saas-final-project/final_project' class="Navbar-Item svg"><%= show_svg('github.svg') %></a>
+            <a href="whatsapp://send?text=Hello%2C%20World!" class="Navbar-Item svg"><%= show_svg('whatsapp.svg') %></a>
+           </div>
+        </div>
+        <div class='footerpart'>
+          <p class='AddressHead'>
+            CONTACT
+          </p>
+          <p class="footerpart">Door No 1-23/8</p>
+          <p class="footerpart">Road no - 4</p>
+          <p class="footerpart">ShadNagar</p>
+          <p class="footerpart">Hyderabad</p>
+        </div>
+    </div>
   </body>
 </html>
