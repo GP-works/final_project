@@ -10,7 +10,13 @@
         <% else %>
             <th class="OrdersQuantity">OrdersPlaced</th>
         <% end %>
+        <% if rendered_from== 'reports'%>
+            <th class="OrdersQuantity">Total Money</th>
+            <% percent_hash = User.get_total(from_date,end_date)%>
+            <th class="OrdersQuantity">Percentage</th>
+        <% end %>
     </tr>
+
     <% users.all.each do |user| %>
     <tr class="UserDetails">
         <td class="IdNo"><%= user.id %></td>
@@ -40,7 +46,15 @@
                                 %>
             </td>
         <% else %>
-            <td class="OrdersQuantity"><%= user.orders.confirmed_orders.count %></td>
+            <% if rendered_from =='reports'%>
+                <td class="OrdersQuantity"><%= user.orders.confirmed_orders.get_orders(from_date,end_date).count %></td>
+            <% else %>
+                <td class="OrdersQuantity"><%= user.orders.confirmed_orders.count %></td>
+            <% end %>
+        <% end %>
+        <% if rendered_from == 'reports'%>
+            <td class="OrdersQuantity"><%= percent_hash[user.id][:total_price] %></td>
+            <td class="OrdersQuantity"><%= percent_hash[user.id][:percentage].round(2) %>%</td>
         <% end %>
     </tr>
     <% end %>

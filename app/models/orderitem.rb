@@ -14,6 +14,10 @@ class Orderitem < ActiveRecord::Base
     sum_array = all.getsum(from_date, to_date)
     total_sum = sum_array.sum { |menu_item, menu_item_price, qty| menu_item_price }
     total_qty = sum_array.sum { |menu_item, menu_item_price, qty| qty }
+    if total_qty == 0
+      total_sum = 1
+      total_qty = 1
+    end
     percent_hash = {}
     sum_array.each { |menu_item_name, menu_item_price, qty|
       percent_hash[menu_item_name.to_sym] = { sum: menu_item_price,
