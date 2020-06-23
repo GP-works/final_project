@@ -1,43 +1,43 @@
 <section class="NewUserBody">
-<h1 class="Cafeteria-title">
-  Welcome to GP Cafe
-</h1>
-<h1 class="Form-Title">Sign up as a new user</h1>
-<section class="UsersNew">
-  <%= form_with(url: "/users", method: "post") do %>
-   <div class="Form-Section">
-    <p class="Input-Label">
-      Name
-    </p>
-    <%= text_field_tag 'name', nil,
-                       autofocus: true,
-                       placeholder: "name",
-                       class: "Form-Input"
-    %>
-    </div>
-   <div class="Form-Section">
-    <p class="Input-Label">
-      Email
-    </p>
-    <%= email_field_tag 'email', nil,
-                        placeholder: "email",
-                        class:"Form-Input"
-    %>
-   </div>
-   <div class="Form-Section">
-    <p class="Input-Label">
-      Password
-    </p>
-    <%= password_field_tag  'password', nil,
-                            placeholder: "password",
+  <h1 class="Cafeteria-title">
+    Welcome to GP Cafe
+  </h1>
+  <h1 class="Form-Title">Sign up as a new user</h1>
+  <section class="UsersNew">
+    <%= form_with(url: "/users", method: "post") do %>
+      <div class="Form-Section">
+        <p class="Input-Label">
+          Name
+        </p>
+        <%= text_field_tag 'name', nil,
+                            autofocus: true,
+                            placeholder: "name",
                             class: "Form-Input"
-    %>
-   </div>
-   <%= submit_tag ' Sign-up ', class: "Form-Submit" %>
-  <% end %>
-</section>
-<h2 class="Home-authenticate">
-  <p class="UserLabel">Already have an account?</p>
-  <%= link_to "Sign-in here", new_sessions_path, class: "Signin-link" %>
-</h2>
+        %>
+      </div>
+      <div class="Form-Section">
+        <p class="Input-Label">
+          Email
+        </p>
+        <%= email_field_tag 'email', nil,
+                            placeholder: "email",
+                            class:"Form-Input"
+        %>
+      </div>
+      <div class="Form-Section">
+        <p class="Input-Label">
+          Password
+        </p>
+        <%= password_field_tag  'password', nil,
+                                placeholder: "password",
+                                class: "Form-Input"
+        %>
+      </div>
+      <%= submit_tag ' Sign-up ', class: "Form-Submit" %>
+    <% end %>
+  </section>
+  <h2 class="Home-authenticate">
+    <p class="UserLabel">Already have an account?</p>
+    <%= link_to "Sign-in here", new_sessions_path, class: "Signin-link" %>
+  </h2>
 </section>

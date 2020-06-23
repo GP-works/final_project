@@ -30,7 +30,6 @@
                 <%= show_svg('order.svg') %>
                 <p class="Header-tab">Orders</p>
               <% end %>
-
               <% if @current_user.role == "owner" %>
                 <%= link_to users_path ,class:"Navbar-Item" do %>
                   <%= show_svg('group.svg') %>
@@ -56,7 +55,7 @@
                     <%= show_svg('user.svg') %>
                     <p class="Header-tab">Profile</p>
               <% end %>
-              <%= link_to destroy_session_path,method: "delete",class:"Navbar-Item" do %>
+              <%= link_to destroy_session_path,method: "delete", class:"Navbar-Item" do %>
                   <%= show_svg('signout.svg') %>
                   <p class="Header-tab">Logout</p>
               <% end %>
@@ -90,7 +89,7 @@
           <p class='AddressHead support'>
             SUPPORT
           </p>
-          <%= mail_to "thisisprashanth02@gmail.com", "Contact Us", class:"footerpart Navbar-Item"%>
+          <%= mail_to "thisisprashanth03@gmail.com", "Contact Us", class:"footerpart Navbar-Item"%>
         </div>
         <div class='footerpart'>
            <p class='AddressHead'>

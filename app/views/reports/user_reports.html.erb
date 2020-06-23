@@ -1,6 +1,6 @@
 <div class='Report-container'>
-  <%= link_to "fetch-itemwise-report", reports_path,method: 'get', class: "Report-link"%>
-  <%= link_to "fetch-orders-reports", display_orders_path, method: 'get', class: "Report-link"%>
+  <%= link_to "fetch-itemwise-report", reports_path, method: 'get', class: "Report-link" %>
+  <%= link_to "fetch-orders-reports", display_orders_path, method: 'get', class: "Report-link" %>
   <p class="Report-head"> User wise Reports</p>
   <form action="/reports/users/" method= "get" class= "Date-period">
     <div class="Date">
@@ -13,46 +13,48 @@
     </div>
     <button class="SubmitButton" type="submit">fetch</button>
   </form>
-  <p class="Dateperiod-Indicator"><%= "Showing reports from #{from_date.to_date.to_s(:short)} to #{end_date.to_date.to_s(:short)}"%></p>
+  <p class="Dateperiod-Indicator">
+    <%= "Showing reports from #{from_date.to_date.to_s(:short)} to #{end_date.to_date.to_s(:short)}"%>
+  </p>
   <% if User.clerks.count != 0 %>
-  <div class='users'>
-    <p class="Users-Role">Clerks</p>
-    <%= render partial:'users/user-section',
-               locals:{  users: User.clerks,
-                         display_status: false,
-                         rendered_from: "reports",
-                         from_date: from_date,
-                         end_date: end_date
-                      }
-    %>
-  </div>
-  <hr>
+    <div class='users'>
+      <p class="Users-Role">Clerks</p>
+      <%= render partial:'users/user-section',
+                 locals:{  users: User.clerks,
+                           display_status: false,
+                           rendered_from: "reports",
+                           from_date: from_date,
+                           end_date: end_date
+                        }
+      %>
+    </div>
+    <hr>
   <% end %>
-  <% if User.customers!= 0 %>
-  <div class="users">
-    <p class="Users-Role">Customers</p>
-    <%= render partial:'users/user-section',
-               locals:{ users: User.customers,
-                      display_status: false,
-                      rendered_from: "reports",
-                      from_date: from_date,
-                      end_date: end_date
-                     }
-    %>
-  </div>
-  <hr>
+  <% if User.customers.count != 0 %>
+    <div class="users">
+      <p class="Users-Role">Customers</p>
+      <%= render partial:'users/user-section',
+                 locals:{ users: User.customers,
+                          display_status: false,
+                          rendered_from: "reports",
+                          from_date: from_date,
+                          end_date: end_date
+                        }
+      %>
+    </div>
+    <hr>
   <% end %>
-  <% if User.owners_all != 0 %>
-  <div class="users">
-    <p class="Users-Role">Admins</p>
-    <%= render partial:'users/user-section',
-              locals:{ users: User.owners_all,
-                       display_status: false,
-                       rendered_from: "reports",
-                       from_date: from_date,
-                       end_date: end_date
-                      }
-    %>
-  </div>
+  <% if User.owners_all.count != 0 %>
+    <div class="users">
+      <p class="Users-Role">Admins</p>
+      <%= render partial:'users/user-section',
+                 locals:{ users: User.owners_all,
+                          display_status: false,
+                          rendered_from: "reports",
+                          from_date: from_date,
+                          end_date: end_date
+                        }
+      %>
+    </div>
   <% end %>
 </div>

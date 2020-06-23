@@ -3,19 +3,16 @@
   <section class="orders">
     <%= render partial: 'orders-section',
         locals:{ all_orders: all_orders.not_delivered ,
-                  hidden_status: hidden_status,
-                  delivered_status: false,
-
+                 hidden_status: hidden_status,
+                 delivered_status: false,
                 }
     %>
     <p class="Orders-Title"><%= second_title %></p>
     <%= render partial: 'orders-section',
         locals:{ all_orders: all_orders.delivered ,
-                  hidden_status: hidden_status,
-                  delivered_status: true
-
+                 hidden_status: hidden_status,
+                 delivered_status: true
                 }
     %>
   </section>
 </section>
-<p class = 'info'> * Please click on order id to view the details of order </p>

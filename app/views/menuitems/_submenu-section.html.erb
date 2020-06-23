@@ -1,20 +1,19 @@
-
-      <ul class="MenuItemList">
-        <% submenuitems = rendered_from=='home' ? submenu.menuitems.available : submenu.menuitems.all %>
-          <% submenuitems.all.order('id').each do |menuitem| %>
+    <ul class="MenuItemList">
+         <% submenuitems = rendered_from == 'home' ? submenu.menuitems.available : submenu.menuitems.all %>
+        <% submenuitems.all.order('id').each do |menuitem| %>
           <li class="MenuItem">
-            <img src=<%= menuitem.image %>
-                          height="180"
-                          width="180"
-                          class= "MenuItemImage"
-            >
+              <img src=<%= menuitem.image %>
+                   height="180"
+                   width="180"
+                   class= "MenuItemImage"
+          >
 
             <div class="NameAndDescriptionContainer">
               <div>
                 <section class="MenuItemName"><%= menuitem.name.capitalize %></section>
                 <section class="MenuItemDescription"><%= menuitem.description_method.capitalize %></section>
               </div>
-              <% if rendered_from != 'home'%>
+              <% if rendered_from != 'home' %>
                 <% class_name = menuitem.available ? "outer-switch-active" : "outer-switch" %>
                 <% value= menuitem.available ? "0" : "1" %>
                 <%= form_with(url:"/menuitems/available/#{menuitem.id}", method: "put") do %>
@@ -31,30 +30,36 @@
               <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
               <% if rendered_from == 'home' %>
                 <div>
-                  <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id)%>
-                  <% if qty==0 %>
-                    <%= link_to "Add", orderitems_path(menuitem_id: menuitem.id,
-                                                      menu_item_name: menuitem.name,
-                                                      menu_item_price: menuitem.price,
-                                                      from: "menuitems"),
-                                                      method: "post",
-                                                      class: "Add-text",
-                                                      disable_with: "Adding"
+                  <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id) %>
+                  <% if qty == 0 %>
+                    <%= link_to "Add",
+                                 orderitems_path(menuitem_id: menuitem.id,
+                                                 menu_item_name: menuitem.name,
+                                                 menu_item_price: menuitem.price,
+                                                 from: "menuitems"),
+                                  method: "post",
+                                  class: "Add-text",
+                                  disable_with: "Adding"
                     %>
                   <% else %>
                     <div class='MenuItem-qty'>
-                        <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id)%>
-                        <%= link_to "− ", orderitem_path(id:order_item.id,from: "menuitems",),
-                                                        method: "delete", class: "home-minus",
-                                                        diable_with: "Processing.." %>
+                        <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id) %>
+                        <%= link_to "− ",
+                                    orderitem_path(id:order_item.id,
+                                                   from: "menuitems",),
+                                    method: "delete",
+                                    class: "home-minus",
+                                    diable_with: "Processing.."
+                        %>
                         <p class="Count"><%= " #{qty}" %></p>
-                        <%= link_to "＋", orderitems_path(menuitem_id: menuitem.id,
-                                                          menu_item_name: menuitem.name,
-                                                          menu_item_price: menuitem.price,
-                                                          from: "menuitems"),
-                                                          method: "post",
-                                                          class: "home-plus",
-                                                          disable_with: "Adding..."
+                        <%= link_to "＋",
+                                    orderitems_path(menuitem_id: menuitem.id,
+                                                    menu_item_name: menuitem.name,
+                                                    menu_item_price: menuitem.price,
+                                                    from: "menuitems"),
+                                    method: "post",
+                                    class: "home-plus",
+                                    disable_with: "Adding..."
                         %>
                     </div>
                   <% end %>
@@ -77,4 +82,4 @@
             </section>
           </li>
         <% end %>
-      </ul>
+    </ul>

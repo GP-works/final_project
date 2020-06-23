@@ -11,14 +11,16 @@
     <button class="SubmitButton" type="submit">fetch</button>
   </form>
 
-  <p class="Dateperiod-Indicator"><%= "Showing orders from #{from_date.to_date.to_s(:short)} to #{end_date.to_date.to_s(:short)}"%></p>
+  <p class="Dateperiod-Indicator">
+    <%= "Showing orders from #{from_date.to_date.to_s(:short)} to #{end_date.to_date.to_s(:short)}"%>
+  </p>
   <%= render partial: 'orders/orders-section',
           locals:{ all_orders: all_orders,
                     hidden_status: true,
                     delivered_status: true
                   }
-      %>
-    <form action="/reports/users" method="GET">
-            <button class='Order-exit' type="submit" >Exit</button>
-    </form>
+  %>
+  <form action="/reports/users" method="GET">
+        <button class='Order-exit' type="submit" >Exit</button>
+  </form>
 </div>

@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
     unless current_user.role == "owner" || current_user == user
-      flash[:error] = "Behave yourself"
+      flash[:error] = "You don't have authority"
       redirect_to "/" and return
     end
     render :edit, locals: { user: user }

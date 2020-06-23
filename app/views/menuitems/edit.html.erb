@@ -3,14 +3,16 @@
       <p class="Input-Label">
         Name
       </p>
-      <%= text_field_tag(name = 'name', value = nil,
+      <%= text_field_tag(name = 'name',
+                         value = nil,
                          class: "EditMenuitem-name",
                          placeholder: menuitem.name )
       %>
       <p class="Input-Label">
         Price
       </p>
-      <%= text_field_tag(name = 'price', value = nil,
+      <%= text_field_tag(name = 'price',
+                         value = nil,
                          class: "EditMenuitem-price",
                          placeholder:  "price:#{menuitem.price}" )
       %>
@@ -20,19 +22,19 @@
       <%= text_field_tag(name = 'image_url',
                          value = nil,
                          class: "EditMenuitem-image_url",
-                         placeholder:  menuitem.image_url.presence||'add url' )
+                         placeholder:  menuitem.image_url.presence || 'add url' )
       %>
       <p class="Input-Label">
         Description
       </p>
-      <%= text_field_tag(name = 'description', value = nil,
+      <%= text_field_tag(name = 'description',
+                         value = nil,
                          class: "EditMenuitem-description",
-                         placeholder:  menuitem.description.presence||'add description' )
+                         placeholder:  menuitem.description.presence || 'add description' )
       %>
       <p>
       <%= button_tag(value='update', class: "Add-Button")  %>
       </p>
       <input type="hidden" value=<%= rendered_from %> name= "rendered_from" >
     <% end %>
-
 </div>

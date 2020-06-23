@@ -1,23 +1,22 @@
 <% orderitems = order.orderitems.getqty %>
-<% if orderitems.count==0%>
+<% if orderitems.count == 0%>
   <div class="CartEmptyBody">
       <p class="CartEmptyMessage">No Items in cart</p>
-      <img src=<%=image_path("empty.png")%>
-              height="300"
-              width="300"
-              class= "CartEmptyImage"
+      <img src= <%=image_path("empty.png") %>
+           height="300"
+           width="300"
+           class= "CartEmptyImage"
       >
       <div>
           <form action="/menuitems" method="GET">
-                  <button class= "CartEmptyLink" type=submit>
-                    <img src=<%=image_path("additems.png")%> alt= "addicon" >
-                    <label class="Add-Items" >Add</label>
-                  </button>
+                <button class= "CartEmptyLink" type=submit>
+                  <img src=<%=image_path("additems.png")%> alt= "addicon" >
+                  <label class="Add-Items" >Add</label>
+                </button>
           </form>
-
       </div>
   </div>
-<%else%>
+<% else %>
     <section class="CartBody">
         <% if hidden_status == false %>
           <div class="Order-top">
@@ -40,15 +39,18 @@
               <div>
                 <% if order.not_delivered %>
                   <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
-                      <%= submit_tag "Cancel order", class: 'SubmitButton Red', data: {confirm: "Are you sure to delete tis order"} %>
+                      <%= submit_tag "Cancel order",
+                                     class: 'SubmitButton Red',
+                                     data: {confirm: "Are you sure to delete tis order"}
+                      %>
                   <% end %>
                 <% end %>
               </div>
             </div>
           </div>
         <% end %>
-        <% class_name= hidden_status ? "Left-margin": "" %>
-        <table class=<%=class_name%>>
+        <% class_name = hidden_status ? "Left-margin" : "" %>
+        <table class=<%= class_name %>>
             <tr class="ColumnTitle">
                 <th class="SerialNo">SNo</th>
                 <th class="ItemName">Name</th>
@@ -56,32 +58,37 @@
                 <th class="EachItemPrice">Price</th>
                 <th class="ItemPrice">TotalPrice</th>
             </tr>
-
             <% serial_no = 1 %>
             <% orderitems.each do |name,quantity|%>
-                <% order_item = order.orderitems.find_by(menu_item_name: name)%>
+                <% order_item = order.orderitems.find_by(menu_item_name: name) %>
                     <tr class="ItemDetails">
                         <td class="SerialNo"><%= serial_no %>.</td>
                         <td class="ItemName"><%= name %></td>
                         <td class="ItemQuantity">
                           <% if hidden_status %>
-                            <%= link_to "−", orderitem_path(id:order_item.id,from: "cart"), method: "delete", class: "minus" %>
+                            <%= link_to "−",
+                                        orderitem_path(id:order_item.id, from: "cart"),
+                                        method: "delete",
+                                        class: "minus"
+                            %>
                           <% end %>
                             <%= quantity %>
                           <% if hidden_status %>
-                            <%= link_to "＋", orderitems_path(order_id: order.id ,
-                                                            menuitem_id: order_item.menuitem_id,
-                                                            menu_item_name: name,
-                                                            menu_item_price: order_item.menu_item_price,from: "cart",),
-                                                            method: "post",
-                                                            class: "plus"
+                            <%= link_to "＋",
+                                        orderitems_path(order_id: order.id ,
+                                                        menuitem_id: order_item.menuitem_id,
+                                                        menu_item_name: name,
+                                                        menu_item_price: order_item.menu_item_price,
+                                                        from: "cart",),
+                                        method: "post",
+                                        class: "plus"
                             %>
                           <% end %>
                         </td>
                         <td class="EachItemPrice">₹<%= order_item.menu_item_price %></td>
                         <td class="ItemPrice">₹<%= quantity*order_item.menu_item_price %></td>
                     </tr>
-                    <% serial_no = serial_no+1 %>
+                    <% serial_no = serial_no + 1 %>
             <% end %>
         </table>
         <hr class='line'>

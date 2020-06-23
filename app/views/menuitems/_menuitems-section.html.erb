@@ -2,18 +2,19 @@
   <div>
       <%= form_with(url: "/submenus", method: "post", class: "Add-menu") do %>
         <label for="Menu-text" class="label">New Submenu:</label>
-        <%= text_field_tag( name = 'name', value = nil,
+        <%= text_field_tag( name = 'name',
+                            value = nil,
                             class: "Menu-text",
                             placeholder: "New Submenu?")
         %>
         <%= hidden_field_tag 'menu_id', menu.id %>
         <%= button_tag(value = 'Add', class: "Add-Button")  %>
       <% end %>
-    </div>
+  </div>
 <% end %>
 <div>
   <% menu.submenus.all.order('id').each do |submenu| %>
-    <% if submenu.menuitems.available.count>0 || rendered_from == 'menus'%>
+    <% if submenu.menuitems.available.count>0 || rendered_from == 'menus' %>
       <div class="AddItemSubmenu">
           <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>
           <% if rendered_from == 'menus' %>
@@ -21,10 +22,17 @@
                     <%= show_svg('edit.svg') %>
                     <label >Edit</label>
             <% end %>
-            <%= link_to "Add an Item", new_menuitem_path(submenu_id: submenu.id,rendered_from: 'menus'),class: "Add-item-link" %>
+            <%= link_to "Add an Item",
+                         new_menuitem_path(submenu_id: submenu.id, rendered_from: 'menus'),
+                         class: "Add-item-link"
+            %>
           <% end %>
       </div>
-    <%= render partial: 'menuitems/submenu-section',locals:{rendered_from: rendered_from,submenu: submenu,menu: menu} %>
+    <%= render partial: 'menuitems/submenu-section',
+               locals:{rendered_from: rendered_from,
+                       submenu: submenu,
+                       menu: menu}
+    %>
     <% end %>
   <% end %>
 </div>
