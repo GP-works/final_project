@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :orders, dependent: :destroy
   validates :name, presence: true, length: { minimum: 4 }
   validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { minimum: 4 }, on: :create
 
   def self.customers
     where("role = ?", "customer")

@@ -2,8 +2,9 @@
             <tr class="ColumnTitle">
                 <th class="SerialNo">SNo</th>
                 <th class="SerialNo">Order Id</th>
-                <th class="ItemName">Name</th>
                 <th class="ItemName">Order type</th>
+                <% status_display = delivered_status ? 'delivered on' : 'created on'%>
+                <th class="ItemName"><%= @current_user.role == 'customer' ? status_display : "Name" %></th>
                 <th class="ItemName">Total Price</th>
                 <% if hidden_status == false%>
                   <% if delivered_status == false %>
@@ -24,8 +25,9 @@
                                           class: "ExpandOrder"
                             %>
                         </td>
-                        <td class="ItemName"><%= order.user.name %></td>
                         <td class="ItemName"><%= order.user.role == 'customer' ? 'delivery' : 'walkin' %></td>
+                        <% date = order.delivered_at == nil ? order.date : order.delivered_at %>
+                        <td class="ItemName"><%= @current_user.role == 'customer' ? date.to_date.to_s(:short) : order.user.name %></td>
                         <td class="ItemName"><%= order.get_total_price %></td>
                         <td>
                         <% if hidden_status == false %>

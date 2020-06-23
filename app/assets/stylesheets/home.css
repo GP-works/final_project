@@ -20,11 +20,10 @@ body {
 }
 
 .Cafeteria-title {
-  color: black;
+  color: red;
   font-size: 30px;
   font-weight: 800;
-  font-variant: small-caps;
-  margin-bottom: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .UserLabel {
@@ -43,8 +42,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-radius: 10px;
-  margin-bottom: 10px;
 }
 
 .Flash-error {
