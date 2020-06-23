@@ -26,8 +26,8 @@
                             %>
                         </td>
                         <td class="ItemName"><%= order.user.role == 'customer' ? 'delivery' : 'walkin' %></td>
-                        <% date = order.delivered_at == nil ? order.date : order.delivered_at %>
-                        <td class="ItemName"><%= @current_user.role == 'customer' ? date.to_date.to_s(:short) : order.user.name %></td>
+                        <% date = order.delivered_at == nil ? order.date : order.delivered_at.in_time_zone('Chennai') %>
+                        <td class="ItemName"><%= @current_user.role == 'customer' ? date.to_s(:short) : order.user.name %></td>
                         <td class="ItemName"><%= order.get_total_price %></td>
                         <td>
                         <% if hidden_status == false %>
@@ -36,7 +36,7 @@
                               <%= submit_tag status_display, class: 'SubmitButton' %>
                             <% end %>
                           <% else %>
-                            <p class="ItemName"><%= order.delivered_at.to_formatted_s(:short) %></p>
+                            <p class="ItemName"><%= order.delivered_at.in_time_zone('Chennai').to_formatted_s(:short) %></p>
                           <% end %>
                         <% end %>
                         </td>
