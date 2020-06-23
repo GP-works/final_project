@@ -1,4 +1,5 @@
 <section class="UsersBody">
+<% if User.clerk_requests.count != 0 %>
 <div>
   <p class="Users-Role">Clerk Post Requests</p>
   <%= render partial:'user-section',
@@ -9,6 +10,8 @@
   %>
 </div>
 <hr>
+<% end %>
+<% if User.admin_requests.count != 0 %>
 <div>
   <p class="Users-Role">Owner Post Requests</p>
   <%= render partial:'user-section',
@@ -19,6 +22,8 @@
   %>
 </div>
 <hr>
+<% end %>
+<% if User.clerks.count != 0 %>
 <div>
   <p class="Users-Role">Clerks</p>
   <%= render partial:'user-section',
@@ -29,6 +34,8 @@
   %>
 </div>
 <hr>
+<% end %>
+<% if User.customers.count != 0 %>
 <div class="users">
   <p class="Users-Role">Customers</p>
   <%= render partial:'user-section',
@@ -39,6 +46,8 @@
   %>
 </div>
 <hr>
+<% end %>
+<% if User.owners(@current_user.id).count != 0%>
 <div class="users">
   <p class="Users-Role">Other Admins</p>
   <%= render partial:'user-section',
@@ -48,4 +57,5 @@
                      }
   %>
 </div>
+<% end %>
 </section>

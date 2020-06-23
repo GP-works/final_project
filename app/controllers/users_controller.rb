@@ -10,19 +10,13 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    if current_user.role == "owner" || (user == current_user && user.role != owner)
-      user.destroy
-      if user == current_user
-        session[:current_user_id] = nil
-        redirect_to "/" and return
-      end
-      redirect_to users_path
-    else
-      if user.role == "owner"
-        flash[:error] = "Can't delete owner"
-      end
-      flash[:error] = "you do not have authority"
+    return_status = user == current_user
+    user.destroy
+    if return_status
+      session[:current_user_id] = nil
       redirect_to "/" and return
+    else
+      redirect_to users_path
     end
   end
 
@@ -59,7 +53,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       flash[:error] = user.errors.full_messages.join(", ")
-      redirect_to users_path
+      redirect_to edit_user_path(id: params[:id])
     end
   end
 
@@ -71,8 +65,11 @@ class UsersController < ApplicationController
       user.password = params[:password]
     end
     if user.save
+      redirect_to users_path
       flash[:success] = "updated successfully"
-      redirect_to "/"
+    else
+      flash[:error] = user.errors.full_messages.join(", ")
+      redirect_to edit_user_path(id: params[:id])
     end
   end
 
