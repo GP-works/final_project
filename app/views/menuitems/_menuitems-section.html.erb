@@ -14,7 +14,7 @@
 <% end %>
 <div>
   <% menu.submenus.all.order('id').each do |submenu| %>
-    <% if submenu.menuitems.available.count>0 || rendered_from == 'menus' %>
+    <% if submenu.menuitems.available.count > 0 || rendered_from == 'menus' %>
       <div class="AddItemSubmenu">
           <section class="Submenus-Title"> <%= submenu.name.capitalize %> </section>
           <% if rendered_from == 'menus' %>
@@ -28,11 +28,11 @@
             %>
           <% end %>
       </div>
-    <%= render partial: 'menuitems/submenu-section',
-               locals:{rendered_from: rendered_from,
-                       submenu: submenu,
-                       menu: menu}
-    %>
+      <%= render partial: 'menuitems/submenu-section',
+                 locals:{rendered_from: rendered_from,
+                         submenu: submenu,
+                         menu: menu}
+      %>
     <% end %>
   <% end %>
 </div>

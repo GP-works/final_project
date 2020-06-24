@@ -7,6 +7,7 @@ class MenusController < ApplicationController
   def create
     new_menu = Menu.new(name: params[:name])
     if new_menu.save
+      flash[:success] = "created new menu '#{params[:name]}'"
       redirect_to menus_path
     else
       flash[:error] = new_menu.errors.full_messages.join(", ")
@@ -28,7 +29,7 @@ class MenusController < ApplicationController
     else
       name = menu.name
       menu.destroy
-      flash[:success] = "menu #{name} deleted succesfully"
+      flash[:success] = "menu '#{name}' deleted succesfully"
       redirect_to menus_path
     end
   end

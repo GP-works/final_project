@@ -17,6 +17,6 @@ class Menuitem < ActiveRecord::Base
   end
 
   def self.available
-    where("available=?", true)
+    where("available = ?", true)
   end
 end

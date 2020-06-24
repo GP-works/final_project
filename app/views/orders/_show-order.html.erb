@@ -2,7 +2,7 @@
 <% if orderitems.count == 0 %>
   <div class="CartEmptyBody">
       <p class="CartEmptyMessage">No Items in cart</p>
-      <img src= <%=image_path("empty.png") %>
+      <img src= <%= image_path("empty.png") %>
            height="300"
            width="300"
            class= "CartEmptyImage"
@@ -10,7 +10,7 @@
       <div>
           <form action="/menuitems" method="GET">
                 <button class= "CartEmptyLink" type=submit>
-                  <img src=<%= image_path("additems.png")%> alt= "addicon" >
+                  <img src=<%= image_path("additems.png") %> alt= "addicon" >
                   <label class="Add-Items" >Add</label>
                 </button>
           </form>
@@ -27,13 +27,15 @@
                 <p class="ItemName">Delivered Date : <%= order.delivered_at.to_s(:short) %></p>
               <% end %>
               <% if @current_user.role != 'customer'%>
-              <p>Name of customer : <%= link_to  "#{order.user.name}",
+                <p>Name of customer :
+                  <%= link_to  "#{order.user.name}",
                                  user_path(id: order.user.id,
                                            from_date: DateTime.now-30,
                                            end_date: DateTime.now
                                            ),
                                  class: "ExpandOrder"
-                    %></p>
+                  %>
+                </p>
               <% end %>
             </div>
             <div class="Order-right">
@@ -47,7 +49,7 @@
                   <%= form_with(url: "/orders/#{order.id}", method: "delete") do %>
                       <%= submit_tag "Cancel order",
                                      class: 'SubmitButton Red',
-                                     data: {confirm: "Are you sure to delete tis order"}
+                                     data: {confirm: "Are you sure to delete this order"}
                       %>
                   <% end %>
                 <% end %>
@@ -115,4 +117,4 @@
          </form>
         <% end %>
     </section>
-<%end%>
+<% end %>
