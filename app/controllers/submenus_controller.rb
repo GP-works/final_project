@@ -36,7 +36,7 @@ class SubmenusController < ApplicationController
   def destroy
     submenu = Submenu.find(params[:id])
     menu = submenu.menu
-    flash[:success] = "submenu #{submenu.name} deleted successfully"
+    flash[:success] = "Submenu #{submenu.name} deleted successfully"
     submenu.destroy
     if @menu == menu
       redirect_to menus_path

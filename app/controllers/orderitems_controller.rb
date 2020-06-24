@@ -18,7 +18,7 @@ class OrderitemsController < ApplicationController
     if params[:from] == "cart"
       redirect_to cart_path(id: order.id)
     else
-      flash[:success] = "#{params[:menu_item_name]} is added to cart successfully"
+      flash[:success] = "#{params[:menu_item_name].capitalize} is added to cart successfully"
       redirect_to menuitems_path
     end
   end

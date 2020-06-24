@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       order.ordered = true
       order.status = "ordered"
       order.save
-      flash[:success] = "order placed succesfully with id #{order.id}"
+      flash[:success] = "Order placed succesfully with id #{order.id}"
       redirect_to orders_path
     end
   end
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     user = order.user
     unless current_user.role == "owner" || current_user.role == "billclerk" || current_user == user
-      flash[:error] = "order not found"
+      flash[:error] = "Order not found"
       redirect_to "/" and return
     end
     render :show

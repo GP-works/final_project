@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     user.role = params[:role]
     user.request_status = nil
     if user.save
-      flash[:success] = "role is changed as requested"
+      flash[:success] = "Role is changed as requested"
       redirect_to users_path
     else
       flash[:error] = user.errors.full_messages.join(", ")
@@ -66,8 +66,11 @@ class UsersController < ApplicationController
       user.password = params[:password]
     end
     if user.save
+      flash[:success] = "Updated successfully"
+      if user == current_user
+        redirect_to "/" and return
+      end
       redirect_to users_path
-      flash[:success] = "updated successfully"
     else
       flash[:error] = user.errors.full_messages.join(", ")
       redirect_to edit_user_path(id: params[:id])
@@ -78,7 +81,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.request_status = params[:role]
     if user.save
-      flash[:success] = "role requested successfully"
+      flash[:success] = "Role requested successfully"
       redirect_to users_path
     else
       flash[:error] = user.errors.full_messages.join(", ")
@@ -95,7 +98,7 @@ class UsersController < ApplicationController
       password: params[:password],
     )
     if new_user.save
-      flash[:success] = "signed up successfully and logged in automatically,please use your credentails for logging in next time :)"
+      flash[:success] = "Signed up successfully and logged in automatically,please use your credentails for logging in next time :)"
       session[:current_user_id] = new_user.id
       redirect_to "/"
     else
