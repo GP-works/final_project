@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.delivered
-    where.not(delivered_at: nil).order(id: :desc)
+    where.not(delivered_at: nil).order(delivered_at: :desc)
   end
 
   def self.today

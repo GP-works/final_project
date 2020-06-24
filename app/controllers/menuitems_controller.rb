@@ -13,7 +13,7 @@ class MenuitemsController < ApplicationController
                                       submenu_id: params[:submenu_id],
                                       available: true)
     if new_menuitem.save
-      flash[:success] = "#{params[:name]} added to #{menu.name} menu"
+      flash[:success] = "#{params[:name].capitalize} added to #{menu.name} menu"
     else
       flash[:error] = new_menuitem.errors.full_messages.join(", ")
     end
@@ -40,7 +40,7 @@ class MenuitemsController < ApplicationController
     submenu = menuitem.submenu
     name = menuitem.name
     menuitem.destroy
-    flash[:success] = "menuitem #{name} is deleted from menu #{@menu.name} successfully"
+    flash[:success] = "Menuitem #{name} is deleted from menu #{@menu.name} successfully"
     if @menu == menu
       if params[:rendered_from] == "submenu"
         redirect_to "/submenus/#{submenu.id}/edit"
