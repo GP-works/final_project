@@ -74,7 +74,7 @@
                         <td class="ItemName"><%= name %></td>
                         <td class="ItemQuantity">
                           <% if hidden_status %>
-                            <%= link_to "−",
+                            <%= button_to "−",
                                         orderitem_path(id:order_item.id, from: "cart"),
                                         method: "delete",
                                         class: "minus"
@@ -82,7 +82,7 @@
                           <% end %>
                             <%= quantity %>
                           <% if hidden_status %>
-                            <%= link_to "＋",
+                            <%= button_to "＋",
                                         orderitems_path(order_id: order.id ,
                                                         menuitem_id: order_item.menuitem_id,
                                                         menu_item_name: name,

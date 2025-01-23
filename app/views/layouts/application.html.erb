@@ -55,7 +55,7 @@
                     <%= show_svg('user.svg') %>
                     <p class="Header-tab">Profile</p>
               <% end %>
-              <%= link_to destroy_session_path,method: "delete", class:"Navbar-Item" do %>
+              <%= button_to destroy_session_path,method: "delete", class:"Navbar-Item" do %>
                   <%= show_svg('signout.svg') %>
                   <p class="Header-tab">Logout</p>
               <% end %>

@@ -27,24 +27,24 @@
             </div>
 
             <section class="PriceAndQuantityContainer">
-              <p class="MenuItemPrice">Price : ₹<%= menuitem.price %></p>
+              <p class="MenuItemPrice">Price : $: <%= menuitem.price %></p>
               <% if rendered_from == 'home' %>
                 <div>
                   <% qty = @current_user.orders.cart_order.orderitems.qty(menuitem.id) %>
                   <% if qty == 0 %>
-                    <%= link_to "Add",
+                    <%= button_to "Add",
                                  orderitems_path(menuitem_id: menuitem.id,
                                                  menu_item_name: menuitem.name,
                                                  menu_item_price: menuitem.price,
                                                  from: "menuitems"),
-                                  method: "post",
+                                  method: :post,
                                   class: "Add-text",
                                   disable_with: "Adding"
                     %>
                   <% else %>
                     <div class='MenuItem-qty'>
                         <% order_item = @current_user.orders.cart_order.orderitems.item(menuitem.id) %>
-                        <%= link_to "− ",
+                        <%= button_to "− ",
                                     orderitem_path(id:order_item.id,
                                                    from: "menuitems",),
                                     method: "delete",
@@ -52,12 +52,12 @@
                                     diable_with: "Processing.."
                         %>
                         <p class="Count"><%= " #{qty}" %></p>
-                        <%= link_to "＋",
+                        <%= button_to "＋",
                                     orderitems_path(menuitem_id: menuitem.id,
                                                     menu_item_name: menuitem.name,
                                                     menu_item_price: menuitem.price,
                                                     from: "menuitems"),
-                                    method: "post",
+                                    method: :post,
                                     class: "home-plus",
                                     disable_with: "Adding..."
                         %>

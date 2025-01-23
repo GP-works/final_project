@@ -39,7 +39,7 @@
             <% end %>
             <td class="UserEmail"><%= user.email %></td>
             <% if display_status %>
-                <td class="UserName"><%= link_to  'Accept',
+                <td class="UserName"><%= button_to  'Accept',
                                                    change_role_path(id: user.id,
                                                                     role: user.request_status
                                                                     ),
@@ -47,7 +47,7 @@
                                                    class: "ExpandOrder"
                                      %>
                 </td>
-                <td class="UserName"><%= link_to  'Delete',
+                <td class="UserName"><%= button_to  'Delete',
                                                    role_request_path(id: user.id,
                                                                      role: nil
                                                                     ),
